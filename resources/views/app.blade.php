@@ -1,7 +1,7 @@
 @include ('_partial/top')
 @include ('_partial/header')
 
-    <main>
+    <main id="app">
         
          @yield('content')
         <!-- Contact area end -->
@@ -11,3 +11,4 @@
     <!-- Footer area end -->
     <!-- JavaScript -->
 @include('_partial/bottom')
+

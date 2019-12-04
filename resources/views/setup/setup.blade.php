@@ -37,3 +37,9 @@
         @include('section.contact')
         <!-- Contact area end -->
  	@endsection
+
+        @push('script')
+
+        <script src="{{ asset('js/app.js') }}" ></script>
+
+        @endpush

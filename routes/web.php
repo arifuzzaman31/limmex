@@ -8,6 +8,8 @@ Route::get('/', [
 	'uses' => 'FrontController@index'
 ]);
 
+Route::post('contact','ContactController@store');
+
 
 
 Auth::routes();
