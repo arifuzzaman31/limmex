@@ -1943,13 +1943,15 @@ __webpack_require__.r(__webpack_exports__);
         message: ''
       },
       errors: null,
-      url: base_url
+      url: base_url,
+      message: 'Send Message'
     };
   },
   methods: {
     send: function send() {
       var _this = this;
 
+      this.message = 'Sending...';
       axios.post(base_url + 'contact', this.form).then(function (response) {
         if (response.data.status === 'success') {
           _this.resetForm();
@@ -1968,6 +1970,7 @@ __webpack_require__.r(__webpack_exports__);
           _this.errors = error.response.data.errors;
         }
       });
+      this.message = 'Send Message';
     },
     resetForm: function resetForm() {
       this.form = {
@@ -5728,7 +5731,22 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _vm._m(1)
+              _c("div", { staticClass: "row  mt-30" }, [
+                _c("div", { staticClass: "col-xl-12 text-center" }, [
+                  _c("div", { staticClass: "form-element" }, [
+                    _c("div", { staticClass: "heuse-hero-btn" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-filled btn-grad-color",
+                          attrs: { type: "submit", id: "contact-form" }
+                        },
+                        [_vm._v(_vm._s(_vm.message))]
+                      )
+                    ])
+                  ])
+                ])
+              ])
             ]
           )
         ])
@@ -5749,27 +5767,6 @@ var staticRenderFns = [
           ]),
           _vm._v(" "),
           _c("h1", [_vm._v("Get In Touch")])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row  mt-30" }, [
-      _c("div", { staticClass: "col-xl-12 text-center" }, [
-        _c("div", { staticClass: "form-element" }, [
-          _c("div", { staticClass: "heuse-hero-btn" }, [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-filled btn-grad-color",
-                attrs: { type: "submit", id: "contact-form" }
-              },
-              [_vm._v("Send Message")]
-            )
-          ])
         ])
       ])
     ])

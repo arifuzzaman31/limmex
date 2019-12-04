@@ -71,7 +71,7 @@
 							<div class="col-xl-12 text-center">
 								<div class="form-element">
 									<div class="heuse-hero-btn">
-										<button type="submit" class="btn btn-filled btn-grad-color" id="contact-form">Send Message</button>
+										<button type="submit" class="btn btn-filled btn-grad-color" id="contact-form">{{ message }}</button>
 									</div>
 								</div>
 							</div>
@@ -114,6 +114,8 @@
 
 							url : base_url,
 
+							message : 'Send Message',
+
 						}
 					},	
 
@@ -121,7 +123,7 @@
 
 						send(){
 
-
+                            this.message = 'Sending...';
 							axios.post(base_url+'contact',this.form)
 							.then(response => {
 
@@ -155,6 +157,8 @@
 
 
 							})
+
+							this.message = 'Send Message';
 
 
 						},
