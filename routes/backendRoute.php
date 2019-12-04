@@ -65,6 +65,7 @@ Route::get('service.index', [
 	'as' 	=> 'service.index',
 	'uses'  => 'ServiceController@index'
 ]);
+
 Route::post('service.store', [
 	'as' 	=> 'service.store',
 	'uses'  => 'ServiceController@store'
@@ -93,4 +94,45 @@ Route::get('show-service/{id}', [
 Route::get('change-service-status/{id}', [
 	'as' 	=> 'change-service-status',
 	'uses'  => 'ServiceController@changestatus'
+]);
+
+	// Blog
+Route::get('blog.index', [
+	'as' 	=> 'blog.index',
+	'uses'  => 'BlogController@index'
+]);
+
+Route::post('blog.store', [
+	'as' 	=> 'service.store',
+	'uses'  => 'BlogController@store'
+]);
+
+Route::post('service-update/{id}', [
+	'as' 	=> 'service.update',
+	'uses'  => 'BlogController@update'
+]);
+
+Route::get('service-delete/{id}', [
+	'as' 	=> 'service-delete',
+	'uses'  => 'BlogController@destroy'
+]);
+
+Route::get('edit.service/{id}', [
+	'as' 	=> 'edit.Service',
+	'uses'  => 'BlogController@edit'
+]);
+
+Route::get('show-service/{id}', [
+	'as' 	=> 'show-Service',
+	'uses'  => 'BlogController@show'
+]);
+
+Route::get('change-service-status/{id}', [
+	'as' 	=> 'change-service-status',
+	'uses'  => 'BlogController@changestatus'
+]);
+
+Route::get('get-blog', [
+	'as' 	=> 'get-blog',
+	'uses'  => 'BlogController@getblog'
 ]);

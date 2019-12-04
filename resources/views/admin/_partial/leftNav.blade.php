@@ -46,6 +46,13 @@
                     <span>View Services</span>
                 </a>
             </li>
+
+            <li>
+                 <a href="{{route('blog.index')}}">
+                    <i class="material-icons">text_fields</i>
+                    <span>View Blogs</span>
+                </a>
+            </li>
             <li>
                 <a href="javascript:void(0);" class="menu-toggle">
                     <i class="material-icons">widgets</i>
