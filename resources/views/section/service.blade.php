@@ -11,28 +11,16 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="services-item owl-carousel">
-                    <div class="single-service text-center item pt-60 pb-60 pl-30 pr-30">
-                        <img src="assets/img/service/service-icon-01.png" alt="">
-                        <h4 class="mb-10 mt-20 pb-10">App Development</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-                        <a href="#" class="btn-service"><i class="fa fa-arrow-right"></i> </a>
-
-                    </div>
-                    <div class="single-service text-center item pt-60 pb-60 pl-30 pr-30">
-                        <div class="service-icon">
-                            <i class="fa fa-home"></i>
-                        </div>
-                        <h4 class="mb-10 mt-20 pb-10">Web Design</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-                        <a href="#" class="btn-service"><i class="fa fa-arrow-right"></i> </a>
-
-                    </div>
-                    <div class="single-service text-center item pt-60 pb-60 pl-30 pr-30">
-                        <img src="assets/img/service/service-icon-03.png" alt="">
-                        <h4 class="mb-10 mt-20 pb-10">Graphic Design</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-                        <a href="#" class="btn-service"><i class="fa fa-arrow-right"></i> </a>
-                    </div>
+                    @if(count($services) > 0)
+                        @foreach($services as $service)
+                            <div class="single-service text-center item pt-60 pb-60 pl-30 pr-30">
+                                <img src="assets/img/service/service-icon-01.png" alt="">
+                                <h4 class="mb-10 mt-20 pb-10">{!! substr($service->sort_description,0,30) !!}</h4>
+                                <p>{!! substr($service->description,0,90) !!}</p>
+                                <a href="#" class="btn-service"><i class="fa fa-arrow-right"></i> </a>
+                            </div>
+                        @endforeach
+                    @endif
                 </div>
             </div>
         </div>

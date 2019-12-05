@@ -2,27 +2,17 @@
     <div class="container">
         <div class="feature-row">
             <div class="row ">
-                <div class="col-xl-4 col-lg-4 text-center ">
-                    <div class="feature-inner-content ">
-                        <img src="assets/img/feature/feature-icon-1.png " alt=" ">
-                        <h4>Global Partnership</h4>
-                        <p>Lorem ipsum dolor sit amet consectetur sadipcing elitr, consetetur sadipscing elitr, consetetur sadipscing elitr.</p>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 text-center ">
-                    <div class="feature-inner-content ">
-                        <img src="assets/img/feature/feature-icon-2.png " alt=" ">
-                        <h4>Defined by our People</h4>
-                        <p>Lorem ipsum dolor sit amet consectetur sadipcing elitr, consetetur sadipscing elitr, consetetur sadipscing elitr.</p>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 text-center ">
-                    <div class="feature-inner-content ">
-                        <img src="assets/img/feature/feature-icon-3.png " alt=" ">
-                        <h4>Powered by Knowledge</h4>
-                        <p>Lorem ipsum dolor sit amet consectetur sadipcing elitr, consetetur sadipscing elitr, consetetur sadipscing elitr.</p>
-                    </div>
-                </div>
+                @if(count($features) > 0)
+                    @foreach($features as $feature)
+                        <div class="col-xl-4 col-lg-4 text-center ">
+                            <div class="feature-inner-content ">
+                                <img src="{{asset('images/feature-image/'.$feature->feature_icon)}}" alt=" ">
+                                <h4>{{$feature->title}}</h4>
+                                <p>{{$feature->description}}</p>
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
             </div>
         </div>
     </div>

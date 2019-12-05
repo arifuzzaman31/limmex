@@ -18,16 +18,12 @@
         <div class="row">
             <div class="col-xl-12 no-padding">
                 <div class="portfolio-item owl-carousel">
-                    <div class="single-portfolio-item item" data-background="assets/img/portfolio/portfolio-1.png">
+                @if(count($portfolios) > 0)
+                @foreach($portfolios as $portfolio)
+                    <div class="single-portfolio-item item" data-background="{{asset('images/portfolio-image/'.$portfolio->image)}}">
                     </div>
-                    <div class="single-portfolio-item item" data-background="assets/img/portfolio/portfolio-2.png">
-                    </div>
-                    <div class="single-portfolio-item item" data-background="assets/img/portfolio/portfolio-3.png">
-                    </div>
-                    <div class="single-portfolio-item item" data-background="assets/img/portfolio/portfolio-4.png">
-                    </div>
-                    <div class="single-portfolio-item item" data-background="assets/img/portfolio/portfolio-5.png">
-                    </div>
+                @endforeach
+                @endif
                 </div>
             </div>
         </div>

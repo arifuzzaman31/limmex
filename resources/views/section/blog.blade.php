@@ -16,30 +16,22 @@
             </div>
             <div class="col-xl-8  col-lg-7">
                 <div class="blog-list owl-carousel">
-                    <div class="single-blog-list pt-60 pb-60 pl-40 pr-40">
-                        <div class="blog-after"></div>
-                        <div class="blog-before"></div>
-                        <h3 class="pb-20">
-                            <a href="single-blog.html">Aspernatur aut odit aut fugit quia.</a>
-                        </h3>
-                        <h5 class="pb-20">Posted 30 July, 2019</h5>
-                        <p class="pb-20">Lorem ipsum dolor sit amet,sed diam my eirmod tempor invidunt ut labore et dolore magna aliquyam erat, At vero eos et sam et justo duo dolores et ea rebum. Lorem ipsum dolor amet, no sea takimata sanctus.</p>
-                        <div class="blog-readmore-btn">
-                            <a href="single-blog.html">Read More <i class="ml-10 fa fa-arrow-right"></i></a>
+                    @if(count($blogs) > 0)
+                    @foreach($blogs as $blog)
+                        <div class="single-blog-list pt-60 pb-60 pl-40 pr-40">
+                            <div class="blog-after"></div>
+                            <div class="blog-before"></div>
+                            <h3 class="pb-20">
+                                <a href="single-blog.html">{{$blog->title}}</a>
+                            </h3>
+                            <h5 class="pb-20">Posted at {{$blog->created_at->toFormattedDateString()}}</h5>
+                            <p class="pb-20">{{$blog->sort_description}}</p>
+                            <div class="blog-readmore-btn">
+                                <a href="single-blog.html">Read More <i class="ml-10 fa fa-arrow-right"></i></a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="single-blog-list pt-60 pb-60 pl-40 pr-40">
-                        <div class="blog-after"></div>
-                        <div class="blog-before"></div>
-                        <h3 class="pb-20">
-                            <a href="single-blog.html">Aspernatur aut odit aut fugit quia.</a>
-                        </h3>
-                        <h5 class="pb-20">Posted 30 July, 2019</h5>
-                        <p class="pb-20">Lorem ipsum dolor sit amet,sed diam my eirmod tempor invidunt ut labore et dolore magna aliquyam erat, At vero eos et sam et justo duo dolores et ea rebum. Lorem ipsum dolor amet, no sea takimata sanctus.</p>
-                        <div class="blog-readmore-btn">
-                            <a href="single-blog.html">Read More <i class="ml-10 fa fa-arrow-right"></i></a>
-                        </div>
-                    </div>
+                    @endforeach
+                    @endif
                 </div>
             </div>
         </div>

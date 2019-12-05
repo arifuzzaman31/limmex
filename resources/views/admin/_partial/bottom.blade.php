@@ -37,8 +37,29 @@
 <script src="{{asset('admin/plugins/raphael/raphael.min.js')}}"></script>
 <script src="{{asset('admin/plugins/morrisjs/morris.js')}}"></script>
 
+    
+ @if(Session::has('message'))
+<script type="text/javascript">
+    var type = "{{ Session::get('alert-type', 'info') }}";
+    switch(type){
+        case 'info':
+            toastr.info("{{ Session::get('message') }}");
+            break;
 
+        case 'warning':
+            toastr.warning("{{ Session::get('message') }}");
+            break;
 
+        case 'success':
+            toastr.success("{{ Session::get('message') }}");
+            break;
+
+        case 'error':
+            toastr.error("{{ Session::get('message') }}");
+            break;
+    }
+</script>
+@endif
 <!-- ChartJs -->
 <script src="{{asset('admin/plugins/chartjs/Chart.bundle.js')}}"></script>
 

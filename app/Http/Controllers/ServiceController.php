@@ -25,7 +25,7 @@ class ServiceController extends Controller
                 $data->status = 0;
             }
         $data->update();
-        return back()->with(['message', 'Service statsu changed!']);
+        return back()->with(['alert-type' => 'success', 'message' => 'Service statsu changed!']);
     }
 
 

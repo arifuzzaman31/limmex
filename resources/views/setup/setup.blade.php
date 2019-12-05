@@ -7,7 +7,7 @@
         @include('section.feature')
         <!-- Feature area end -->
         <!-- About area start -->
-        @include('section.about')
+        
         <!-- About area end -->
         <!-- Service area start -->
         @include('section.service')

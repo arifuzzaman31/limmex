@@ -5,15 +5,7 @@ Route::get('dashboard', [
 	'uses'  => 'DashboardController@index'
 ]);
 
-Route::get('login', [
-	'as' 	=> 'login',
-	'uses'  => 'DashboardController@login'
-]);
 
-Route::post('login-check.post', [
-	'as' 	=> 'login-check.post',
-	'uses'  => 'DashboardController@logincheck'
-]);
 	// Feature route
 Route::get('get-feature', [
 	'as' 	=> 'get-feature',
@@ -103,36 +95,116 @@ Route::get('blog.index', [
 ]);
 
 Route::post('blog.store', [
-	'as' 	=> 'service.store',
+	'as' 	=> 'blog.store',
 	'uses'  => 'BlogController@store'
 ]);
 
-Route::post('service-update/{id}', [
-	'as' 	=> 'service.update',
+Route::post('blog-update/{id}', [
+	'as' 	=> 'blog.update',
 	'uses'  => 'BlogController@update'
 ]);
 
-Route::get('service-delete/{id}', [
-	'as' 	=> 'service-delete',
+Route::get('blog-delete/{id}', [
+	'as' 	=> 'blog-delete',
 	'uses'  => 'BlogController@destroy'
 ]);
 
-Route::get('edit.service/{id}', [
-	'as' 	=> 'edit.Service',
+Route::get('edit.blog/{id}', [
+	'as' 	=> 'edit.blog',
 	'uses'  => 'BlogController@edit'
 ]);
 
-Route::get('show-service/{id}', [
-	'as' 	=> 'show-Service',
+Route::get('show-blog/{id}', [
+	'as' 	=> 'show-blog',
 	'uses'  => 'BlogController@show'
 ]);
 
-Route::get('change-service-status/{id}', [
-	'as' 	=> 'change-service-status',
-	'uses'  => 'BlogController@changestatus'
+Route::get('change-blog-status/{id}', [
+	'as' 	=> 'change-blog-status',
+	'uses'  => 'BlogController@changeStatus'
 ]);
 
 Route::get('get-blog', [
 	'as' 	=> 'get-blog',
 	'uses'  => 'BlogController@getblog'
+]);
+
+	//Team Member
+
+Route::get('team.index', [
+	'as' 	=> 'team-member.index',
+	'uses'  => 'MemberController@index'
+]);
+
+Route::get('get-member', [
+	'as' 	=> 'get-member',
+	'uses'  => 'MemberController@getMember'
+]);
+
+Route::post('member.store', [
+	'as' 	=> 'member.store',
+	'uses'  => 'MemberController@store'
+]);
+
+Route::post('member-update/{id}', [
+	'as' 	=> 'member.update',
+	'uses'  => 'MemberController@update'
+]);
+
+Route::get('member-delete/{id}', [
+	'as' 	=> 'member-delete',
+	'uses'  => 'MemberController@destroy'
+]);
+
+Route::get('edit.member/{id}', [
+	'as' 	=> 'edit.member',
+	'uses'  => 'MemberController@edit'
+]);
+
+Route::get('show-member/{id}', [
+	'as' 	=> 'show-member',
+	'uses'  => 'MemberController@show'
+]);
+
+Route::get('change-member-status/{id}', [
+	'as' 	=> 'change-member-status',
+	'uses'  => 'MemberController@changeStatus'
+]);
+
+
+	//Portfolio
+
+Route::get('portfolio.index', [
+	'as' 	=> 'portfolio.index',
+	'uses'  => 'PortfolioController@index'
+]);
+
+Route::get('get-portfolio', [
+	'as' 	=> 'get-portfolio',
+	'uses'  => 'PortfolioController@getPortfolio'
+]);
+
+Route::post('portfolio.store', [
+	'as' 	=> 'portfolio.store',
+	'uses'  => 'PortfolioController@store'
+]);
+
+Route::post('portfolio-update/{id}', [
+	'as' 	=> 'portfolio.update',
+	'uses'  => 'PortfolioController@update'
+]);
+
+Route::get('portfolio-delete/{id}', [
+	'as' 	=> 'portfolio-delete',
+	'uses'  => 'PortfolioController@destroy'
+]);
+
+Route::get('edit.portfolio/{id}', [
+	'as' 	=> 'edit.portfolio',
+	'uses'  => 'PortfolioController@edit'
+]);
+
+Route::get('change-portfolio-status/{id}', [
+	'as' 	=> 'change-portfolio-status',
+	'uses'  => 'PortfolioController@changeStatus'
 ]);

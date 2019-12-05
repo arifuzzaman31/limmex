@@ -22,7 +22,7 @@
 		            </div>
 		        </div>
 		        <input type="checkbox" id="remember_me" name="status" value="1" class="filled-in">
-		        <label for="remember_me">Remember Me</label>
+		        <label for="remember_me">Status</label>
 		        <br>
 		        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Update</button>
 		    </form>

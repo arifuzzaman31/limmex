@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{{asset('assets/css/magnific-popup.css')}}">
     <link rel="stylesheet" href="{{asset('assets/style.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/responsive.css')}}">
+
     <!-- Title-->
     <title>Heus - One Page Creative Agency Template</title>
 </head>
