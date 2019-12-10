@@ -25,13 +25,13 @@
         @include('section.price_area')
         <!-- Price area end -->
         <!-- Plan area Start -->
-        @include('section.plan')
+        @include('section.blog')
         <!-- Plan area end -->
         <!-- Testinonial area Start -->
-        @include('section.testimonial')
+ 
         <!-- Testinonial area end -->
         <!-- Blog area satrt -->
-        @include('section.blog')
+
         <!-- Blog area end -->
         <!-- Contact area Start -->
         @include('section.contact')

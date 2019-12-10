@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Feature;
 use DB;
 
@@ -16,9 +17,9 @@ class FeatureController extends Controller
     }
 
 
-    public function changestatus($id)
+    public function changestatus($slug)
     {
-        $data = Feature::find($id);
+        $data = Feature::where('slug',$slug)->first();
             if ($data->status == 0) {
                 $data->status = 1;
             }
@@ -37,6 +38,7 @@ class FeatureController extends Controller
             DB::beginTransaction();
             $insertid = Feature::insertGetId([
                 'title'      =>  $request->title,
+                'slug'       =>  Str::slug($request->title,'-'),
                 'description'=>  $request->description,
                 'status'     =>  $status
             ]);
@@ -66,9 +68,9 @@ class FeatureController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-       $data = Feature::find($id);
+       $data = Feature::where('slug',$slug)->first();
         return view('admin.feature.showFeature',compact('data'));
     }
 
@@ -78,20 +80,21 @@ class FeatureController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
-        $data = Feature::find($id);
+        $data = Feature::where('slug',$slug)->first();
         return view('admin.feature.editFeature',compact('data'));
     }
 
-public function update(Request $request, $id)
+public function update(Request $request, $slug)
 {
     $status = $request->status ? 1 : 0;
    try {
         DB::beginTransaction();
-        $updated = Feature::find($id);
+        $updated = Feature::where('slug',$slug)->first();
             $updated->update([
                 'title'      =>  $request->title,
+                'slug'       =>  Str::slug($request->title,'-'),
                 'description'=>  $request->description,
                 'status'     =>  $status
             ]);
@@ -120,9 +123,9 @@ public function update(Request $request, $id)
 }
 
 
-    public function destroy($id)
+    public function destroy($slug)
     {
-        $data = Feature::find($id);
+        $data = Feature::where('slug',$slug)->first();
             if(!empty($data->feature_icon) && file_exists('images/feature-image/'.$data->feature_icon)){      
                 unlink('images/feature-image/'.$data->feature_icon);
             }

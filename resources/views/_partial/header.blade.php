@@ -29,8 +29,8 @@
                                     <li><a href="index.html">Home</a></li>
                                     <li><a href="index.html">Page</a>
                                         <ul>
-                                            <li><a href="blog.php">Blog</a></li>
-                                            <li><a href="single-blog.php">Blog Single</a></li>
+                                            <li><a href="#blog">Blog</a></li>
+                                            <li><a href="{{route('get-all-blog')}}">Blog Single</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="#about">About</a></li>

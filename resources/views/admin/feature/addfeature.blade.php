@@ -21,6 +21,6 @@
         <input type="checkbox" id="remember_me" name="status" value="1" class="filled-in">
         <label for="remember_me">Status</label>
         <br>
-        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Add</button>
+        <button type="submit" class="btn btn-primary waves-effect">Add</button>
     </form>
 </div>

@@ -1,4 +1,4 @@
-<section class="testimonial-area  position-relative pt-125 pb-125" data-background="assets/img/testimonial/testimonial-bg.jpg">
+<section class="testimonial-area  position-relative pt-125 pb-125" data-background="">
     <div class="container">
         <div class="row">
             <div class="col-xl-6 offset-xl-3 text-center">

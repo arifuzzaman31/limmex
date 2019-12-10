@@ -15,6 +15,11 @@ class CreatePriceplansTable extends Migration
     {
         Schema::create('priceplans', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('title');
+            $table->string('description');
+            $table->double('price',8,2);
+            $table->string('image')->nullable();
+            $table->tinyInteger('status')->defaut(1);
             $table->timestamps();
         });
     }

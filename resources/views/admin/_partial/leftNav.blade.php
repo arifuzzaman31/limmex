@@ -35,35 +35,48 @@
                 </a>
             </li>
             <li>
-                <a href="{{route('feature.index')}}">
+                <a href="{{route('feature')}}">
                     <i class="material-icons">widgets</i>
                     <span>View Feature</span>
                 </a>
             </li>
             <li>
-                 <a href="{{route('service.index')}}">
+                 <a href="{{route('service')}}">
                     <i class="material-icons">build</i>
                     <span>View Services</span>
                 </a>
             </li>
 
             <li>
-                 <a href="{{route('blog.index')}}">
+                 <a href="{{route('blog')}}">
                     <i class="material-icons">open_in_new</i>
                     <span>View Blogs</span>
                 </a>
             </li>
 
             <li>
-                 <a href="{{route('team-member.index')}}">
+                 <a href="{{route('team-member')}}">
                     <i class="material-icons">people</i>
                     <span>View Member</span>
                 </a>
             </li>
              <li>
-                 <a href="{{route('portfolio.index')}}">
+                 <a href="{{route('portfolio')}}">
                     <i class="material-icons">apps</i>
                     <span>View Portfolio</span>
+                </a>
+            </li>
+            <li>
+                 <a href="{{route('all-slider')}}">
+                    <i class="material-icons">games</i>
+                    <span>View Slider</span>
+                </a>
+            </li>
+
+              <li>
+                 <a href="{{route('all-priceplan')}}">
+                    <i class="material-icons">shopping_cart</i>
+                    <span>View Product</span>
                 </a>
             </li>
         </ul>

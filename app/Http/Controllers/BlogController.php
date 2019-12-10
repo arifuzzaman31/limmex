@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Blog;
 use DB;
 
@@ -24,9 +25,9 @@ class BlogController extends Controller
         //
     }
 
-    public function changeStatus($id)
+    public function changeStatus($slug)
     {
-         $data = Blog::find($id);
+         $data = Blog::where('slug',$slug)->first();
             if ($data->status == 0) {
                 $data->status = 1;
             }
@@ -39,11 +40,16 @@ class BlogController extends Controller
 
     public function store(Request $request)
     {
+        $this->validate($request->all(), [
+            'title' => 'required|unique|max:191',
+            'description' => 'required',
+        ]);
         $status = $request->status ? 1 : 0;
         try {
             DB::beginTransaction();
             $insertid = Blog::insertGetId([
                 'title'      =>  $request->title,
+                'slug'       =>  Str::slug($request->title,'-'),
                 'sort_description'=> substr($request->description, 0,80),
                 'description'=>  $request->description,
                 'status'     =>  $status
@@ -60,7 +66,7 @@ class BlogController extends Controller
                         ]);
             }
                 DB::commit();
-            return back()->with(['message', 'Feature Added successfull']);
+            return back()->with(['message', 'Blog Added successfull']);
                         
         } catch (Exception $e) {
             DB::rollback();
@@ -74,9 +80,9 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        $data = Blog::find($id);
+        $data = Blog::where('slug',$slug)->first();
         return view('admin.blogs.showblog',compact('data'));
     }
 
@@ -86,9 +92,9 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
-        $data = Blog::find($id);
+        $data = Blog::where('slug',$slug)->first();
         return view('admin.blogs.editblog',compact('data'));
     }
 
@@ -99,14 +105,19 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $slug)
     {
+        $this->validate($request->all(), [
+            'title' => 'required|unique|max:191',
+            'description' => 'required'
+        ]);
         $status = $request->status ? 1 : 0;
        try {
             DB::beginTransaction();
-            $updated = Blog::find($id);
+            $updated = Blog::where('slug',$slug)->first();
                 $updated->update([
                     'title'      =>  $request->title,
+                    'slug'       => Str::slug($request->title,'-'),
                     'sort_description'=> substr($request->description, 0,80),
                     'description'=>  $request->description,
                     'status'     =>  $status
@@ -141,9 +152,9 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($slug)
     {
-        $data = Blog::find($id);
+        $data = Blog::where('slug',$slug)->first();
             if(!empty($data->blog_image) && file_exists('images/blog-image/'.$data->blog_image)){      
                 unlink('images/blog-image/'.$data->blog_image);
             }

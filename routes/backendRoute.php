@@ -12,8 +12,8 @@ Route::get('get-feature', [
 	'uses'  => 'FeatureController@getFeature'
 ]);
 
-Route::get('feature-index', [
-	'as' 	=> 'feature.index',
+Route::get('feature', [
+	'as' 	=> 'feature',
 	'uses'  => 'FeatureController@index'
 ]);
 Route::post('feature.store', [
@@ -53,8 +53,8 @@ Route::get('get-service', [
 	'uses'  => 'ServiceController@getService'
 ]);
 
-Route::get('service.index', [
-	'as' 	=> 'service.index',
+Route::get('service', [
+	'as' 	=> 'service',
 	'uses'  => 'ServiceController@index'
 ]);
 
@@ -68,29 +68,29 @@ Route::post('service-update/{id}', [
 	'uses'  => 'ServiceController@update'
 ]);
 
-Route::get('service-delete/{id}', [
+Route::get('service-delete/{slug}', [
 	'as' 	=> 'service-delete',
 	'uses'  => 'ServiceController@destroy'
 ]);
 
-Route::get('edit.service/{id}', [
+Route::get('edit.service/{slug}', [
 	'as' 	=> 'edit.Service',
 	'uses'  => 'ServiceController@edit'
 ]);
 
-Route::get('show-service/{id}', [
+Route::get('show-service/{slug}', [
 	'as' 	=> 'show-Service',
 	'uses'  => 'ServiceController@show'
 ]);
 
-Route::get('change-service-status/{id}', [
+Route::get('change-service-status/{slug}', [
 	'as' 	=> 'change-service-status',
 	'uses'  => 'ServiceController@changestatus'
 ]);
 
 	// Blog
-Route::get('blog.index', [
-	'as' 	=> 'blog.index',
+Route::get('blog', [
+	'as' 	=> 'blog',
 	'uses'  => 'BlogController@index'
 ]);
 
@@ -131,8 +131,8 @@ Route::get('get-blog', [
 
 	//Team Member
 
-Route::get('team.index', [
-	'as' 	=> 'team-member.index',
+Route::get('team', [
+	'as' 	=> 'team-member',
 	'uses'  => 'MemberController@index'
 ]);
 
@@ -174,8 +174,8 @@ Route::get('change-member-status/{id}', [
 
 	//Portfolio
 
-Route::get('portfolio.index', [
-	'as' 	=> 'portfolio.index',
+Route::get('portfolio', [
+	'as' 	=> 'portfolio',
 	'uses'  => 'PortfolioController@index'
 ]);
 
@@ -184,7 +184,7 @@ Route::get('get-portfolio', [
 	'uses'  => 'PortfolioController@getPortfolio'
 ]);
 
-Route::post('portfolio.store', [
+Route::post('portfolio', [
 	'as' 	=> 'portfolio.store',
 	'uses'  => 'PortfolioController@store'
 ]);
@@ -207,4 +207,76 @@ Route::get('edit.portfolio/{id}', [
 Route::get('change-portfolio-status/{id}', [
 	'as' 	=> 'change-portfolio-status',
 	'uses'  => 'PortfolioController@changeStatus'
+]);
+
+	//Slider Route
+Route::get('all-slider', [
+	'as' 	=> 'all-slider',
+	'uses'  => 'SliderController@index'
+]);
+
+Route::get('add-slider', [
+	'as' 	=> 'add-slider',
+	'uses'  => 'SliderController@create'
+]);
+
+Route::post('slider-put', [
+	'as' 	=> 'slider.store',
+	'uses'  => 'SliderController@store'
+]);
+
+Route::post('slider.update/{id}', [
+	'as' 	=> 'slider.update',
+	'uses'  => 'SliderController@update'
+]);
+
+Route::get('slider-delete/{id}', [
+	'as' 	=> 'slider-delete',
+	'uses'  => 'SliderController@destroy'
+]);
+
+Route::get('edit-slider/{id}', [
+	'as' 	=> 'edit-slider',
+	'uses'  => 'SliderController@edit'
+]);
+
+Route::get('change-slider-status/{id}', [
+	'as' 	=> 'change-slider-status',
+	'uses'  => 'SliderController@changeStatus'
+]);
+
+	//Product Route
+Route::get('all-priceplan', [
+	'as' 	=> 'all-priceplan',
+	'uses'  => 'ProducrPriceController@index'
+]);
+
+Route::get('add-priceplan', [
+	'as' 	=> 'add-priceplan',
+	'uses'  => 'ProducrPriceController@create'
+]);
+
+Route::post('priceplan-put', [
+	'as' 	=> 'priceplan.store',
+	'uses'  => 'ProducrPriceController@store'
+]);
+
+Route::post('priceplan.update/{id}', [
+	'as' 	=> 'priceplan.update',
+	'uses'  => 'ProducrPriceController@update'
+]);
+
+Route::get('priceplan-delete/{id}', [
+	'as' 	=> 'priceplan-delete',
+	'uses'  => 'ProducrPriceController@destroy'
+]);
+
+Route::get('edit-priceplan/{id}', [
+	'as' 	=> 'edit-priceplan',
+	'uses'  => 'ProducrPriceController@edit'
+]);
+
+Route::get('change-priceplan-status/{id}', [
+	'as' 	=> 'change-priceplan-status',
+	'uses'  => 'ProducrPriceController@changeStatus'
 ]);

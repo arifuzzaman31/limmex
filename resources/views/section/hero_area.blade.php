@@ -9,7 +9,7 @@
                     <h1>A Digital Creative Agency</h1>
                     <h4>Lorem ipsum dolor sit amet consectetur sadipcing elitr, consetetur sadipscing elitr.</h4>
                     <div class="heuse-hero-btn mt-20">
-                        <a href="# " id="#contact" class="btn btn-filled ">Contact Us</a>
+                        <a href="#contact" class="btn btn-filled ">Contact Us</a>
                     </div>
                 </div>
             </div>

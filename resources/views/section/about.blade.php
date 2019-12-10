@@ -14,7 +14,7 @@
                         adipiscing elit Risus commodo.</p>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temp or incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse is an ultrices gravida. Risus commodo.</p>
                     <div class="heuse-hero-btn about-btn mt-30">
-                        <a href="# " class="btn btn-filled btn-grad-color">Contact Us</a>
+                        <a href="#contact " class="btn btn-filled btn-grad-color">Contact Us</a>
                     </div>
                 </div>
             </div>

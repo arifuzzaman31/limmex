@@ -46,9 +46,9 @@
                             <div class="widget footer-sidebar">
                                 <h3 class="mb-45">Contact Us</h3>
                                 <div class="footer-contact-info">
-                                    <p><strong>Location:</strong> 2750 Quadra Street Victoria, Canada</p>
-                                    <p><strong>Email:</strong> info@heus.com</p>
-                                    <p><strong>Phone:</strong> +324-9442-515</p>
+                                    <p><strong>Location:</strong> Suite 219, Muktobangla Complex, Mirpur-1, Dhaka-1216</p>
+                                    <p><strong>Email:</strong> business@limmexbd.com</p>
+                                    <p><strong>Phone:</strong> +88 01301270202</p>
                                 </div>
                             </div>
                         </div>
@@ -60,7 +60,7 @@
                     <div class="row">
                         <div class="col-xl-6 col-lg-6">
                             <div class="copyright-content">
-                                <p>Heus © 2019 All Right Reserved</p>
+                                <p>© 2019 Developed By Limmex Automation.</p>
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 text-right">

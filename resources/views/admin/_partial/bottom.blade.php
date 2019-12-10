@@ -1,16 +1,16 @@
 <!-- Default Size -->
 <div class="modal fade" id="defaultModal" tabindex="-1" role="dialog">
+
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="defaultModalLabel"></h4>
+                <h4 class="modal-title"></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
             </div>
             <div class="modal-body">
                
 
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
             </div>
         </div>
     </div>
@@ -38,28 +38,7 @@
 <script src="{{asset('admin/plugins/morrisjs/morris.js')}}"></script>
 
     
- @if(Session::has('message'))
-<script type="text/javascript">
-    var type = "{{ Session::get('alert-type', 'info') }}";
-    switch(type){
-        case 'info':
-            toastr.info("{{ Session::get('message') }}");
-            break;
 
-        case 'warning':
-            toastr.warning("{{ Session::get('message') }}");
-            break;
-
-        case 'success':
-            toastr.success("{{ Session::get('message') }}");
-            break;
-
-        case 'error':
-            toastr.error("{{ Session::get('message') }}");
-            break;
-    }
-</script>
-@endif
 <!-- ChartJs -->
 <script src="{{asset('admin/plugins/chartjs/Chart.bundle.js')}}"></script>
 
@@ -84,6 +63,7 @@
 <script src="{{asset('admin/plugins/jquery-datatable/jquery.dataTables.js')}}"></script>
 <script src="{{asset('admin/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js')}}"></script>
 <script src="{{asset('admin/js/pages/tables/jquery-datatable.js')}}"></script>
+
 </body>
 
 </html>

@@ -1,39 +1,26 @@
-<section id="blog" class="blog-area position-relative pt-125 pb-125">
+<section id="blog" class="plan-area position-relative theme-bg  pt-125 pb-125">
     <div class="container">
         <div class="row">
-            <div class="col-xl-4 col-lg-5">
-                <div class="section-title pb-30 blog-title">
-                    <h4 class="text-uppercase pb-20">Blog posts</h4>
-                    <h1 class="pb-35">Latest News</h1>
-                </div>
-                <div class="form-area">
-                    <h4 class="mb-30">Subscribe for the latest news and stay updated for the offers</h4>
-                    <form action="#" class="form">
-                        <input type="email" placeholder="Enter Your Email" required>
-                        <button type="submit"><i class="fa fa-arrow-right"></i></button>
-                    </form>
-                </div>
-            </div>
-            <div class="col-xl-8  col-lg-7">
-                <div class="blog-list owl-carousel">
-                    @if(count($blogs) > 0)
-                    @foreach($blogs as $blog)
-                        <div class="single-blog-list pt-60 pb-60 pl-40 pr-40">
-                            <div class="blog-after"></div>
-                            <div class="blog-before"></div>
-                            <h3 class="pb-20">
-                                <a href="single-blog.html">{{$blog->title}}</a>
-                            </h3>
-                            <h5 class="pb-20">Posted at {{$blog->created_at->toFormattedDateString()}}</h5>
-                            <p class="pb-20">{{$blog->sort_description}}</p>
-                            <div class="blog-readmore-btn">
-                                <a href="single-blog.html">Read More <i class="ml-10 fa fa-arrow-right"></i></a>
-                            </div>
+            @if(count($blogs) > 0)
+                @foreach($blogs as $blog)
+                <div class="col-xl-6 col-lg-6">
+                    <div class="section-title mb-45">
+                        <h4 class="text-uppercase mb-20">Best CREATIVE AGENCY</h4>
+                        <h1>{{$blog->title}}</h1>
+                    </div>
+                    <div class="plan-inner-content">
+                        <p>{{$blog->sort_description}}</p>
+                        <ul class="mt-25">
+                            
+                            <li>{{$blog->description}}</li>
+                        </ul>
+                        <div class="heuse-hero-btn  mt-30">
+                            <a href="{{route('get-specific-blog',$blog->slug)}}" class="btn btn-filled btn-grad-color">Read More</a>
                         </div>
-                    @endforeach
-                    @endif
+                    </div>
                 </div>
-            </div>
+                @endforeach
+            @endif     
         </div>
     </div>
 </section>
