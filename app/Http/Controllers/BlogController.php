@@ -40,10 +40,6 @@ class BlogController extends Controller
 
     public function store(Request $request)
     {
-        $this->validate($request->all(), [
-            'title' => 'required|unique|max:191',
-            'description' => 'required',
-        ]);
         $status = $request->status ? 1 : 0;
         try {
             DB::beginTransaction();
@@ -74,43 +70,20 @@ class BlogController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($slug)
     {
         $data = Blog::where('slug',$slug)->first();
         return view('admin.blogs.showblog',compact('data'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($slug)
     {
         $data = Blog::where('slug',$slug)->first();
         return view('admin.blogs.editblog',compact('data'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $slug)
     {
-        $this->validate($request->all(), [
-            'title' => 'required|unique|max:191',
-            'description' => 'required'
-        ]);
         $status = $request->status ? 1 : 0;
        try {
             DB::beginTransaction();

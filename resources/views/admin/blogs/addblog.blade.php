@@ -1,4 +1,5 @@
 <div class="body">
+    @include('admin._partial.message')
     <form action="{{route('blog.store')}}" method="post" enctype="multipart/form-data">
        @csrf
         <label for="title">Title</label>
