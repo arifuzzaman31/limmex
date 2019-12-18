@@ -9,6 +9,7 @@
      <!-- Title-->
     <title>@yield('title','Limmex Automation')</title>
     <!-- Style CSS -->
+  
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/slicknav.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/default.css')}}">

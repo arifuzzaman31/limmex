@@ -8,7 +8,7 @@
                         <h4 class="text-uppercase mb-20">Best CREATIVE AGENCY</h4>
                         <h1>{{$blog->title}}</h1>
                     </div>
-                    <div class="plan-inner-content">
+                    <div class="#">
                         <p>{{$blog->sort_description}}</p>
                         <ul class="mt-25">
                             
