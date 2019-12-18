@@ -40,7 +40,7 @@ class FrontController extends Controller
     }
     public function getAllBlog()
     {
-        $allblogs =  Blog::where('status',1)->Paginate(1);
+        $allblogs =  Blog::where('status',1)->Paginate(5);
         return view('pages.allblog', compact('allblogs'));
     }
 

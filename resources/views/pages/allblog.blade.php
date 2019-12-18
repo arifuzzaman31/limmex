@@ -1,4 +1,5 @@
 @extends('app')
+
 @section('content')
 <!-- Blog post area Start -->
 <section class="blog-post-area pt-125 pb-125">
@@ -45,3 +46,15 @@
 </section>
 <!-- Blog post area End -->
 @endsection
+
+@push('style')
+<style>
+    
+    header.header-area {
+    
+    background-color: #1a32b7;
+    top : 0 !important;
+
+    }
+</style>
+@endpush
