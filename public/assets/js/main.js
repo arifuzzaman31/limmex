@@ -1,4 +1,4 @@
-(function($) {
+$(document).ready(function() {
     "use strict";
 
     // data - background
@@ -139,4 +139,4 @@
     });
 
 
-})(jQuery);
+});
