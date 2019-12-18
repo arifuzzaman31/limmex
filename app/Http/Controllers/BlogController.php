@@ -84,14 +84,14 @@ class BlogController extends Controller
 
     public function update(Request $request, $slug)
     {
-        $status = $request->status ? 1 : 0;
+       $status = $request->status ? 1 : 0;
        try {
             DB::beginTransaction();
             $updated = Blog::where('slug',$slug)->first();
                 $updated->update([
                     'title'      =>  $request->title,
                     'slug'       => Str::slug($request->title,'-'),
-                    'sort_description'=> substr($request->description, 0,80),
+                    'sort_description' => substr($request->description, 0,80),
                     'description'=>  $request->description,
                     'status'     =>  $status
                 ]);
