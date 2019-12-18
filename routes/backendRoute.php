@@ -5,6 +5,11 @@ Route::get('dashboard', [
 	'uses'  => 'DashboardController@index'
 ]);
 
+Route::get('logout', [
+	'as' 	=> 'logout',
+	'uses'  => 'DashboardController@logout'
+]);
+
 
 	// Feature route
 Route::get('get-feature', [

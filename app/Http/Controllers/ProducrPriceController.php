@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use App\Priceplan;
 use DB;
 
@@ -23,29 +24,38 @@ class ProducrPriceController extends Controller
     public function store(Request $request)
     {
        $status = $request->status ? 1 : 0;
-        try {
-            DB::beginTransaction();
-            if ($request->hasFile('image')) {
-                $image = $request->file('image');
-                $imageName = time().'.'.$image->getClientOriginalExtension();
-                $image->move(public_path('images/product-image'),$imageName);
-                
-                $insertid = Priceplan::insert([
-                    'title'       =>  $request->title,
-                    'description' =>  $request->description,
-                    'price'        =>  $request->price,
-                    'image'       =>  $imageName,
-                    'status'      =>  $status
-                ]);
-                
-                DB::commit();
-                return back()->with(['message', 'product Added successfull']);
+        $validation = Validator::make($request->all(),[
+            'title'       => 'required',
+            'description' => 'required',
+            'price' => 'required',
+            'image' => 'required|image|mimes:jpeg,bmp,jpg,png,gif,svg'
+        ]);
+        if (!$validation->fails()) {
+            try {
+                DB::beginTransaction();
+                if ($request->hasFile('image')) {
+                    $image = $request->file('image');
+                    $imageName = time().'.'.$image->getClientOriginalExtension();
+                    $image->move(public_path('images/product-image'),$imageName);
+                    
+                    $insertid = Priceplan::insert([
+                        'title'       =>  $request->title,
+                        'description' =>  $request->description,
+                        'price'        =>  $request->price,
+                        'image'       =>  $imageName,
+                        'status'      =>  $status
+                    ]);
+                    
+                    DB::commit();
+                    return back()->with(['alert-type' => 'success','message' => 'Product Added successfull']);
+                }
+                            
+            } catch (Exception $e) {
+                DB::rollback();
+                return back()->with(['alert-type' => 'error','message' => $e->errorInfo[2]]);
             }
-                        
-        } catch (Exception $e) {
-            DB::rollback();
-            return back()->withErrors(['message', $e->errorInfo[2]]);
         }
+        return back()->with(['alert-type' => 'error','message' => 'Validation Error Occured!']);
     }
 
     public function edit($id)
@@ -82,11 +92,10 @@ class ProducrPriceController extends Controller
                             ]);
                 }
                     DB::commit();
-                return back()->with(['message', 'product Updated successfull']);
-                            
+                    return back()->with(['alert-type' => 'success','message' => 'Product Updated successfull']);              
             } catch (Exception $e) {
                 DB::rollback();
-                return back()->withErrors(['message', $e->errorInfo[2]]);
+               return back()->with(['alert-type' => 'error','message' => $e->errorInfo[2]]);
             }
     }
 
@@ -97,7 +106,7 @@ class ProducrPriceController extends Controller
                 unlink('images/product-image/'.$data->image);
             }
         $data->delete();
-        return back()->with(['message', 'Data Deleted']);
+        return back()->with(['alert-type' => 'warning','message' => 'Data Deleted']);
     }
 
     public function changeStatus($id)
@@ -110,6 +119,6 @@ class ProducrPriceController extends Controller
                 $data->status = 0;
             }
         $data->update();
-        return back()->with(['message', 'product status changed!']);
+        return back()->with(['alert-type' => 'info','message' => 'Product status changed!']);
     }
 }

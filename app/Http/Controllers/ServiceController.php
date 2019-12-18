@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Validator;
 use App\Service;
 use DB;
 
@@ -26,33 +27,41 @@ class ServiceController extends Controller
                 $data->status = 0;
             }
         $data->update();
-        return back()->with(['alert-type' => 'success', 'message' => 'Service statsu changed!']);
+        return back()->with(['alert-type' => 'info','message' => 'Service status changed!']);
     }
 
 
     public function store(Request $request)
     {
         $status = $request->status ? 1 : 0;
-        try {
-            DB::beginTransaction();
-            if ($request->hasFile('image')) {
-                $image = $request->file('image');
-                $imageName = time().'.'.$image->getClientOriginalExtension();
-                $image->move(public_path('images/service-image'),$imageName);
-                Service::insert([
-                    'sort_description' => $request->sort_description ,
-                    'slug'             => Str::slug($request->sort_description,'-'),
-                    'description'      => $request->description ,
-                    'image'            => $imageName ,
-                    'status'           => $status
-                ]);
-                DB::commit();
-                return back()->with(['message', 'Service Added successfull']);
-           }             
-        } catch (Exception $e) {
-            DB::rollback();
-            return back()->withErrors(['message', $e->errorInfo[2]]);
+         $validation = Validator::make($request->all(),[
+            'sort_description' => 'required',
+            'description'      => 'required',
+            'image'            => 'required|image|mimes:jpeg,bmp,jpg,png,gif,svg'
+        ]);
+        if (!$validation->fails()) {
+            try {
+                DB::beginTransaction();
+                if ($request->hasFile('image')) {
+                    $image = $request->file('image');
+                    $imageName = time().'.'.$image->getClientOriginalExtension();
+                    $image->move(public_path('images/service-image'),$imageName);
+                    Service::insert([
+                        'sort_description' => $request->sort_description ,
+                        'slug'             => Str::slug($request->sort_description,'-'),
+                        'description'      => $request->description ,
+                        'image'            => $imageName ,
+                        'status'           => $status
+                    ]);
+                    DB::commit();
+                    return back()->with(['alert-type' => 'success','message' => 'Service Added successfull']);
+               }             
+            } catch (Exception $e) {
+                DB::rollback();
+                return back()->with(['alert-type' => 'error','message' => $e->errorInfo[2]]);
+            }
         }
+        return back()->with(['alert-type' => 'error','message' => 'Validation Error Occured!']);
     }
 
     public function show($slug)
@@ -93,11 +102,11 @@ public function update(Request $request, $id)
                             ]);
             }
            DB::commit();
-        return back()->with(['message', 'Service Updated successfull']);
+        return back()->with(['alert-type' => 'success','message' => 'Service Updated successfull']); 
                     
     } catch (Exception $e) {
         DB::rollback();
-        return back()->withErrors(['message', $e->errorInfo[2]]);
+       return back()->with(['alert-type' => 'error','message' => $e->errorInfo[2]]);
     }
 }
 
@@ -105,12 +114,11 @@ public function update(Request $request, $id)
     {
         $data = Service::where('slug',$slug)->first();
         $data->delete();
-        return back()->with(['message', 'Data Deleted']);
+        return back()->with(['alert-type' => 'warning','message' => 'Data Deleted']);
     }
 
     public function getService()
     {
-    	// return 'hu';
         return view('admin.services.addservices');
     }
 }

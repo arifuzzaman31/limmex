@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use App\Team;
 use DB;
 
@@ -25,13 +26,22 @@ class MemberController extends Controller
                 $data->status = 0;
             }
         $data->update();
-        return back()->with(['message', 'Member statsu changed!']);
+        return back()->with(['alert-type' => 'info','message' => 'Member status changed!']);
     }
 
 
     public function store(Request $request)
     {
         $status = $request->status ? 1 : 0;
+        $validation = Validator::make($request->all(),[
+            'name'       => 'required',
+            'description' => 'required',
+            'fb_link' => 'required',
+            'tw_link' => 'required',
+            'in_link' => 'required',
+            'image' => 'required|image|mimes:jpeg,bmp,jpg,png,gif,svg'
+        ]);
+        if (!$validation->fails()) {
         try {
             DB::beginTransaction();
             $insertid = Team::insertGetId([
@@ -54,12 +64,14 @@ class MemberController extends Controller
                         ]);
             }
                 DB::commit();
-            return back()->with(['message', 'Member Added successfull']);
+                return back()->with(['alert-type' => 'success','message' => 'Member Added successfull']);
                         
         } catch (Exception $e) {
             DB::rollback();
-            return back()->withErrors(['message', $e->errorInfo[2]]);
+            return back()->with(['alert-type' => 'error','message' => $e->errorInfo[2]]);
         }
+    }
+    return back()->with(['alert-type' => 'error','message' => 'Validation Error Occured!']);
     }
 
     public function show($id)
@@ -104,12 +116,11 @@ class MemberController extends Controller
 	                        'image' => $imageName
 	                    ]);
 	        }
-	            DB::commit();
-	        return back()->with(['message', 'Member Added successfull']);
-	                    
+	           DB::commit();
+                return back()->with(['alert-type' => 'success','message' => 'Member Updated successfull']);             
 	    } catch (Exception $e) {
 	        DB::rollback();
-	        return back()->withErrors(['message', $e->errorInfo[2]]);
+	        return back()->with(['alert-type' => 'error','message' => $e->errorInfo[2]]);
 	    }
 	}
 
@@ -121,7 +132,7 @@ class MemberController extends Controller
                 unlink('images/team-member-image/'.$data->image);
             }
         $data->delete();
-        return back()->with(['message', 'Data Deleted']);
+        return back()->with(['alert-type' => 'warning','message' => 'Data Deleted']);
     }
 
     public function getMember()

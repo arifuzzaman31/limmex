@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Slider;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use DB;
 
 class SliderController extends Controller
@@ -24,29 +25,38 @@ class SliderController extends Controller
     public function store(Request $request)
     {
        $status = $request->status ? 1 : 0;
-        try {
-            DB::beginTransaction();
-            if ($request->hasFile('image')) {
-                $image = $request->file('image');
-                $imageName = time().'.'.$image->getClientOriginalExtension();
-                $image->move(public_path('images/slider-image'),$imageName);
-                
-                $insertid = Slider::insert([
-                    'name'        =>  $request->name,
-                    'title'       =>  $request->title,
-                    'description' =>  $request->description,
-                    'image'       =>  $imageName,
-                    'status'      =>  $status
-                ]);
-                
-                DB::commit();
-                return back()->with(['message', 'Slider Added successfull']);
+        $validation = Validator::make($request->all(),[
+            'name'       => 'required',
+            'title' => 'required',
+            'description' => 'required',
+            'image' => 'required|image|mimes:jpeg,bmp,jpg,png,gif,svg'
+        ]);
+        if (!$validation->fails()) {
+            try {
+                DB::beginTransaction();
+                if ($request->hasFile('image')) {
+                    $image = $request->file('image');
+                    $imageName = time().'.'.$image->getClientOriginalExtension();
+                    $image->move(public_path('images/slider-image'),$imageName);
+                    
+                    $insertid = Slider::insert([
+                        'name'        =>  $request->name,
+                        'title'       =>  $request->title,
+                        'description' =>  $request->description,
+                        'image'       =>  $imageName,
+                        'status'      =>  $status
+                    ]);
+                    
+                    DB::commit();
+                    return back()->with(['alert-type' => 'success','message' => 'Slider Added successfull']);
+                }
+                            
+            } catch (Exception $e) {
+                DB::rollback();
+                return back()->with(['alert-type' => 'error','message' => $e->errorInfo[2]]);
             }
-                        
-        } catch (Exception $e) {
-            DB::rollback();
-            return back()->withErrors(['message', $e->errorInfo[2]]);
         }
+        return back()->with(['alert-type' => 'error','message' => 'Validation Error Occured!']);
     }
 
     public function edit($id)
@@ -90,11 +100,11 @@ class SliderController extends Controller
                             ]);
                 }
                     DB::commit();
-                return back()->with(['message', 'Slider Updated successfull']);
+                    return back()->with(['alert-type' => 'success','message' => 'Slider Updated successfull']);
                             
             } catch (Exception $e) {
                 DB::rollback();
-                return back()->withErrors(['message', $e->errorInfo[2]]);
+                return back()->with(['alert-type' => 'error','message' => $e->errorInfo[2]]);
             }
     }
 
@@ -111,7 +121,7 @@ class SliderController extends Controller
                 unlink('images/slider-image/'.$data->image);
             }
         $data->delete();
-        return back()->with(['message', 'Data Deleted']);
+        return back()->with(['alert-type' => 'warning','message' => 'Data Deleted']);
     }
 
     public function changeStatus($id)
@@ -124,6 +134,6 @@ class SliderController extends Controller
                 $data->status = 0;
             }
         $data->update();
-        return back()->with(['message', 'Slider status changed!']);
+        return back()->with(['alert-type' => 'info','message' => 'Slider status changed!']);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use App\Feature;
 use DB;
@@ -27,13 +28,19 @@ class FeatureController extends Controller
                 $data->status = 0;
             }
         $data->update();
-        return back()->with(['message', 'Feature statsu changed!']);
+        return back()->with(['alert-type' => 'info','message' => 'Feature status changed!']);
     }
 
 
     public function store(Request $request)
     {
         $status = $request->status ? 1 : 0;
+        $validation = Validator::make($request->all(),[
+            'title'       => 'required',
+            'description' => 'required',
+            'feature_icon' => 'required|image|mimes:jpeg,jpg,png,gif,svg'
+        ]);
+        if (!$validation->fails()) {
         try {
             DB::beginTransaction();
             $insertid = Feature::insertGetId([
@@ -54,12 +61,14 @@ class FeatureController extends Controller
                         ]);
             }
                 DB::commit();
-            return back()->with(['message', 'Feature Added successfull']);
+                 return back()->with(['alert-type' => 'success','message' => 'Feature Added successfull']);
                         
         } catch (Exception $e) {
             DB::rollback();
-            return back()->withErrors(['message', $e->errorInfo[2]]);
+            return back()->with(['alert-type' => 'error','message' => $e->errorInfo[2]]);
         }
+    }
+    return back()->with(['alert-type' => 'error','message' => 'Validation Error Occured!']);
     }
 
     /**
@@ -114,11 +123,11 @@ public function update(Request $request, $slug)
                     ]);
         }
             DB::commit();
-        return back()->with(['message', 'Feature Added successfull']);
+        return back()->with(['alert-type' => 'success','message' => 'Feature Updated successfull']);
                     
     } catch (Exception $e) {
         DB::rollback();
-        return back()->withErrors(['message', $e->errorInfo[2]]);
+        return back()->with(['alert-type' => 'error','message' => $e->errorInfo[2]]);
     }
 }
 
@@ -130,7 +139,7 @@ public function update(Request $request, $slug)
                 unlink('images/feature-image/'.$data->feature_icon);
             }
         $data->delete();
-        return back()->with(['message', 'Data Deleted']);
+        return back()->with(['alert-type' => 'warning','message' => 'Data Deleted']);
     }
 
     public function getFeature()

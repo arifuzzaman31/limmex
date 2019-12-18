@@ -27,11 +27,21 @@ class DashboardController extends Controller
    		];
 
    		if (Auth::guard('admin')->attempt($credential)) {
-            Session::put('admin', Auth::guard('admin')->user());
+            Session::put('admin', Auth::guard('admin')->user()->email);
             return redirect(route('dashboard'));
         } else {
             return back()->withErrors(['message','You Are not Admin!']);
         } 
 
    }
+  public function logout()
+    {
+        if (Session::has('admin')) {
+            // Session::forget(Auth::guard('admin')->user()->email);
+            auth('admin')->logout();
+            // Session::destroy();
+            Session::flush();
+            return redirect(route('login'));
+        }
+    }
 }

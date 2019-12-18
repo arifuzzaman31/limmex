@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use App\Blog;
 use DB;
@@ -35,39 +36,46 @@ class BlogController extends Controller
                 $data->status = 0;
             }
         $data->update();
-        return back()->with(['message', 'Feature statsu changed!']);
+        return back()->with(['alert-type' => 'info','message' => 'Blog status changed!']);
     }
 
     public function store(Request $request)
     {
         $status = $request->status ? 1 : 0;
-        try {
-            DB::beginTransaction();
-            $insertid = Blog::insertGetId([
-                'title'      =>  $request->title,
-                'slug'       =>  Str::slug($request->title,'-'),
-                'sort_description'=> substr($request->description, 0,80),
-                'description'=>  $request->description,
-                'status'     =>  $status
-            ]);
+        $validation = Validator::make($request->all(),[
+            'title'       => 'required',
+            'description' => 'required'
+        ]);
+        if (!$validation->fails()) {
+            try {
+                DB::beginTransaction();
+                $insertid = Blog::insertGetId([
+                    'title'      =>  $request->title,
+                    'slug'       =>  Str::slug($request->title,'-'),
+                    'sort_description'=> substr($request->description, 0,80),
+                    'description'=>  $request->description,
+                    'status'     =>  $status
+                ]);
 
-            if ($request->hasFile('image')) {
-                $image = $request->file('image');
-                $imageName = time().'.'.$image->getClientOriginalExtension();
-                $image->move(public_path('images/blog-image'),$imageName);
+                if ($request->hasFile('image')) {
+                    $image = $request->file('image');
+                    $imageName = time().'.'.$image->getClientOriginalExtension();
+                    $image->move(public_path('images/blog-image'),$imageName);
 
-                Blog::where('id', $insertid)
-                        ->update([
-                            'blog_image' => $imageName
-                        ]);
+                    Blog::where('id', $insertid)
+                            ->update([
+                                'blog_image' => $imageName
+                            ]);
+                }
+                    DB::commit();
+                return back()->with(['alert-type' => 'success','message' => 'Blog Added successfull']);
+                            
+            } catch (Exception $e) {
+                DB::rollback();
+               return back()->with(['alert-type' => 'error','message' => 'Database error occured!']);
             }
-                DB::commit();
-            return back()->with(['message', 'Blog Added successfull']);
-                        
-        } catch (Exception $e) {
-            DB::rollback();
-            return back()->withErrors(['message', $e->errorInfo[2]]);
         }
+        return back()->with(['alert-type' => 'error','message' => 'Have validation Error']);
     }
 
     public function show($slug)
@@ -111,11 +119,11 @@ class BlogController extends Controller
                         ]);
             }
                 DB::commit();
-            return back()->with(['message', 'Blog updated successfull']);
+            return back()->with(['alert-type' => 'success','message' => 'Blog updated successfull']);
                         
         } catch (Exception $e) {
             DB::rollback();
-            return back()->withErrors(['message', $e->errorInfo[2]]);
+            return back()->with(['alert-type' => 'error','message' => $e->errorInfo[2]]);
         }
     }
 
@@ -132,7 +140,7 @@ class BlogController extends Controller
                 unlink('images/blog-image/'.$data->blog_image);
             }
         $data->delete();
-        return back()->with(['message', 'Blog Data Deleted']);
+        return back()->with(['alert-type' => 'warning','message' => 'Blog Data Deleted']);
     }
 
     public function getblog()
