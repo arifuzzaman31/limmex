@@ -27,7 +27,7 @@
                     <th>Title</th>
                     <th>Description</th>
                     <th>Image</th>
-                    <th>Date</th>
+                    <th>Type</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -37,7 +37,7 @@
                     <th>Title</th>
                     <th>Description</th>
                     <th>Image</th>
-                    <th>Date</th>
+                    <th>Type</th>
                     <th>Action</th>
                 </tr>
             </tfoot>
@@ -47,14 +47,14 @@
             	@foreach($Services as $service)
 	                <tr>
 	                    <td style="width: 5%">{{$i}}</td>
-	                    <td style="width: 20%">{!! substr($service->sort_description,0,30) !!}</td>
+	                    <td style="width: 18%">{!! substr($service->sort_description,0,30) !!}</td>
 	                    <td style="width: 40%">{!! substr($service->description,0,80) !!}....</td>
                         <td>
                         @if($service->image)
                             <img src="{{URL::to('images/service-image/'.$service->image)}}" height="40px" width="50px">
                         @endif
                         </td>
-                        <td style="width: 10%">{{$service->created_at->toFormattedDateString()}}</td>
+                        <td style="width: 12%">{{$service->type}}</td>
 	                    <td style="width: 15%">
 	                    	<a onclick="getModal('edit.service/{{$service->slug}}','Edit Service')" title="Edit" type="button" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
                             

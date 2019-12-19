@@ -16,13 +16,28 @@
 		                <textarea class="form-control" rows="6" cols="16" name="description">{{$data->description}}</textarea>
 		            </div>
 		        </div>
+		        <label for="type">Type :</label>
+		        <div class="row clearfix">
+		            <div class="col-sm-12">
+		                <select class="form-control show-tick" id="type" name="type">
+		                    <option value="">-- Please select --</option>
+		                    <option value="Ready Software">Ready Software</option>
+		                    <option value="Ready WS">Ready WS</option>
+		                    <option value="Own Service">Own Service</option>
+		                    <option value="On demand service">On demand service</option>
+		                </select>
+		            </div>
+		        </div></br>
+		        <label for="icon">Service Icon :</label>
 		        <div class="form-group">
 		            <div class="form-line">
 		                <input type="file" id="icon" name="image" class="form-control">
 		            </div>
 		        </div>
-		        <input type="checkbox" id="remember_me" name="status" value="1" class="filled-in">
-		        <label for="remember_me">Status</label>
+		        <div class="demo-switch-title">Status</div>
+		            <div class="switch">
+		                <label><input type="checkbox" name="status" value="1"><span class="lever switch-col-green"></span></label>
+		            </div>
 		        <br>
 		        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Update</button>
 		    </form>

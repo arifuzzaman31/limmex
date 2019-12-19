@@ -19,7 +19,7 @@ class FrontController extends Controller
     	$features 	  =  Feature::where('status',1)->get();
     	$blogs 		  =  Blog::where('status',1)->take(2)->latest()->get();
     	$services 	  =  Service::where('status',1)->get();
-        $priceplans     =  Priceplan::where('status',1)->get();
+        $priceplans   =  Priceplan::where('status',1)->get();
     	return view('setup.setup',compact('team_members','portfolios','features','blogs','services','priceplans'));
     }
 

@@ -18,6 +18,7 @@ class CreateServicesTable extends Migration
             $table->mediumText('sort_description')->unique();
             $table->string('slug');
             $table->longText('description');
+            $table->mediumText('type');
             $table->string('image')->nullable();
             $table->tinyInteger('status')->default(1);
             $table->timestamps();

@@ -10,8 +10,8 @@
          content="Limmex Automation | IT,ITES,IOT Service Provider" />
         <meta property="og:description"   
         content="Can you avoid technology in modern life? If ‘NO’ then we find you as our speaker, our walk finder. You’ll tell us your suggestion, fascination, need, everything! Trust us, we’ll listen to you like a first grade student.
-We regularly monitor global changes. Thus, our motto is ‘Be Bird’. We fly to embrace best one from any part of the globe. What do you guess? We bring it for only us? ‘NO’ we bring it for you first.
-Again ‘Be Bird’ leads to think you like a Bird. You can have a Birds Eye View to deal with your home and work. So, let’s fly together and bring the best for rest of the world." />
+        We regularly monitor global changes. Thus, our motto is ‘Be Bird’. We fly to embrace best one from any part of the globe. What do you guess? We bring it for only us? ‘NO’ we bring it for you first.
+        Again ‘Be Bird’ leads to think you like a Bird. You can have a Birds Eye View to deal with your home and work. So, let’s fly together and bring the best for rest of the world." />
         <meta property="og:image"        
          content="{{ asset('images/logo_seo.png') }}" />
         @endsection

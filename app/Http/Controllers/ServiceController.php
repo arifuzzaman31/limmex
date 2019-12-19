@@ -12,7 +12,7 @@ class ServiceController extends Controller
 {
  public function index()
     {
-        $Services = Service::all();
+        $Services = Service::orderBy('type')->get();
         return view('admin.services.allservices', compact('Services'));
     }
 
@@ -37,6 +37,7 @@ class ServiceController extends Controller
          $validation = Validator::make($request->all(),[
             'sort_description' => 'required',
             'description'      => 'required',
+            'type'             => 'required',
             'image'            => 'required|image|mimes:jpeg,bmp,jpg,png,gif,svg'
         ]);
         if (!$validation->fails()) {
@@ -50,6 +51,7 @@ class ServiceController extends Controller
                         'sort_description' => $request->sort_description ,
                         'slug'             => Str::slug($request->sort_description,'-'),
                         'description'      => $request->description ,
+                        'type'             => $request->type ,
                         'image'            => $imageName ,
                         'status'           => $status
                     ]);
@@ -84,7 +86,8 @@ public function update(Request $request, $id)
             $updated->update([
                 'sort_description' => $request->sort_description ,
                 'slug'             => Str::slug($request->sort_description,'-'),
-                'description'      => $request->description
+                'description'      => $request->description,
+                'type'             => $request->type
             ]);
 
             if ($request->hasFile('image')) {
