@@ -53,6 +53,7 @@ class ServiceController extends Controller
                         'description'      => $request->description ,
                         'type'             => $request->type ,
                         'image'            => $imageName ,
+                        'service_link'     => $request->service_link,
                         'status'           => $status
                     ]);
                     DB::commit();
@@ -87,7 +88,8 @@ public function update(Request $request, $id)
                 'sort_description' => $request->sort_description ,
                 'slug'             => Str::slug($request->sort_description,'-'),
                 'description'      => $request->description,
-                'type'             => $request->type
+                'type'             => $request->type,
+                'service_link'     => $request->service_link
             ]);
 
             if ($request->hasFile('image')) {

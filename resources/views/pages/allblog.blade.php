@@ -1,5 +1,4 @@
 @extends('app')
-
 @section('content')
 <!-- Blog post area Start -->
 <section class="blog-post-area pt-125 pb-125">

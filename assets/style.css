@@ -360,7 +360,7 @@ header.header-area.sticky {
 
 .support-btn.btn {
     position: absolute;
-    right: 0;
+    right: -25px;
     top: -6px;
 }
 

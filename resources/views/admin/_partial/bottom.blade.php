@@ -51,7 +51,8 @@
 
 <!-- Sparkline Chart Plugin Js -->
 <script src="{{asset('admin/plugins/jquery-sparkline/jquery.sparkline.js')}}"></script>
-
+<!-- TinyMCE -->
+    <script src="{{asset('admin/plugins/tinymce/tinymce.js')}}"></script>
 <!-- Custom Js -->
 <script src="{{asset('admin/js/admin.js')}}"></script>
 <script src="{{asset('admin/js/pages/index.js')}}"></script>

@@ -27,18 +27,16 @@
                             <nav id="mobile-menu">
                                 <ul id="menu">
                                     <li><a href="index.html">Home</a></li>
-
                                     <li><a href="#about">About</a></li>
                                     <li><a href="#services">services</a></li>
                                     <li><a href="#portfolio">case study </a></li>
                                     <li><a href="#team">Team</a></li>
                                     <li><a href="{{route('get-all-blog')}}" title="Limmex Automation Blog">Blog</a>
                                     <li><a href="#contact">Contact</a></li>
-
                                 </ul>
                             </nav>
                             <div class="support-btn btn">
-                                <a href="">Call Us<span>+354 545 666</span></a>
+                                <a href="tel:+88 01834-394216">Call Us<span>+88 01834-394216</span></a>
                             </div>
                         </div>
                     </div>

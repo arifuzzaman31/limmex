@@ -1,4 +1,12 @@
 @extends('app')
+@section('meta')
+    <meta property="og:url"          
+        content="{{ url('/') }}" />
+    <meta property="og:type" content="website" />
+
+    <meta property="og:title" content="Limmex Automation | IT,ITES,IOT Service Provider" />
+    <meta property="og:description" content="{{$blog->sort_description}}" />
+@endsection
 @section('content')
 <!-- Blog post area Start -->
 <section class="blog-post-area pt-125 pb-125">

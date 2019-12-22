@@ -36,7 +36,7 @@
                                             </div>
                                             <div class="price-btn">
                                                 <div class="heuse-hero-btn  mt-30">
-                                                    <a href="#" class="btn btn-filled btn-grad-color">Buy Now</a>
+                                                    <a href="{{$priceplan->product_link}}" target="_blank" class="btn btn-filled btn-grad-color">View Now</a>
                                                 </div>
                                             </div>
                                         </div>

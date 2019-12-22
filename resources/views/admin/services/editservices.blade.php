@@ -20,11 +20,11 @@
 		        <div class="row clearfix">
 		            <div class="col-sm-12">
 		                <select class="form-control show-tick" id="type" name="type">
-		                    <option value="">-- Please select --</option>
-		                    <option value="Ready Software">Ready Software</option>
-		                    <option value="Ready WS">Ready WS</option>
-		                    <option value="Own Service">Own Service</option>
-		                    <option value="On demand service">On demand service</option>
+		                    <option>-- Please select --</option>
+		                    <option @if($data->type === 'Ready Software') selected @endif  value="Ready Software">Ready Software</option>
+		                    <option @if($data->type === 'Ready WS') selected @endif value="Ready WS">Ready WS</option>
+		                    <option @if($data->type === 'Own Service') selected @endif value="Own Service">Own Service</option>
+		                    <option @if($data->type === 'On demand service') selected @endif value="On demand service">On demand service</option>
 		                </select>
 		            </div>
 		        </div></br>
@@ -32,6 +32,12 @@
 		        <div class="form-group">
 		            <div class="form-line">
 		                <input type="file" id="icon" name="image" class="form-control">
+		            </div>
+		        </div>
+		        <label for="service_link">Service FB link (Optional)</label>
+		        <div class="form-group">
+		            <div class="form-line">
+		                <input class="form-control" id="service_link" name="service_link" value="{{$data->service_link}}">
 		            </div>
 		        </div>
 		        <div class="demo-switch-title">Status</div>

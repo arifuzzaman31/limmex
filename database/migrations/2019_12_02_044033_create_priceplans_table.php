@@ -18,6 +18,7 @@ class CreatePriceplansTable extends Migration
             $table->string('title');
             $table->string('description');
             $table->double('price',8,2);
+            $table->string('product_link',255)->nullable();
             $table->string('image')->nullable();
             $table->tinyInteger('status')->defaut(1);
             $table->timestamps();

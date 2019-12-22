@@ -1,5 +1,4 @@
 @extends('app')
- 
         @section('meta')
         <meta property="og:url"          
          content="{{ url('/') }}" />

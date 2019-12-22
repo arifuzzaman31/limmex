@@ -20,6 +20,12 @@
                 <input type="text" id="price" name="price" class="form-control">
             </div>
         </div>
+        <label for="product_link">Product Link</label>
+        <div class="form-group">
+            <div class="form-line">
+                <input type="text" id="product_link" name="product_link" class="form-control">
+            </div>
+        </div>
          <div class="form-group">
             <div class="form-line">
                 <input type="file" id="icon" name="image" class="form-control">

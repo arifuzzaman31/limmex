@@ -27,6 +27,7 @@
                     <th>Title</th>
                     <th>Description</th>
                     <th>Price</th>
+                    <th>Product Link</th>
                     <th>Image</th>
                     <th>Action</th>
                 </tr>
@@ -37,6 +38,7 @@
                     <th>Title</th>
                     <th>Description</th>
                     <th>Price</th>
+                    <th>Product Link</th>
                     <th>Image</th>
                     <th>Action</th>
                 </tr>
@@ -49,7 +51,8 @@
 	                    <td style="width: 5%">{{$i}}</td>
                         <td style="width: 15%">{{$priceplan->title}}</td>
 	                    <td style="width: 30%">{!!substr($priceplan->description,0,50) !!}...</td>
-	                    <td style="width: 15%">{{$priceplan->price}}</td>
+	                    <td style="width: 7%">{{$priceplan->price}}</td>
+                        <td style="width: 15%">@if($priceplan->product_link) {{$priceplan->product_link}} @endif</td>
 	                    <td style="width: 15%">
                         @if($priceplan->image)
                             <img src="{{URL::to('images/product-image/'.$priceplan->image)}}" height="40px" width="50px">

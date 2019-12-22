@@ -6,8 +6,8 @@
         <div class="row justify-content-xl-center ">
             <div class="col-xl-7 col-lg-6">
                 <div class="hero-inner-content ">
-                    <h1>A Digital Creative Agency</h1>
-                    <h4>Lorem ipsum dolor sit amet consectetur sadipcing elitr, consetetur sadipscing elitr.</h4>
+                    <h1>LIMMEX AUTOMATION</h1>
+                    <h4>IT, ITES, IOT Service Provider.</h4>
                     <div class="heuse-hero-btn mt-20">
                         <a href="#contact" class="btn btn-filled ">Contact Us</a>
                     </div>

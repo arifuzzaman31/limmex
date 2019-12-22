@@ -1,4 +1,12 @@
 @extends('app')
+@section('meta')
+    <meta property="og:url"          
+        content="{{ url('/') }}" />
+    <meta property="og:type" content="website" />
+
+    <meta property="og:title" content="Limmex Automation | IT,ITES,IOT Service Provider" />
+    <meta property="og:description" content="{{$services->sort_description}}" />
+@endsection
 @section('content')
 <!-- Blog post area Start -->
 <section class="blog-post-area pt-125 pb-125">
@@ -19,6 +27,8 @@
                                 <ul>
                                     <li>by <a href="#">Admin</a></li>
                                     <li>at {{date('d F Y', strtotime($services->created_at))}}</li>
+                                    @if($services->service_link)
+                                    <li class="float-right"><a href="{{$services->service_link}}" target="_blank">Show This Service</a></li>@endif
                                 </ul>
                             </div>
                             <div class="blog-post-inner-content">

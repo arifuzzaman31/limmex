@@ -10,7 +10,7 @@
         <label for="description">Description</label>
         <div class="form-group">
             <div class="form-line">
-                <textarea class="form-control" id="description" rows="6" cols="16" name="description"></textarea>
+                <textarea class="form-control" id="description" rows="5" cols="16" name="description"></textarea>
             </div>
         </div>
         <label for="type">Type :</label>
@@ -31,9 +31,15 @@
                 <input type="file" id="icon" name="image" class="form-control">
             </div>
         </div>
+        <label for="service_link">Service FB link (Optional)</label>
+        <div class="form-group">
+            <div class="form-line">
+                <input class="form-control" id="service_link" name="service_link">
+            </div>
+        </div>
         <div class="demo-switch-title">Status</div>
             <div class="switch">
-                <label><input type="checkbox" name="status" value="1"><span class="lever switch-col-green"></span></label>
+                <label><input type="checkbox" checked name="status" value="1"><span class="lever switch-col-green"></span></label>
             </div>
         </br>
         <button type="submit" class="btn btn-primary m-t-15 waves-effect">Add</button>

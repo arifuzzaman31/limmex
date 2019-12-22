@@ -21,6 +21,7 @@ class CreateServicesTable extends Migration
             $table->mediumText('type');
             $table->string('image')->nullable();
             $table->tinyInteger('status')->default(1);
+            $table->string('service_link',255)->nullable();
             $table->timestamps();
         });
     }

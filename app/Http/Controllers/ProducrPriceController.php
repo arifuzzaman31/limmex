@@ -41,7 +41,8 @@ class ProducrPriceController extends Controller
                     $insertid = Priceplan::insert([
                         'title'       =>  $request->title,
                         'description' =>  $request->description,
-                        'price'        =>  $request->price,
+                        'price'       =>  $request->price,
+                        'product_link'=>  $request->product_link,
                         'image'       =>  $imageName,
                         'status'      =>  $status
                     ]);
@@ -74,6 +75,7 @@ class ProducrPriceController extends Controller
                         'title'       =>  $request->title,
                         'description' =>  $request->description,
                         'price'       =>  $request->price,
+                        'product_link'=>  $request->product_link,
                         'status'      =>  $status
                     ]);
 

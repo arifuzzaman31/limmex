@@ -38,15 +38,15 @@
         @include('admin._partial.leftNav')
         <!-- #END# Left Sidebar -->
         <!-- Right Sidebar -->
-        @include('admin._partial.rightNav')
+        <!-- @include('admin._partial.rightNav') -->
         <!-- #END# Right Sidebar -->
     </section>
 
     <section class="content">
         <div class="container-fluid">
-            <div class="block-header">
+            <!-- <div class="block-header">
                 <h2>DASHBOARD</h2>
-            </div>
+            </div> -->
             
             <!-- Widgets -->
             @yield('adminContent')

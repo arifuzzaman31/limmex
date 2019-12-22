@@ -7,7 +7,7 @@
                             <div class="widget footer-sidebar">
                                 <div class="site-logo footer-site-info">
                                     <a href="index.html">
-                                        <img src="{{asset('assets/img/site-logo/Untitled-la-logo.png')}}" alt="">
+                                        <img src="{{asset('assets/img/site-logo/limmex_logo.png')}}" alt="">
                                     </a>
                                     <p class="mt-30">Lorem ipsum dolor sit amet ctetur adipisicing elit. Tempore corrupti ga earum asperiores, alias excepturi sit. Impedit, fugit laudantium.</p>
                                 </div>
