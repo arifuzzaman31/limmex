@@ -15,17 +15,17 @@ Route::get('/', [
 	'uses' => 'FrontController@index'
 ]);
 
-Route::get('get-all-blog', [
+Route::get('blogs', [
 	'as' => 'get-all-blog',
 	'uses' => 'FrontController@getAllBlog'
 ]);
 
-Route::get('get-specific-service/{slug}', [
+Route::get('service/{slug}', [
 	'as'	=> 'get-specific-service',
 	'uses' 	=> 'FrontController@getSpecificService'
 ]);
 
-Route::get('get-specific-blog/{slug}', [
+Route::get('blog/{slug}', [
 	'as'	=> 'get-specific-blog',
 	'uses' 	=> 'FrontController@getSpecificBlog'
 ]);

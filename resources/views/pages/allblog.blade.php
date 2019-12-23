@@ -1,4 +1,15 @@
 @extends('app')
+@section('title','Limmex Automation | Blogs')
+@section('meta')
+    <meta property="og:url"          
+        content="{{ route('get-all-blog') }}" />
+    <meta property="og:type" content="website" />
+            <meta property="og:image"        
+         content="{{ asset('images/logo_seo.png') }}" />
+
+    <meta property="og:title" content="Limmex Automation | Blogs" />
+    <meta property="og:description" content="IT,ITES,IOT Service Provider" />
+@endsection
 @section('content')
 <!-- Blog post area Start -->
 <section class="blog-post-area pt-125 pb-125">

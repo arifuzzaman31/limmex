@@ -1,11 +1,17 @@
 @extends('app')
+@section('title')
+{{ $blog->title }}
+@endsection
 @section('meta')
     <meta property="og:url"          
-        content="{{ url('/') }}" />
+        content="{{ route('get-specific-blog',['slug' => $blog->slug]) }}" />
     <meta property="og:type" content="website" />
+    <meta property="og:image"        
+         content="{{asset('images/blog-image/'.$blog->blog_image)}}" />
 
-    <meta property="og:title" content="Limmex Automation | IT,ITES,IOT Service Provider" />
-    <meta property="og:description" content="{{$blog->sort_description}}" />
+    <meta property="og:title" content="{{ $blog->title }}" />
+    <meta property="og:description" content="{{ $blog->title }}" />
+    <meta property="og:description" content="{{ $blog->sort_description }}" />
 @endsection
 @section('content')
 <!-- Blog post area Start -->
@@ -30,7 +36,7 @@
                                 </ul>
                             </div>
                             <div class="blog-post-inner-content">
-                                <h2 class="post-title">{!! substr($blog->sort_description,0,25 )!!}</h2>
+                                <h2 class="post-title">{{ $blog->title }}</h2>
                                 <p class="mt-15">{{$blog->description}}</p>
 
                             </div>

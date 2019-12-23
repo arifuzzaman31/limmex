@@ -1,11 +1,16 @@
 @extends('app')
+@section('title')
+{{ $service->title }}
+@endsection
 @section('meta')
     <meta property="og:url"          
-        content="{{ url('/') }}" />
+        content="{{ route('get-specific-service',['slug' => $service->slug]) }}" />
     <meta property="og:type" content="website" />
+    <meta property="og:image"        
+         content="{{asset('assets/service-image/'.$services->image)}}" />
 
-    <meta property="og:title" content="Limmex Automation | IT,ITES,IOT Service Provider" />
-    <meta property="og:description" content="{{$services->sort_description}}" />
+    <meta property="og:title" content="{{ $service->title }}" />
+    <meta property="og:description" content="{{ $service->sort_description }}" />
 @endsection
 @section('content')
 <!-- Blog post area Start -->
@@ -32,7 +37,7 @@
                                 </ul>
                             </div>
                             <div class="blog-post-inner-content">
-                                <h2 class="post-title">{!! substr($services->sort_description,0,25 )!!}</h2>
+                                <h2 class="post-title">{{ $service->title }}</h2>
                                 <p class="mt-15">{{$services->description}}</p>
                             </div>
                         </div>
