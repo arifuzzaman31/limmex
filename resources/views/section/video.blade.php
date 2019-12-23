@@ -1,8 +1,8 @@
 <section id="about" class="video-area position-relative pt-125 pb-125">
-    <div class="video-before align-items-center" data-background="assets/img/video/video-before.jpg">
-        <div class="video-before-content">
+    <div class="video-before align-items-center" data-background="{{asset('assets/img/video/video-before.jpg')}}">
+        <!-- <div class="video-before-content">
             <a href="https://www.youtube.com/watch?v=QUA9sZiytzM" class="btn video-btn mfp-iframe"><i class="fa fa-play"></i></a>
-        </div>
+        </div> -->
     </div>
     <div class="container">
         <div class="row ">
