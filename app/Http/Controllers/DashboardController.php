@@ -30,7 +30,7 @@ class DashboardController extends Controller
             Session::put('admin', Auth::guard('admin')->user()->email);
             return redirect(route('dashboard'));
         } else {
-            return back()->withErrors(['message','You Are not Admin!']);
+            return back()->with(['alert-type' => 'error','message','You Are not Admin!']);
         } 
 
    }

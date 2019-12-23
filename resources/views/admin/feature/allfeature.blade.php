@@ -19,6 +19,7 @@
                 </ul>
             </div>
             <div class="body">
+                
                 <div class="table-responsive">
                     <table id="table-data" class="table table-bordered table-striped table-hover dataTable">
             <thead>

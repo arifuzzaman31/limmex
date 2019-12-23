@@ -37,3 +37,9 @@
         <button type="submit" class="btn btn-primary waves-effect">Add</button>
     </form>
 </div>
+<script type="text/javascript">
+        tinymce.init({
+            selector: "#tinymce"
+
+        });
+</script>

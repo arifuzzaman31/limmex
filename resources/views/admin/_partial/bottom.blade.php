@@ -1,6 +1,5 @@
 <!-- Default Size -->
 <div class="modal fade" id="defaultModal" tabindex="-1" role="dialog">
-
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -10,7 +9,6 @@
             </div>
             <div class="modal-body">
                
-
             </div>
         </div>
     </div>
@@ -51,7 +49,9 @@
 
 <!-- Sparkline Chart Plugin Js -->
 <script src="{{asset('admin/plugins/jquery-sparkline/jquery.sparkline.js')}}"></script>
-<!-- TinyMCE -->
+<!-- Ckeditor -->
+<!-- <script src="{{asset('admin/plugins/ckeditor/ckeditor.js')}}"></script> -->
+  <!-- TinyMCE -->
     <script src="{{asset('admin/plugins/tinymce/tinymce.js')}}"></script>
 <!-- Custom Js -->
 <script src="{{asset('admin/js/admin.js')}}"></script>
@@ -64,8 +64,8 @@
 <script src="{{asset('admin/plugins/jquery-datatable/jquery.dataTables.js')}}"></script>
 <script src="{{asset('admin/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js')}}"></script>
 <script src="{{asset('admin/js/pages/tables/jquery-datatable.js')}}"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
+<script src="{{asset('admin/css/toastr/toastr.min.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.js"></script>
 <script>
      @if(Session::has('message'))
         var type = "{{ Session::get('alert-type', 'info') }}";
@@ -87,6 +87,62 @@
                 break;
         }
       @endif
+</script>
+<script type="text/javascript">
+   /* $(document).on('click', '.delete', function () {
+        var actionTo = $(this).attr('href');
+        var token = $(this).attr('data-token');
+        var id = $(this).attr('data-id');
+        alert(actionTo);
+        swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this imaginary file!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false
+            },
+            function (isConfirm) {
+                if (isConfirm) {
+                    $.ajax({
+                        url: actionTo +'/'+ id,
+                        type: 'post',
+                        // data: {method: 'delete', token: token},
+                        success: function (data) {
+                            if (data == 'hasForeignKey') {
+                                swal({
+                                    title: "Oops!",
+                                    text: "This data is used anywhere",
+                                    type: "error"
+                                });
+                            } else if (data == 'success') {
+                                swal({
+                                        title: "Deleted!",
+                                        text: "Your information delete successfully.",
+                                        type: "success"
+                                    },
+                                    function (isConfirm) {
+                                        if (isConfirm) {
+                                            $('.' + id).fadeOut();
+                                        }
+                                    });
+                            } else {
+                                swal({
+                                    title: "Error!",
+                                    text: "Something Error Found !, Please try again.",
+                                    type: "error"
+                                });
+                            }
+                        }
+
+                    });
+                } else {
+                    swal("Cancelled", "Your data is safe .", "error");
+                }
+            });
+        return false;
+    }); */
 </script>
 </body>
 

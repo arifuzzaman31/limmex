@@ -10,8 +10,9 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+    <link href="{{asset('admin/css/font-awesome/cyrillic-ext.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('admin/css/font-awesome/family-Material-Icons.css')}}" rel="stylesheet" type="text/css">
+    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css"> -->
 
     <!-- Bootstrap Core Css -->
     <link href="{{asset('admin/plugins/bootstrap/css/bootstrap.css')}}" rel="stylesheet">
@@ -28,14 +29,16 @@
     <!-- Custom Css -->
     <link href="{{asset('admin/css/style.css')}}" rel="stylesheet">
 
-<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="{{asset('admin/css/font-awesome/font-awesome-4.7.0/css/font-awesome.min.css')}}" rel="stylesheet">
 
     <link href="{{asset('admin/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css')}}" rel="stylesheet">
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="{{asset('admin/css/themes/all-themes.css')}}" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css">
+   <link rel="stylesheet" type="text/css" href="{{asset('admin/css/toastr/toastr.min.css')}}">
+   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.css">
+   
 
 </head>
 
-<body class="theme-red">
+<body class="theme-teal">

@@ -13,7 +13,7 @@
 		        <label for="description">Description</label>
 		        <div class="form-group">
 		            <div class="form-line">
-		                <textarea class="form-control" rows="6" cols="16" name="description">{{$data->description}}</textarea>
+		                <textarea id="tinymce" name="description">{{$data->description}}</textarea>
 		            </div>
 		        </div>
 		       
@@ -31,3 +31,9 @@
 	   
 	</div>
 </div>
+<script type="text/javascript">
+        tinymce.init({
+            selector: "#tinymce"
+
+        });
+</script>

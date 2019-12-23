@@ -10,7 +10,7 @@
         <label for="description">Description</label>
         <div class="form-group">
             <div class="form-line">
-                <textarea class="form-control" id="description" rows="5" cols="16" name="description"></textarea>
+                <textarea id="tinymce" name="description"></textarea>
             </div>
         </div>
         <label for="type">Type :</label>
@@ -45,3 +45,9 @@
         <button type="submit" class="btn btn-primary m-t-15 waves-effect">Add</button>
     </form>
 </div>
+<script type="text/javascript">
+        tinymce.init({
+            selector: "#tinymce"
+
+        });
+</script>
