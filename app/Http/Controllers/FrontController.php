@@ -18,9 +18,12 @@ class FrontController extends Controller
     	$portfolios	  =  Portfolio::where('status',1)->get();
     	$features 	  =  Feature::where('status',1)->get();
     	$blogs 		  =  Blog::where('status',1)->take(2)->latest()->get();
-    	$services 	  =  Service::where('status',1)->get();
+    	$RSservices   =  Service::where(['status'=>1,'type'=>'Ready Software'])->get();
+        $OSservices     =  Service::where(['status'=>1,'type'=>'Own Service'])->get();
+        $WSservices     =  Service::where(['status'=>1,'type'=>'Ready WS'])->get();
+        $ODservices     =  Service::where(['status'=>1,'type'=>'On demand service'])->get();
         $priceplans   =  Priceplan::where('status',1)->get();
-    	return view('setup.setup',compact('team_members','portfolios','features','blogs','services','priceplans'));
+    	return view('setup.setup',compact('team_members','portfolios','features','blogs','RSservices','OSservices','WSservices','ODservices','priceplans'));
     }
 
     public function getSpecificService($slug)

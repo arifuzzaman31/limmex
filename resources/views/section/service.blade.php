@@ -1,4 +1,5 @@
 <section id="services" class="service position-relative pt-125 pb-120 theme-bg">
+    @if(count($RSservices) > 0)
     <div class="container">
         <div class="row">
             <div class="col-xl-5">
@@ -11,23 +12,21 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="services-item owl-carousel">
-                    @if(count($services) > 0)
-                        @foreach($services as $service)
-                            @if($service->type == 'Ready Software')
-                                <div class="single-service text-center item pt-60 pb-60 pl-30 pr-30">
-                                    <img src="{{asset('images/service-image/'.$service->image)}}" alt="Service Picture">
-                                    <h4 class="mb-10 mt-20 pb-10">{!! substr($service->sort_description,0,30) !!}</h4>
-                                    <p>{!! substr($service->description,0,80) !!}</p>
-                                    <a href="{{route('get-specific-service',$service->slug)}}" class="btn-service"><i class="fa fa-arrow-right"></i> </a>
-                                </div>
-                            @endif
-                        @endforeach
-                    @endif
+                    @foreach($RSservices as $service)
+                        <div class="single-service text-center item pt-60 pb-60 pl-30 pr-30">
+                            <img src="{{asset('images/service-image/'.$service->image)}}" alt="Service Picture">
+                            <h4 class="mb-10 mt-20 pb-10">{!! substr($service->sort_description,0,30) !!}</h4>
+                            <p>{!! substr($service->description,0,80) !!}</p>
+                            <a href="{{route('get-specific-service',$service->slug)}}" class="btn-service"><i class="fa fa-arrow-right"></i> </a>
+                        </div>
+                    @endforeach 
                 </div>
             </div>
         </div>
     </div>
         <br>
+    @endif
+    @if(count($WSservices) > 0)
     <div class="container">
         <div class="row">
             <div class="col-xl-5">
@@ -39,23 +38,21 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="services-item owl-carousel">
-                    @if(count($services) > 0)
-                        @foreach($services as $service)
-                            @if($service->type == 'Ready WS')
-                            <div class="single-service text-center item pt-60 pb-60 pl-30 pr-30">
-                                <img src="{{asset('images/service-image/'.$service->image)}}" alt="Service Picture">
-                                <h4 class="mb-10 mt-20 pb-10">{!! substr($service->sort_description,0,30) !!}</h4>
-                                <p>{!! substr($service->description,0,80) !!}</p>
-                                <a href="{{route('get-specific-service',$service->slug)}}" class="btn-service"><i class="fa fa-arrow-right"></i> </a>
-                            </div>
-                            @endif
-                        @endforeach
-                    @endif
+                    @foreach($WSservices as $service)
+                        <div class="single-service text-center item pt-60 pb-60 pl-30 pr-30">
+                            <img src="{{asset('images/service-image/'.$service->image)}}" alt="Service Picture">
+                            <h4 class="mb-10 mt-20 pb-10">{!! substr($service->sort_description,0,30) !!}</h4>
+                            <p>{!! substr($service->description,0,80) !!}</p>
+                            <a href="{{route('get-specific-service',$service->slug)}}" class="btn-service"><i class="fa fa-arrow-right"></i> </a>
+                        </div>   
+                    @endforeach
                 </div>
             </div>
         </div>
     </div>
         <br>
+    @endif
+    @if(count($ODservices) > 0)
     <div class="container">
         <div class="row">
             <div class="col-xl-5">
@@ -67,23 +64,21 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="services-item owl-carousel">
-                    @if(count($services) > 0)
-                        @foreach($services as $service)
-                            @if($service->type == 'On demand service')
-                            <div class="single-service text-center item pt-60 pb-60 pl-30 pr-30">
-                                <img src="{{asset('images/service-image/'.$service->image)}}" alt="Service Picture">
-                                <h4 class="mb-10 mt-20 pb-10">{!! substr($service->sort_description,0,30) !!}</h4>
-                                <p>{!! substr($service->description,0,80) !!}</p>
-                                <a href="{{route('get-specific-service',$service->slug)}}" class="btn-service"><i class="fa fa-arrow-right"></i> </a>
-                            </div>
-                            @endif
-                        @endforeach
-                    @endif
+                    @foreach($ODservices as $service)
+                        <div class="single-service text-center item pt-60 pb-60 pl-30 pr-30">
+                            <img src="{{asset('images/service-image/'.$service->image)}}" alt="Service Picture">
+                            <h4 class="mb-10 mt-20 pb-10">{!! substr($service->sort_description,0,30) !!}</h4>
+                            <p>{!! substr($service->description,0,80) !!}</p>
+                            <a href="{{route('get-specific-service',$service->slug)}}" class="btn-service"><i class="fa fa-arrow-right"></i> </a>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
     </div>
         <br>
+    @endif
+    @if(count($OSservices) > 0)
     <div class="container">
         <div class="row">
             <div class="col-xl-5">
@@ -95,21 +90,18 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="services-item owl-carousel">
-                    @if(count($services) > 0)
-                        @foreach($services as $service)
-                            @if($service->type == 'Own Service')
-                            <div class="single-service text-center item pt-60 pb-60 pl-30 pr-30">
-                                <img src="{{asset('images/service-image/'.$service->image)}}" alt="Service Picture">
-                                <h4 class="mb-10 mt-20 pb-10">{!! substr($service->sort_description,0,30) !!}</h4>
-                                <p>{!! substr($service->description,0,80) !!}</p>
-                                <a href="{{route('get-specific-service',$service->slug)}}" class="btn-service"><i class="fa fa-arrow-right"></i> </a>
-                            </div>
-                            @endif
-                        @endforeach
-                    @endif
+                    @foreach($OSservices as $service)
+                        <div class="single-service text-center item pt-60 pb-60 pl-30 pr-30">
+                            <img src="{{asset('images/service-image/'.$service->image)}}" alt="Service Picture">
+                            <h4 class="mb-10 mt-20 pb-10">{!! substr($service->sort_description,0,30) !!}</h4>
+                            <p>{!! substr($service->description,0,80) !!}</p>
+                            <a href="{{route('get-specific-service',$service->slug)}}" class="btn-service"><i class="fa fa-arrow-right"></i> </a>
+                        </div>
+                    @endforeach 
                 </div>
             </div>
         </div>
     </div>
   </div>
+  @endif
 </section>
