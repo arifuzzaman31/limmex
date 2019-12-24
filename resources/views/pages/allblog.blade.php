@@ -29,9 +29,8 @@
                                 </div>
                             </div>
                             <div class="post-meta ppst-meta-content mb-15">
-                                <ul>
-                                    <li>by <a href="#">Admin</a></li>
-                                    <li>at {{date('d F Y', strtotime($blog->created_at))}}</li>
+                                <ul>  
+                                    <li><i class="fa fa-clock-o" aria-hidden="true"></i> {{$blog->created_at->diffForHumans()}}</li>
                                 </ul>
                             </div>
                             <div class="blog-post-inner-content">

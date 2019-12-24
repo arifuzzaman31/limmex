@@ -1,16 +1,16 @@
 @extends('app')
 @section('title')
-{{ $service->title }}
+{{ $services->sort_description }}
 @endsection
 @section('meta')
     <meta property="og:url"          
-        content="{{ route('get-specific-service',['slug' => $service->slug]) }}" />
+        content="{{ route('get-specific-service',['slug' => $services->slug]) }}" />
     <meta property="og:type" content="website" />
     <meta property="og:image"        
          content="{{asset('assets/service-image/'.$services->image)}}" />
 
-    <meta property="og:title" content="{{ $service->title }}" />
-    <meta property="og:description" content="{{ $service->sort_description }}" />
+    <meta property="og:title" content="{{ $services->sort_description }}" />
+    <meta property="og:description" content="{{ $services->description }}" />
 @endsection
 @section('content')
 <!-- Blog post area Start -->
@@ -30,14 +30,13 @@
                             </div>
                             <div class="post-meta ppst-meta-content mb-15">
                                 <ul>
-                                    <li>by <a href="#">Admin</a></li>
-                                    <li>at {{date('d F Y', strtotime($services->created_at))}}</li>
+                                    <li> <i class="fa fa-clock-o" aria-hidden="true"></i> {{$services->created_at->diffForHumans()}}</li>
                                     @if($services->service_link)
                                     <li class="float-right"><a href="{{$services->service_link}}" target="_blank">Show This Service</a></li>@endif
                                 </ul>
                             </div>
                             <div class="blog-post-inner-content">
-                                <h2 class="post-title">{{ $service->title }}</h2>
+                                <h2 class="post-title">{{ $services->sort_description }}</h2>
                                 <p class="mt-15">{{$services->description}}</p>
                             </div>
                         </div>
@@ -50,3 +49,15 @@
 </section>
 <!-- Blog post area End -->
 @endsection
+
+@push('style')
+<style>
+    
+    header.header-area {
+    
+    background-color: #1a32b7;
+    top : 0 !important;
+
+    }
+</style>
+@endpush
