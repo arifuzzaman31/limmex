@@ -9,10 +9,10 @@
                                     <a href="index.html">
                                         <img src="{{asset('assets/img/site-logo/limmex_logo.png')}}" alt="">
                                     </a>
-                                    <p class="mt-30">Lorem ipsum dolor sit amet ctetur adipisicing elit. Tempore corrupti ga earum asperiores, alias excepturi sit. Impedit, fugit laudantium.</p>
+                                    <p class="mt-30">IT, ITES, IOT Service Provider.</p>
                                 </div>
                                 <div class="social-list footer-social-list mt-20">
-                                    <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
+                                    <a href="https://www.facebook.com/Limmex-Automation-103549974482357/" target="_blank"><i class="fa fa-facebook"></i></a>
                                     <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
                                     <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
                                 </div>
@@ -22,11 +22,10 @@
                             <div class="widget footer-sidebar">
                                 <h3 class="mb-45">Our Company</h3>
                                 <ul>
-                                    <li><a href="#">About Company</a></li>
-                                    <li><a href="#">Our Testimonials</a></li>
-                                    <li><a href="#">Latest News</a></li>
-                                    <li><a href="#">Our Mission</a></li>
-                                    <li><a href="#">Get a Free Quote</a></li>
+                                    <li><a href="#">About</a></li>
+                                    <li><a href="#">Services</a></li>
+                                    <li><a href="#">Contact</a></li>
+                                    <li><a href="#">Portfolio</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -34,11 +33,10 @@
                             <div class="widget footer-sidebar">
                                 <h3 class="mb-45">Our Services</h3>
                                 <ul>
-                                    <li><a href="#">Web Design</a></li>
-                                    <li><a href="#">Graphic Design</a></li>
-                                    <li><a href="#">Financial Help</a></li>
-                                    <li><a href="#">App Development</a></li>
-                                    <li><a href="#">Print Design</a></li>
+                                    <li><a href="#">Redy Software</a></li>
+                                    <li><a href="#">Ready Website</a></li>
+                                    <li><a href="#">Own Service</a></li>
+                                    <li><a href="#">On Demand Services</a></li>
                                 </ul>
                             </div>
                         </div>

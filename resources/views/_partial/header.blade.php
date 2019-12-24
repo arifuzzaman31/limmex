@@ -27,10 +27,10 @@
                             <nav id="mobile-menu">
                                 <ul id="menu">
                                     <li><a href="index.html">Home</a></li>
-                                    <li><a href="#about">About</a></li>
-                                    <li><a href="#services">services</a></li>
-                                    <li><a href="#portfolio">case study </a></li>
-                                    <li><a href="#team">Team</a></li>
+                                    <li><a href="#about" title="About Limmex Automation">About</a></li>
+                                    <li><a href="#services" title="Limmex Automation Services">services</a></li>
+                                    <li><a href="#portfolio" title="Limmex Automation Portfolio">Portfolio</a></li>
+                                    <li><a href="#team" title="Limmex Automation Team">Team</a></li>
                                     <li><a href="{{route('get-all-blog')}}" title="Limmex Automation Blog">Blog</a>
                                     <li><a href="#contact">Contact</a></li>
                                 </ul>
