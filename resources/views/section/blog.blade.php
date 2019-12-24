@@ -5,7 +5,7 @@
                 @foreach($blogs as $blog)
                 <div class="col-xl-6 col-lg-6">
                     <div class="section-title mb-45">
-                        <h4 class="text-uppercase mb-20">Best CREATIVE AGENCY</h4>
+                    
                         <h1>{{$blog->title}}</h1>
                     </div>
                     <div class="#">

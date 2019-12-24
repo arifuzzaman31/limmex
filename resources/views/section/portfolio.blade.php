@@ -4,7 +4,7 @@
             <div class="col-xl-5  col-lg-5">
                 <div class="section-title mb-45">
                     <h4 class="text-uppercase mb-20">Portfolio</h4>
-                    <h1>Our Recent Case Study</h1>
+                    <h1>Our Recent Projects</h1>
                 </div>
             </div>
             <div class="col-xl-7 col-lg-7 text-right">
