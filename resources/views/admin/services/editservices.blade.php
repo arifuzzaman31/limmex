@@ -1,10 +1,15 @@
 <div class="card">
-  <img class="card-img-top" src="{{URL::to('images/service-image/'.$data->image)}}" alt="Card image cap" height="60px" width="80px">
 	  <div class="card-body">
 	    <div class="body">
 		    <form action="{{route('service.update',$data->id)}}" method="post" enctype="multipart/form-data">
 		       @csrf
-		        <label for="title">Sort Description</label>
+		       <label for="title">Title</label>
+		        <div class="form-group">
+		            <div class="form-line">
+		                <input type="text" id="title" value="{{$data->title}}" name="title" class="form-control">
+		            </div>
+		        </div>
+		        <label for="Sort-Description">Sort Description</label>
 		        <div class="form-group">
 		            <div class="form-line">
 		                <input type="text" id="Sort-Description" name="sort_description" value="{{$data->sort_description}}" class="form-control">
@@ -31,10 +36,11 @@
 		        <label for="icon">Service Icon :</label>
 		        <div class="form-group">
 		            <div class="form-line">
+		                <img class="card-img-top" src="{{URL::to('images/service-image/'.$data->image)}}" alt="Card image cap" height="60px" width="80px">
 		                <input type="file" id="icon" name="image" class="form-control">
 		            </div>
 		        </div>
-		        <label for="service_link">Service FB link (Optional)</label>
+		        <label for="service_link">External link (Optional)</label>
 		        <div class="form-group">
 		            <div class="form-line">
 		                <input class="form-control" id="service_link" name="service_link" value="{{$data->service_link}}">
@@ -42,7 +48,7 @@
 		        </div>
 		        <div class="demo-switch-title">Status</div>
 		            <div class="switch">
-		                <label><input type="checkbox" name="status" value="1"><span class="lever switch-col-green"></span></label>
+		                <label><input type="checkbox" @if($data->status === 1)checked @endif name="status" value="1"><span class="lever switch-col-green"></span></label>
 		            </div>
 		        <br>
 		        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Update</button>

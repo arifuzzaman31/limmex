@@ -12,10 +12,6 @@
             <div class="btn-group user-helper-dropdown">
                 <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                 <ul class="dropdown-menu pull-right">
-                    <li><a href="javascript:void(0);"><i class="material-icons">person</i>Profile</a></li>
-                    <li role="seperator" class="divider"></li>
-                    <li><a href="javascript:void(0);"><i class="material-icons">group</i>Followers</a></li>
-                    <li><a href="javascript:void(0);"><i class="material-icons">shopping_cart</i>Sales</a></li>
                     <li><a href="javascript:void(0);"><i class="material-icons">favorite</i>Likes</a></li>
                     <li role="seperator" class="divider"></li>
                     <li><a href="{{route('logout')}}"><i class="material-icons">input</i>Sign Out</a></li>
@@ -28,56 +24,67 @@
     <div class="menu">
         <ul class="list">
             <li class="header">MAIN NAVIGATION</li>
-            <li class="active">
-                <a href="index.html">
+            <li @if(Route::is('dashboard')) class="active" @endif>
+                <a href="{{route('dashboard')}}">
                     <i class="material-icons">home</i>
                     <span>Home</span>
                 </a>
             </li>
-            <li>
+            <li @if(Route::is('feature')) class="active" @endif>
                 <a href="{{route('feature')}}">
                     <i class="material-icons">widgets</i>
-                    <span>View Feature</span>
+                    <span>Feature</span>
                 </a>
             </li>
-            <li>
+            <li @if(Route::is('service')) class="active" @endif>
                  <a href="{{route('service')}}">
                     <i class="material-icons">build</i>
-                    <span>View Services</span>
+                    <span>Services</span>
                 </a>
             </li>
 
-            <li>
+            <li @if(Route::is('blog')) class="active" @endif>
                  <a href="{{route('blog')}}">
                     <i class="material-icons">open_in_new</i>
-                    <span>View Blogs</span>
+                    <span>Blogs</span>
                 </a>
             </li>
 
-            <li>
+            <li @if(Route::is('team-member')) class="active" @endif>
                  <a href="{{route('team-member')}}">
                     <i class="material-icons">people</i>
-                    <span>View Member</span>
+                    <span>Member</span>
                 </a>
             </li>
-             <li>
+             <li @if(Route::is('portfolio')) class="active" @endif>
                  <a href="{{route('portfolio')}}">
                     <i class="material-icons">apps</i>
-                    <span>View Portfolio</span>
+                    <span>Portfolio</span>
                 </a>
             </li>
-            <li>
+            <li @if(Route::is('all-slider')) class="active" @endif>
                  <a href="{{route('all-slider')}}">
                     <i class="material-icons">games</i>
-                    <span>View Slider</span>
+                    <span>Slider</span>
                 </a>
             </li>
 
-              <li>
+              <li @if(Route::is('all-priceplan')) class="active" @endif>
                  <a href="{{route('all-priceplan')}}">
                     <i class="material-icons">shopping_cart</i>
-                    <span>View Product</span>
+                    <span>Product</span>
                 </a>
+            </li>
+            <li @if(Route::is('change-password')) class="active" @endif>
+                <a href="javascript:void(0);" class="menu-toggle">
+                    <i class="material-icons">polymer</i>
+                    <span>Setting</span>
+                </a>
+                <ul class="ml-menu">
+                    <li>
+                        <a href="{{route('change-password')}}">Change Password</a>
+                    </li>
+                </ul>
             </li>
         </ul>
     </div>

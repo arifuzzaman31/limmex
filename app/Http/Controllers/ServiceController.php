@@ -35,6 +35,7 @@ class ServiceController extends Controller
     {
         $status = $request->status ? 1 : 0;
          $validation = Validator::make($request->all(),[
+            'title'            => 'required',
             'sort_description' => 'required',
             'description'      => 'required',
             'type'             => 'required',
@@ -46,8 +47,9 @@ class ServiceController extends Controller
                 if ($request->hasFile('image')) {
                     $image = $request->file('image');
                     $imageName = time().'.'.$image->getClientOriginalExtension();
-                    $image->move(public_path('images/service-image'),$imageName);
+                    $image->move('images/service-image',$imageName);
                     Service::insert([
+                        'title'            => $request->title,
                         'sort_description' => $request->sort_description ,
                         'slug'             => Str::slug($request->sort_description,'-'),
                         'description'      => $request->description ,
@@ -81,37 +83,59 @@ class ServiceController extends Controller
 
 public function update(Request $request, $id)
 {
-   try {
-        DB::beginTransaction();
-        $updated = Service::where('id',$id)->first();
-            $updated->update([
-                'sort_description' => $request->sort_description ,
-                'slug'             => Str::slug($request->sort_description,'-'),
-                'description'      => $request->description,
-                'type'             => $request->type,
-                'service_link'     => $request->service_link
-            ]);
+   $status = $request->status ? 1 : 0;
+   $validation = Validator::make($request->all(),[
+            'title'            => 'required',
+            'sort_description' => 'required',
+            'description'      => 'required',
+            'type'             => 'required'
+        ]);
+   if (!$validation->fails()) {
+       try {
+            DB::beginTransaction();
+            $updated = Service::where('id',$id)->first();
+            $updated->title            = $request->title;
+            $updated->sort_description = $request->sort_description ;
+            $updated->slug             = Str::slug($request->sort_description,'-');
+            $updated->description      = $request->description;
+            $updated->type             = $request->type;
+            $updated->service_link     = $request->service_link;
+            $updated->status           = $status;
+            $updated->update();
+                // $updated->update([
+                //     'title'            => $request->title,
+                //     'sort_description' => $request->sort_description ,
+                //     'slug'             => Str::slug($request->sort_description,'-'),
+                //     'description'      => $request->description,
+                //     'type'             => $request->type,
+                //     'service_link'     => $request->service_link,
+                //     'status'           => $status
+                // ]);
 
-            if ($request->hasFile('image')) {
+                if ($request->hasFile('image')) {
 
-                if(!empty($updated->image) && file_exists('images/service-image/'.$updated->image)){      
-                    unlink('images/service-image/'.$updated->image);
+                    if(!empty($updated->image) && file_exists('images/service-image/'.$updated->image)){      
+                        unlink('images/service-image/'.$updated->image);
+                    }
+                        $image = $request->file('image');
+                        $imageName = time().'.'.$image->getClientOriginalExtension();
+                        $image->move('images/service-image',$imageName);
+
+                        Service::where('id', $updated->id)
+                                ->update([
+                                    'image' => $imageName
+                                ]);
                 }
-                    $image = $request->file('image');
-                    $imageName = time().'.'.$image->getClientOriginalExtension();
-                    $image->move(public_path('images/service-image'),$imageName);
-
-                    Service::where('id', $updated->id)
-                            ->update([
-                                'image' => $imageName
-                            ]);
-            }
-           DB::commit();
-        return back()->with(['alert-type' => 'success','message' => 'Service Updated successfull']); 
-                    
-    } catch (Exception $e) {
-        DB::rollback();
-       return back()->with(['alert-type' => 'error','message' => $e->errorInfo[2]]);
+               DB::commit();
+            return back()->with(['alert-type' => 'success','message' => 'Service Updated successfull']); 
+                        
+        } catch (Exception $e) {
+            DB::rollback();
+           return back()->with(['alert-type' => 'error','message' => $e->errorInfo[2]]);
+        }
+    }
+    else {
+        return back()->with(['alert-type' => 'error','message' => 'Validation Error Occured!']);
     }
 }
 

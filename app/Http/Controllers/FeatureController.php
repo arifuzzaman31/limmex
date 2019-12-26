@@ -18,9 +18,9 @@ class FeatureController extends Controller
     }
 
 
-    public function changestatus($slug)
+    public function changestatus($id)
     {
-        $data = Feature::where('slug',$slug)->first();
+        $data = Feature::where('id',$id)->first();
             if ($data->status == 0) {
                 $data->status = 1;
             }
@@ -53,7 +53,7 @@ class FeatureController extends Controller
             if ($request->hasFile('image')) {
                 $image = $request->file('image');
                 $imageName = time().'.'.$image->getClientOriginalExtension();
-                $image->move(public_path('images/feature-image'),$imageName);
+                $image->move('images/feature-image',$imageName);
 
                 Feature::where('id', $insertid)
                         ->update([
@@ -77,9 +77,9 @@ class FeatureController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public function show($id)
     {
-       $data = Feature::where('slug',$slug)->first();
+       $data = Feature::where('id',$id)->first();
         return view('admin.feature.showFeature',compact('data'));
     }
 
@@ -89,24 +89,23 @@ class FeatureController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($slug)
+    public function edit($id)
     {
-        $data = Feature::where('slug',$slug)->first();
+        $data = Feature::where('id',$id)->first();
         return view('admin.feature.editFeature',compact('data'));
     }
 
-public function update(Request $request, $slug)
+public function update(Request $request, $id)
 {
     $status = $request->status ? 1 : 0;
    try {
         DB::beginTransaction();
-        $updated = Feature::where('slug',$slug)->first();
-            $updated->update([
-                'title'      =>  $request->title,
-                'slug'       =>  Str::slug($request->title,'-'),
-                'description'=>  $request->description,
-                'status'     =>  $status
-            ]);
+        $updated = Feature::where('id',$id)->first();
+                $updated->title      =  $request->title;
+                $updated->slug       =  Str::slug($request->title,'-');
+                $updated->description =  $request->description;
+                $updated->status     =  $status;
+            $updated->update();
 
         if ($request->hasFile('image')) {
 
@@ -115,7 +114,7 @@ public function update(Request $request, $slug)
         }
             $image = $request->file('image');
             $imageName = time().'.'.$image->getClientOriginalExtension();
-            $image->move(public_path('images/feature-image'),$imageName);
+            $image->move('images/feature-image',$imageName);
 
             Feature::where('id', $updated->id)
                     ->update([
@@ -132,9 +131,9 @@ public function update(Request $request, $slug)
 }
 
 
-    public function destroy($slug)
+    public function destroy($id)
     {
-        $data = Feature::where('slug',$slug)->first();
+        $data = Feature::where('id',$id)->first();
             if(!empty($data->feature_icon) && file_exists('images/feature-image/'.$data->feature_icon)){      
                 unlink('images/feature-image/'.$data->feature_icon);
             }

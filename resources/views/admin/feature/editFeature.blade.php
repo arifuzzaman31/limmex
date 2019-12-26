@@ -18,11 +18,16 @@
 		        </div>
 		         <div class="form-group">
 		            <div class="form-line">
+		            	@if($data->feature_icon)
+                            <img src="{{URL::to('images/feature-image/'.$data->feature_icon)}}" height="50px" width="70px">
+                        @endif
 		                <input type="file" id="icon" name="image" class="form-control">
 		            </div>
 		        </div>
-		        <input type="checkbox" id="remember_me" name="status" value="1" class="filled-in">
-		        <label for="remember_me">Status</label>
+		        <div class="demo-switch-title">Status</div>
+		            <div class="switch">
+		                <label><input type="checkbox" name="status" @if($data->status === 1)checked @endif  value="1"><span class="lever switch-col-green"></span></label>
+		            </div>
 		        <br>
 		        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Update</button>
 		    </form>

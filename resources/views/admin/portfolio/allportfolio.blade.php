@@ -5,18 +5,6 @@
         <div class="card">
             <div class="header">
                 <button class="btn btn-primary" onclick="getModal('get-portfolio','Add Portfolio')" >Add Portfolio</button>
-                <ul class="header-dropdown m-r--5">
-                    <li class="dropdown">
-                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            <i class="material-icons">more_vert</i>
-                        </a>
-                        <ul class="dropdown-menu pull-right">
-                            <li><a href="javascript:void(0);">Action</a></li>
-                            <li><a href="javascript:void(0);">Another action</a></li>
-                            <li><a href="javascript:void(0);">Something else here</a></li>
-                        </ul>
-                    </li>
-                </ul>
             </div>
             <div class="body">
                 <div class="table-responsive">
@@ -29,14 +17,6 @@
                     <th>Action</th>
                 </tr>
             </thead>
-            <tfoot>
-                <tr>
-                    <th>SL</th>
-                    <th>Link</th>
-                    <th>Picture</th>
-                    <th>Action</th>
-                </tr>
-            </tfoot>
             <tbody>
             	@if(count($portfolios) > 0)
             	<?php $i = 1; ?>

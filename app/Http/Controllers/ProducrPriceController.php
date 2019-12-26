@@ -36,7 +36,7 @@ class ProducrPriceController extends Controller
                 if ($request->hasFile('image')) {
                     $image = $request->file('image');
                     $imageName = time().'.'.$image->getClientOriginalExtension();
-                    $image->move(public_path('images/product-image'),$imageName);
+                    $image->move('images/product-image',$imageName);
                     
                     $insertid = Priceplan::insert([
                         'title'       =>  $request->title,
@@ -71,13 +71,12 @@ class ProducrPriceController extends Controller
            try {
                 DB::beginTransaction();
                 $updated = Priceplan::find($id);
-                    $updated->update([
-                        'title'       =>  $request->title,
-                        'description' =>  $request->description,
-                        'price'       =>  $request->price,
-                        'product_link'=>  $request->product_link,
-                        'status'      =>  $status
-                    ]);
+                    $updated->title       =  $request->title;
+                    $updated->description =  $request->description;
+                    $updated->price       =  $request->price;
+                    $updated->product_link=  $request->product_link;
+                    $updated->status      =  $status;
+                 $updated->update();
 
                 if ($request->hasFile('image')) {
 
@@ -86,7 +85,7 @@ class ProducrPriceController extends Controller
                 }
                     $image = $request->file('image');
                     $imageName = time().'.'.$image->getClientOriginalExtension();
-                    $image->move(public_path('images/product-image'),$imageName);
+                    $image->move('images/product-image',$imageName);
 
                     Priceplan::where('id', $updated->id)
                             ->update([

@@ -37,7 +37,7 @@ class SliderController extends Controller
                 if ($request->hasFile('image')) {
                     $image = $request->file('image');
                     $imageName = time().'.'.$image->getClientOriginalExtension();
-                    $image->move(public_path('images/slider-image'),$imageName);
+                    $image->move('images/slider-image',$imageName);
                     
                     $insertid = Slider::insert([
                         'name'        =>  $request->name,
@@ -78,12 +78,12 @@ class SliderController extends Controller
            try {
                 DB::beginTransaction();
                 $updated = Slider::find($id);
-                    $updated->update([
-                        'name'        =>  $request->name,
-                        'title'       =>  $request->title,
-                        'description' =>  $request->description,
-                        'status'      =>  $status
-                    ]);
+             
+                        $updated->name        =  $request->name;
+                        $updated->title       =  $request->title;
+                        $updated->description =  $request->description;
+                        $updated->status      =  $status;
+                    $updated->update();
 
                 if ($request->hasFile('image')) {
 
@@ -92,7 +92,7 @@ class SliderController extends Controller
                 }
                     $image = $request->file('image');
                     $imageName = time().'.'.$image->getClientOriginalExtension();
-                    $image->move(public_path('images/slider-image'),$imageName);
+                    $image->move('images/slider-image',$imageName);
 
                     Slider::where('id', $updated->id)
                             ->update([

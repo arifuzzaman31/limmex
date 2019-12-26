@@ -93,14 +93,13 @@ class MemberController extends Controller
 	   try {
 	        DB::beginTransaction();
 	        $updated = Team::find($id);
-	            $updated->update([
-	                'name'		  =>  $request->name,
-	                'designation' =>  $request->designation,
-	                'fb_link'     =>  $request->fb_link,
-	                'tw_link'     =>  $request->tw_link,
-	                'in_link'	  =>  $request->in_link,
-	                'status'      =>  $status
-	            ]);
+	                $updated->name		  =  $request->name;
+	                $updated->designation =  $request->designation;
+	                $updated->fb_link     =  $request->fb_link;
+	                $updated->tw_link     =  $request->tw_link;
+	                $updated->in_link	  =  $request->in_link;
+	                $updated->status      =  $status;
+	            $updated->update();
 
 	        if ($request->hasFile('image')) {
 

@@ -30,7 +30,7 @@ class PortfolioController extends Controller
                 if ($request->hasFile('image')) {
                     $image = $request->file('image');
                     $imageName = time().'.'.$image->getClientOriginalExtension();
-                    $image->move(public_path('images/portfolio-image'),$imageName);
+                    $image->move('images/portfolio-image',$imageName);
                     
                     $insertid = Portfolio::insert([
                         'link'        =>  $request->link,
@@ -63,11 +63,10 @@ class PortfolioController extends Controller
        try {
             DB::beginTransaction();
             $updated = Portfolio::find($id);
-                $updated->update([
-                    'link'        =>  $request->link,
-                    'description' =>  $request->description,
-                    'status'      =>  $status
-                ]);
+                $updated->link        = $request->link;
+                $updated->description = $request->description;
+                $updated->status      = $status;
+            $updated->update();
 
             if ($request->hasFile('image')) {
 
@@ -76,7 +75,7 @@ class PortfolioController extends Controller
             }
                 $image = $request->file('image');
                 $imageName = time().'.'.$image->getClientOriginalExtension();
-                $image->move(public_path('images/portfolio-image'),$imageName);
+                $image->move('images/portfolio-image',$imageName);
 
                 Portfolio::where('id', $updated->id)
                         ->update([
@@ -84,11 +83,11 @@ class PortfolioController extends Controller
                         ]);
             }
                 DB::commit();
-            return back()->with(['message', 'Portfolio Updated successfull']);
+            return back()->with(['alert-type' => 'success', 'message'=> 'Portfolio Updated successfull']);
                         
         } catch (Exception $e) {
             DB::rollback();
-            return back()->withErrors(['message', $e->errorInfo[2]]);
+            return back()->with(['alert-type' => 'error', 'message' => $e->errorInfo[2]]);
         }
     }
 

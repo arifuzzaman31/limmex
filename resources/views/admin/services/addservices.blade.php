@@ -1,6 +1,12 @@
 <div class="body">
     <form action="{{route('service.store')}}" method="post" enctype="multipart/form-data">
        @csrf
+        <label for="title">Title</label>
+        <div class="form-group">
+            <div class="form-line">
+                <input type="text" id="title" name="title" class="form-control">
+            </div>
+        </div>
         <label for="Sort-Description">Sort Description</label>
         <div class="form-group">
             <div class="form-line">
@@ -17,7 +23,6 @@
         <div class="row clearfix">
             <div class="col-sm-12">
                 <select class="form-control show-tick" name="type" id="type">
-                    <option value="">-- Please select --</option>
                     <option value="Ready Software">Ready Software</option>
                     <option value="Ready WS">Ready WS</option>
                     <option value="Own Service">Own Service</option>

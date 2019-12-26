@@ -15,6 +15,7 @@ class CreateServicesTable extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->mediumText('title');
             $table->mediumText('sort_description')->unique();
             $table->string('slug');
             $table->longText('description');

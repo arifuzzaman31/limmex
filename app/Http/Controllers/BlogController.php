@@ -16,19 +16,9 @@ class BlogController extends Controller
         return view('admin.blogs.allblog', compact('blogs'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function changeStatus($id)
     {
-        //
-    }
-
-    public function changeStatus($slug)
-    {
-         $data = Blog::where('slug',$slug)->first();
+         $data = Blog::where('id',$id)->first();
             if ($data->status == 0) {
                 $data->status = 1;
             }
@@ -60,7 +50,7 @@ class BlogController extends Controller
                 if ($request->hasFile('image')) {
                     $image = $request->file('image');
                     $imageName = time().'.'.$image->getClientOriginalExtension();
-                    $image->move(public_path('images/blog-image'),$imageName);
+                    $image->move('images/blog-image',$imageName);
 
                     Blog::where('id', $insertid)
                             ->update([
@@ -78,30 +68,30 @@ class BlogController extends Controller
         return back()->with(['alert-type' => 'error','message' => 'Have validation Error']);
     }
 
-    public function show($slug)
+    public function show($id)
     {
-        $data = Blog::where('slug',$slug)->first();
+        $data = Blog::where('id',$id)->first();
         return view('admin.blogs.showblog',compact('data'));
     }
 
-    public function edit($slug)
+    public function edit($id)
     {
-        $data = Blog::where('slug',$slug)->first();
+        $data = Blog::where('id',$id)->first();
         return view('admin.blogs.editblog',compact('data'));
     }
 
-    public function update(Request $request, $slug)
+    public function update(Request $request, $id)
     {
-       $status = $request->status ? 1 : 0;
+            $status = $request->status ? 1 : 0;
        try {
             DB::beginTransaction();
-            $updated = Blog::where('slug',$slug)->first();
+            $updated = Blog::where('id',$id)->first();
                 $updated->update([
                     'title'      =>  $request->title,
                     'slug'       => Str::slug($request->title,'-'),
                     'sort_description' => substr($request->description, 0,80),
                     'description'=>  $request->description,
-                    'status'     =>  $status
+                    'status'     =>  $status,
                 ]);
 
             if ($request->hasFile('image')) {
@@ -111,7 +101,7 @@ class BlogController extends Controller
             }
                 $image = $request->file('image');
                 $imageName = time().'.'.$image->getClientOriginalExtension();
-                $image->move(public_path('images/blog-image'),$imageName);
+                $image->move('images/blog-image',$imageName);
 
                 Blog::where('id', $updated->id)
                         ->update([
@@ -133,9 +123,9 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($slug)
+    public function destroy($id)
     {
-        $data = Blog::where('slug',$slug)->first();
+        $data = Blog::where('id',$id)->first();
             if(!empty($data->blog_image) && file_exists('images/blog-image/'.$data->blog_image)){      
                 unlink('images/blog-image/'.$data->blog_image);
             }

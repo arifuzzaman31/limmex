@@ -10,6 +10,16 @@ Route::get('logout', [
 	'uses'  => 'DashboardController@logout'
 ]);
 
+Route::get('password', [
+	'as' 	=> 'change-password',
+	'uses'  => 'DashboardController@changePassword'
+]);
+
+Route::post('password', [
+	'as' 	=> 'update-password',
+	'uses'  => 'DashboardController@updatePassword'
+]);
+
 
 	// Feature route
 Route::get('get-feature', [
