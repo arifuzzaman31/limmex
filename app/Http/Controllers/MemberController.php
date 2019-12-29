@@ -90,37 +90,47 @@ class MemberController extends Controller
 	public function update(Request $request, $id)
 	{
 	    $status = $request->status ? 1 : 0;
-	   try {
-	        DB::beginTransaction();
-	        $updated = Team::find($id);
-	                $updated->name		  =  $request->name;
-	                $updated->designation =  $request->designation;
-	                $updated->fb_link     =  $request->fb_link;
-	                $updated->tw_link     =  $request->tw_link;
-	                $updated->in_link	  =  $request->in_link;
-	                $updated->status      =  $status;
-	            $updated->update();
+        $validation = Validator::make($request->all(),[
+            'name'       => 'required',
+            'description' => 'required',
+            'fb_link' => 'required',
+            'tw_link' => 'required',
+            'in_link' => 'required',
+        ]);
+        if (!$validation->fails()) {
+    	   try {
+    	        DB::beginTransaction();
+    	        $updated = Team::find($id);
+    	                $updated->name		  =  $request->name;
+    	                $updated->designation =  $request->designation;
+    	                $updated->fb_link     =  $request->fb_link;
+    	                $updated->tw_link     =  $request->tw_link;
+    	                $updated->in_link	  =  $request->in_link;
+    	                $updated->status      =  $status;
+    	            $updated->update();
 
-	        if ($request->hasFile('image')) {
+    	        if ($request->hasFile('image')) {
 
-	        if(!empty($updated->image) && file_exists('images/team-member-image/'.$updated->image)){      
-	            unlink('images/team-member-image/'.$updated->image);
-	        }
-	            $image = $request->file('image');
-	            $imageName = time().'.'.$image->getClientOriginalExtension();
-	            $image->move(public_path('images/team-member-image'),$imageName);
+    	        if(!empty($updated->image) && file_exists('images/team-member-image/'.$updated->image)){      
+    	            unlink('images/team-member-image/'.$updated->image);
+    	        }
+    	            $image = $request->file('image');
+    	            $imageName = time().'.'.$image->getClientOriginalExtension();
+    	            $image->move(public_path('images/team-member-image'),$imageName);
 
-	            Team::where('id', $updated->id)
-	                    ->update([
-	                        'image' => $imageName
-	                    ]);
-	        }
-	           DB::commit();
-                return back()->with(['alert-type' => 'success','message' => 'Member Updated successfull']);             
-	    } catch (Exception $e) {
-	        DB::rollback();
-	        return back()->with(['alert-type' => 'error','message' => $e->errorInfo[2]]);
-	    }
+    	            Team::where('id', $updated->id)
+    	                    ->update([
+    	                        'image' => $imageName
+    	                    ]);
+    	        }
+    	           DB::commit();
+                    return back()->with(['alert-type' => 'success','message' => 'Member Updated successfull']);             
+    	    } catch (Exception $e) {
+    	        DB::rollback();
+    	        return back()->with(['alert-type' => 'error','message' => $e->errorInfo[2]]);
+    	    }
+        }
+        return back()->with(['alert-type' => 'error','message' => 'Validation Error Occured!']);
 	}
 
 

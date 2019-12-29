@@ -19,15 +19,6 @@
                     <th>Action</th>
                 </tr>
             </thead>
-            <tfoot>
-                <tr>
-                    <th>SL</th>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Date</th>
-                    <th>Action</th>
-                </tr>
-            </tfoot>
             <tbody>
             	@if(count($features) > 0)
             	<?php $i = 1; ?>

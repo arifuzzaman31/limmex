@@ -1,5 +1,4 @@
 <div class="card">
-  <!-- <img class="card-img-top" src="..." alt="Card image cap" height="60px" width="80px"> -->
 	  <div class="card-body">
 	    <div class="body">
 		    <form action="{{route('feature.update',$data->id)}}" method="post" enctype="multipart/form-data">

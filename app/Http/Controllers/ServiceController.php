@@ -102,15 +102,6 @@ public function update(Request $request, $id)
             $updated->service_link     = $request->service_link;
             $updated->status           = $status;
             $updated->update();
-                // $updated->update([
-                //     'title'            => $request->title,
-                //     'sort_description' => $request->sort_description ,
-                //     'slug'             => Str::slug($request->sort_description,'-'),
-                //     'description'      => $request->description,
-                //     'type'             => $request->type,
-                //     'service_link'     => $request->service_link,
-                //     'status'           => $status
-                // ]);
 
                 if ($request->hasFile('image')) {
 

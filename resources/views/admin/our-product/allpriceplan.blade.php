@@ -20,17 +20,6 @@
                     <th>Action</th>
                 </tr>
             </thead>
-            <tfoot>
-                <tr>
-                    <th>SL</th>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Price</th>
-                    <th>Product Link</th>
-                    <th>Image</th>
-                    <th>Action</th>
-                </tr>
-            </tfoot>
             <tbody>
             	@if(count($priceplans) > 0)
             	<?php $i = 1; ?>

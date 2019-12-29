@@ -75,15 +75,20 @@ class SliderController extends Controller
     public function update(Request $request,$id)
     {
         $status = $request->status ? 1 : 0;
+        $validation = Validator::make($request->all(),[
+            'name'       => 'required',
+            'title' => 'required',
+            'description' => 'required' 
+        ]);
+        if (!$validation->fails()) {
            try {
                 DB::beginTransaction();
                 $updated = Slider::find($id);
-             
-                        $updated->name        =  $request->name;
-                        $updated->title       =  $request->title;
-                        $updated->description =  $request->description;
-                        $updated->status      =  $status;
-                    $updated->update();
+                $updated->name        =  $request->name;
+                $updated->title       =  $request->title;
+                $updated->description =  $request->description;
+                $updated->status      =  $status;
+                $updated->update();
 
                 if ($request->hasFile('image')) {
 
@@ -106,6 +111,8 @@ class SliderController extends Controller
                 DB::rollback();
                 return back()->with(['alert-type' => 'error','message' => $e->errorInfo[2]]);
             }
+        }
+        return back()->with(['alert-type' => 'error','message' => 'Validation Error Occured!']);
     }
 
     /**

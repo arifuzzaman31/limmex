@@ -82,39 +82,46 @@ class BlogController extends Controller
 
     public function update(Request $request, $id)
     {
-            $status = $request->status ? 1 : 0;
-       try {
-            DB::beginTransaction();
-            $updated = Blog::where('id',$id)->first();
-                $updated->update([
-                    'title'      =>  $request->title,
-                    'slug'       => Str::slug($request->title,'-'),
-                    'sort_description' => substr($request->description, 0,80),
-                    'description'=>  $request->description,
-                    'status'     =>  $status,
-                ]);
+        $status = $request->status ? 1 : 0;
+         $validation = Validator::make($request->all(),[
+            'title'       => 'required',
+            'description' => 'required'
+        ]);
+        if (!$validation->fails()) {
+           try {
+                DB::beginTransaction();
+                $updated = Blog::where('id',$id)->first();
+                    $updated->update([
+                        'title'      =>  $request->title,
+                        'slug'       => Str::slug($request->title,'-'),
+                        'sort_description' => substr($request->description, 0,80),
+                        'description'=>  $request->description,
+                        'status'     =>  $status,
+                    ]);
 
-            if ($request->hasFile('image')) {
+                if ($request->hasFile('image')) {
 
-            if(!empty($updated->blog_image) && file_exists('images/blog-image/'.$updated->blog_image)){      
-                unlink('images/blog-image/'.$updated->blog_image);
+                if(!empty($updated->blog_image) && file_exists('images/blog-image/'.$updated->blog_image)){      
+                    unlink('images/blog-image/'.$updated->blog_image);
+                }
+                    $image = $request->file('image');
+                    $imageName = time().'.'.$image->getClientOriginalExtension();
+                    $image->move('images/blog-image',$imageName);
+
+                    Blog::where('id', $updated->id)
+                            ->update([
+                                'blog_image' => $imageName
+                            ]);
+                }
+                    DB::commit();
+                return back()->with(['alert-type' => 'success','message' => 'Blog updated successfull']);
+                            
+            } catch (Exception $e) {
+                DB::rollback();
+                return back()->with(['alert-type' => 'error','message' => $e->errorInfo[2]]);
             }
-                $image = $request->file('image');
-                $imageName = time().'.'.$image->getClientOriginalExtension();
-                $image->move('images/blog-image',$imageName);
-
-                Blog::where('id', $updated->id)
-                        ->update([
-                            'blog_image' => $imageName
-                        ]);
-            }
-                DB::commit();
-            return back()->with(['alert-type' => 'success','message' => 'Blog updated successfull']);
-                        
-        } catch (Exception $e) {
-            DB::rollback();
-            return back()->with(['alert-type' => 'error','message' => $e->errorInfo[2]]);
         }
+        return back()->with(['alert-type' => 'error','message' => 'Have validation Error']);
     }
 
     /**

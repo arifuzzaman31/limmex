@@ -60,35 +60,42 @@ class PortfolioController extends Controller
     public function update(Request $request,$id)
     {
         $status = $request->status ? 1 : 0;
-       try {
-            DB::beginTransaction();
-            $updated = Portfolio::find($id);
-                $updated->link        = $request->link;
-                $updated->description = $request->description;
-                $updated->status      = $status;
-            $updated->update();
+        $validation = Validator::make($request->all(),[
+            'link'       => 'required',
+            'description' => 'required'
+        ]);
+        if (!$validation->fails()) {
+           try {
+                DB::beginTransaction();
+                $updated = Portfolio::find($id);
+                    $updated->link        = $request->link;
+                    $updated->description = $request->description;
+                    $updated->status      = $status;
+                $updated->update();
 
-            if ($request->hasFile('image')) {
+                if ($request->hasFile('image')) {
 
-            if(!empty($updated->image) && file_exists('images/portfolio-image/'.$updated->image)){      
-                unlink('images/portfolio-image/'.$updated->image);
+                if(!empty($updated->image) && file_exists('images/portfolio-image/'.$updated->image)){      
+                    unlink('images/portfolio-image/'.$updated->image);
+                }
+                    $image = $request->file('image');
+                    $imageName = time().'.'.$image->getClientOriginalExtension();
+                    $image->move('images/portfolio-image',$imageName);
+
+                    Portfolio::where('id', $updated->id)
+                            ->update([
+                                'image' => $imageName
+                            ]);
+                }
+                    DB::commit();
+                return back()->with(['alert-type' => 'success', 'message'=> 'Portfolio Updated successfull']);
+                            
+            } catch (Exception $e) {
+                DB::rollback();
+                return back()->with(['alert-type' => 'error', 'message' => $e->errorInfo[2]]);
             }
-                $image = $request->file('image');
-                $imageName = time().'.'.$image->getClientOriginalExtension();
-                $image->move('images/portfolio-image',$imageName);
-
-                Portfolio::where('id', $updated->id)
-                        ->update([
-                            'image' => $imageName
-                        ]);
-            }
-                DB::commit();
-            return back()->with(['alert-type' => 'success', 'message'=> 'Portfolio Updated successfull']);
-                        
-        } catch (Exception $e) {
-            DB::rollback();
-            return back()->with(['alert-type' => 'error', 'message' => $e->errorInfo[2]]);
         }
+        return back()->with(['alert-type' => 'error','message' => 'Validation Error Occured!']);
     }
 
     public function changeStatus($id)

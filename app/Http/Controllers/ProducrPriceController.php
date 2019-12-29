@@ -68,6 +68,12 @@ class ProducrPriceController extends Controller
     public function update(Request $request,$id)
     {
         $status = $request->status ? 1 : 0;
+        $validation = Validator::make($request->all(),[
+            'title'       => 'required',
+            'description' => 'required',
+            'price' => 'required'
+        ]);
+        if (!$validation->fails()) {
            try {
                 DB::beginTransaction();
                 $updated = Priceplan::find($id);
@@ -98,6 +104,8 @@ class ProducrPriceController extends Controller
                 DB::rollback();
                return back()->with(['alert-type' => 'error','message' => $e->errorInfo[2]]);
             }
+        }
+        return back()->with(['alert-type' => 'error','message' => 'Validation Error Occured!']);
     }
 
     public function destroy($id)

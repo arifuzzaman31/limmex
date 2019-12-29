@@ -30,15 +30,6 @@
                     <th>Action</th>
                 </tr>
             </thead>
-            <tfoot>
-                <tr>
-                    <th>SL</th>
-                    <th>Name</th>
-                    <th>Designation</th>
-                    <th>Picture</th>
-                    <th>Action</th>
-                </tr>
-            </tfoot>
             <tbody>
             	@if(count($members) > 0)
             	<?php $i = 1; ?>

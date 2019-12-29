@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 24, 2019 at 01:00 PM
+-- Generation Time: Dec 29, 2019 at 06:20 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -46,8 +46,8 @@ CREATE TABLE `blogs` (
 
 INSERT INTO `blogs` (`id`, `title`, `slug`, `sort_description`, `description`, `blog_image`, `status`, `created_at`, `updated_at`) VALUES
 (1, 'Where does it come from', 'where-does-it-come-from', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since', '1575797201.jpg', 1, '2019-12-08 09:27:50', '2019-12-08 03:26:41'),
-(2, 'Why do we use it', 'why-do-we-use-it', 'It is a long established fact that a reader will be distracted by the readable c', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem', '1575797409.jpg', 1, '2019-12-08 09:30:09', '2019-12-08 03:30:50'),
-(3, 'Lorem ipsum dolorm dolorm dolor', 'lorem-ipsum-dolorm-dolorm-dolor', 'Lorem ipsum dolorm dolorm dolorLorem ipsum dolorm dolorm dolorLorem ipsum dolorm', 'Lorem ipsum dolorm dolorm dolorLorem ipsum dolorm dolorm dolorLorem ipsum dolorm dolorm dolorLorem ipsum dolorm dolorm dolor', '1576669714.jpg', 1, '2019-12-18 11:48:34', '2019-12-18 05:48:34');
+(2, 'Why do we use it', 'why-do-we-use-it', '<p>It is a long established fact that a reader will be distracted by the readabl', '<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem</p>', '1575797409.jpg', 1, '2019-12-08 09:30:09', '2019-12-26 06:21:00'),
+(3, 'Lorem ipsum dolorm dolorm dolor', 'lorem-ipsum-dolorm-dolorm-dolor', '<p>Lorem ipsum dolorm dolorm dolorLorem ipsum dolorm dolorm dolorLorem ipsum dol', '<p>Lorem ipsum dolorm dolorm dolorLorem ipsum dolorm dolorm dolorLorem ipsum dolorm dolorm dolorLorem ipsum dolorm dolorm dolor</p>', '1576669714.jpg', 1, '2019-12-18 11:48:34', '2019-12-26 06:21:24');
 
 -- --------------------------------------------------------
 
@@ -104,7 +104,7 @@ CREATE TABLE `features` (
 
 INSERT INTO `features` (`id`, `title`, `slug`, `description`, `feature_icon`, `status`, `created_at`, `updated_at`) VALUES
 (1, 'Web Design', 'web-design', 'Ipsum is that it has a more-or-less normal distribution of letters, as opposed to usingIpsum is that it has a more-or-less normal distribution of letters, as opposed to using', '1575798169.png', 1, '2019-12-08 09:42:49', '2019-12-22 23:03:26'),
-(2, 'Local Transport', 'local-transport', 'making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text', '1575798237.png', 1, '2019-12-08 09:43:56', '2019-12-08 03:45:49'),
+(2, 'Local Transport', 'local-transport', '<p>making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text</p>', '1575798237.png', 1, '2019-12-08 09:43:56', '2019-12-26 06:35:39'),
 (3, 'Construct Development', 'construct-development', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it', '1575798298.png', 1, '2019-12-08 09:44:58', '2019-12-08 03:44:58');
 
 -- --------------------------------------------------------
@@ -188,8 +188,8 @@ INSERT INTO `portfolios` (`id`, `image`, `link`, `description`, `status`, `creat
 (2, '1575800777.png', 'https://www.lipsumlip.com/', 'Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur', 1, '2019-12-08 10:26:17', NULL),
 (3, '1575800807.png', 'http://localhost/Heus/public/', 'from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source', 1, '2019-12-08 10:26:47', NULL),
 (4, '1575800848.png', 'http://amirgroup.com.bd/', 'Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero', 1, '2019-12-08 10:27:28', NULL),
-(5, '1575800887.png', 'https://laravel.com/docs', 'This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum,', 0, '2019-12-08 10:28:08', '2019-12-09 02:31:34'),
-(6, '1575805570.png', 'https://www.lvl.com/', 'consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable', 0, '2019-12-08 11:46:10', '2019-12-09 02:31:27');
+(5, '1575800887.png', 'https://laravel.com/docs', 'This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum,', 1, '2019-12-08 10:28:08', '2019-12-26 07:00:10'),
+(6, '1575805570.png', 'https://www.lvl.com/', '<p>consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable</p>', 1, '2019-12-08 11:46:10', '2019-12-26 07:00:20');
 
 -- --------------------------------------------------------
 
@@ -215,7 +215,7 @@ CREATE TABLE `priceplans` (
 
 INSERT INTO `priceplans` (`id`, `title`, `description`, `price`, `product_link`, `image`, `status`, `created_at`, `updated_at`) VALUES
 (1, 'Lorem ipsum dolord', 'Some migration operations are destructive, which means they may cause you to lose data. In order to protect', 58.66, 'https://codecanyon.net/item/royex-human-resource-and-payroll-management-software/24674724', '1575887532.png', 1, '2019-12-10 04:24:39', '2019-12-22 01:53:46'),
-(2, 'Rolling Back Migrations', 'To rollback the latest migration operation, you may use the rollback command. This command', 60.89, 'https://codecanyon.net/item/belontory-vue-laravel-inventory-management-system/23832864', '1575888594.png', 1, '2019-12-10 04:24:40', '2019-12-22 01:54:13'),
+(2, 'Rolling Back Migrations', '<p>To rollback the latest migration operation, you may use the rollback command. This command</p>', 60.89, 'https://codecanyon.net/item/belontory-vue-laravel-inventory-management-system/23832864', '1575888594.png', 1, '2019-12-10 04:24:40', '2019-12-26 06:52:30'),
 (4, 'Lorem ipsum dolor', 'If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t', 90.25, 'https://codecanyon.net/item/belontory-vue-laravel-inventory-management-system/23832864', '1575956022.png', 1, '2019-12-10 05:33:42', '2019-12-22 01:54:32');
 
 -- --------------------------------------------------------
@@ -226,6 +226,7 @@ INSERT INTO `priceplans` (`id`, `title`, `description`, `price`, `product_link`,
 
 CREATE TABLE `services` (
   `id` bigint(20) UNSIGNED NOT NULL,
+  `title` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `sort_description` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `slug` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -241,19 +242,19 @@ CREATE TABLE `services` (
 -- Dumping data for table `services`
 --
 
-INSERT INTO `services` (`id`, `sort_description`, `slug`, `description`, `type`, `image`, `status`, `service_link`, `created_at`, `updated_at`) VALUES
-(4, 'Ready Product', 'ready-product', 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered', 'Ready Software', '1575954818.png', 1, 'https://www.facebook.com/groups/BUCSE45GROUPB/?ref=bookmarks', '2019-12-08 10:05:07', '2019-12-18 23:47:15'),
-(5, 'from a Lorem Ipsum', 'from-a-lorem-ipsum', 'Latin words, consectetur, from a Lorem Ipsum passage, and going through', 'Ready Software', 'service-icon-02.png', 1, 'https://www.facebook.com/groups/BUCSE45GROUPB/?ref=bookmarks', '2019-12-08 10:06:01', '2019-12-18 23:47:28'),
-(6, 'Service Product', 'service-product', 'The standard chunk of Lorem Ipsum used since the 1500s is reproducedThe standard chunk of Lorem Ipsum used since the 1500s is reproduced', 'Ready Software', '1575954783.png', 1, 'https://www.facebook.com/groups/BUCSE45GROUPB/?ref=bookmarks', '2019-12-08 10:06:23', '2019-12-18 23:47:44'),
-(7, 'On demand Product', 'on-demand-product', 'Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written', 'Own Service', '1575955274.png', 1, 'https://www.cricbuzz.com/', '2019-12-10 05:21:14', '2019-12-18 23:48:04'),
-(8, 'from a Lorem Ipsum df', 'from-a-Lorem-Ipsum-dean', 'The standard chunk of Lorem Ipsum used since the 1500s is reproducedThe', 'Own Service', '1575955274.png', 1, 'https://www.cricbuzz.com/', '2019-12-19 06:35:19', '2019-12-19 06:35:21'),
-(9, 'simply dummy text of the', 'simply-dummy-text-of-the', 'industry\'s standard dummy text ever since the 1500s, when an unknown printer tookindustry\'s standard dummy text ever since the 1500s, when an unknown printer took', 'Ready WS', '1576738029.png', 1, 'https://www.cricbuzz.com/', '2019-12-19 06:47:10', '2019-12-22 05:03:28'),
-(10, 'Lorem Ipsum is not simply', 'lorem-ipsum-is-not-simply-random-text', 'Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock', 'Ready WS', '1576738085.png', 1, 'https://www.cricbuzz.com/', '2019-12-19 06:48:05', '2019-12-22 05:03:29'),
-(11, 'looked up one of the', 'looked-up-one-of-the-more-obscure', 'Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source', 'Own Service', '1576738151.png', 1, 'https://www.cricbuzz.com/', '2019-12-19 06:49:11', '2019-12-22 05:03:31'),
-(12, 'The standard chunk of Lorem', 'the-standard-chunk-of-lorem', 'The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from', 'Ready WS', '1576738632.png', 1, 'https://www.cricbuzz.com/', '2019-12-19 06:57:12', '2019-12-22 05:03:33'),
-(13, 'combined with a handful of model', 'combined-with-a-handful-of-model', 'combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable.', 'On demand service', '1576738750.png', 1, 'https://www.cricbuzz.com/', '2019-12-19 06:59:10', '2019-12-22 00:00:59'),
-(14, 'All the Lorem Ipsum generators', 'all-the-lorem-ipsum-generators', 'If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing hidden in the middle of text', 'On demand service', '1576738786.png', 1, 'https://www.cricbuzz.com/', '2019-12-19 06:59:46', '2019-12-22 05:03:35'),
-(15, 'Lorem Ipsum is therefore', 'lorem-ipsum-is-therefore-always-free', 'to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.', 'On demand service', '1576738823.png', 1, 'https://www.cricbuzz.com/', '2019-12-19 07:00:23', '2019-12-22 05:03:37');
+INSERT INTO `services` (`id`, `title`, `sort_description`, `slug`, `description`, `type`, `image`, `status`, `service_link`, `created_at`, `updated_at`) VALUES
+(4, 'machine translator Bangla is sp', 'Ready Product', 'ready-product', 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered', 'Ready Software', '1575954818.png', 1, 'https://www.facebook.com/groups/BUCSE45GROUPB/?ref=bookmarks', '2019-12-08 10:05:07', '2019-12-18 23:47:15'),
+(5, 'Where does it come from', 'from a Lorem Ipsum', 'from-a-lorem-ipsum', '<p>Latin words, consectetur, from a Lorem Ipsum passage, and going through</p>', 'Ready Software', '1577354697.png', 1, 'https://www.facebook.com/groups/BUCSE45GROUPB/?ref=bookmarks', '2019-12-08 10:06:01', '2019-12-26 04:04:57'),
+(6, 'Encrypt some text. The result shown will be', 'Encrypt some text. The result shown will beEncrypt some text. The result shown will be', 'encrypt-some-text-the-result-shown-will-beencrypt-some-text-the-result-shown-will-be', '<p>The standard chunk of Lorem Ipsum used since the 1500s is reproducedThe standard chunk of Lorem Ipsum used since the 1500s is reproduced</p>', 'Ready Software', '1575954783.png', 1, 'https://www.facebook.com/groups/BUCSE45GROUPB/?ref=bookmarks', '2019-12-08 10:06:23', '2019-12-28 23:15:31'),
+(7, 'jest way for you to delete', 'On demand Product', 'on-demand-product', '<p>Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written</p>', 'Own Service', '1575955274.png', 1, 'https://www.cricbuzz.com/', '2019-12-10 05:21:14', '2019-12-28 23:13:47'),
+(8, 'Where does it come from', 'from a Lorem Ipsum df', 'from-a-lorem-ipsum-df', '<p>The standard chunk of Lorem Ipsum used since the 1500s is reproducedThe</p>', 'Own Service', '1575955274.png', 1, 'https://www.cricbuzz.com/', '2019-12-19 06:35:19', '2019-12-28 23:14:23'),
+(9, 'against some plaintext, to see if they match.', 'simply dummy text of the', 'simply-dummy-text-of-the', '<p>industry\'s standard dummy text ever since the 1500s, when an unknown printer tookindustry\'s standard dummy text ever since the 1500s, when an unknown printer took</p>', 'Ready WS', '1576738029.png', 1, 'https://www.cricbuzz.com/', '2019-12-19 06:47:10', '2019-12-28 23:15:56'),
+(10, 'simply dummy text of the print', 'Lorem Ipsum is not simply', 'lorem-ipsum-is-not-simply', '<p>Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock</p>', 'Ready WS', '1576738085.png', 1, 'https://www.cricbuzz.com/', '2019-12-19 06:48:05', '2019-12-28 23:17:05'),
+(11, 'Where does it come from', 'looked up one of the', 'looked-up-one-of-the', '<p>Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source</p>', 'Own Service', '1576738151.png', 1, 'https://www.cricbuzz.com/', '2019-12-19 06:49:11', '2019-12-28 23:14:47'),
+(12, 'printer took a galley of type and scrambled it', 'The standard chunk of Lorem', 'the-standard-chunk-of-lorem', '<p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from</p>', 'Ready WS', '1576738632.png', 1, 'https://www.cricbuzz.com/', '2019-12-19 06:57:12', '2019-12-28 23:17:31'),
+(13, 'Lorem ipsum dolor', 'combined with a handful of model', 'combined-with-a-handful-of-model', '<p>combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable.</p>\r\n<p>combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable.</p>', 'On demand service', '1576738750.png', 1, 'https://www.cricbuzz.com/', '2019-12-19 06:59:10', '2019-12-26 06:17:48'),
+(14, 'iest way for you to', 'All the Lorem Ipsum generatorsAll the Lorem Ipsum generators', 'all-the-lorem-ipsum-generatorsall-the-lorem-ipsum-generators', '<p>If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing hidden in the middle of text</p>\r\n<p>If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing hidden in the middle of text</p>\r\n<p>If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing hidden in the middle of text</p>', 'On demand service', '1577354623.jpg', 1, 'https://www.cricbuzz.com/', '2019-12-19 06:59:46', '2019-12-26 04:03:43'),
+(15, 'Where does it come from', 'Lorem Ipsum is therefore', 'lorem-ipsum-is-therefore', '<p>to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>', 'On demand service', '1576738823.png', 1, 'https://www.cricbuzz.com/', '2019-12-19 07:00:23', '2019-12-26 03:53:20');
 
 -- --------------------------------------------------------
 
@@ -277,7 +278,7 @@ CREATE TABLE `sliders` (
 --
 
 INSERT INTO `sliders` (`id`, `name`, `title`, `description`, `image`, `status`, `created_at`, `updated_at`) VALUES
-(2, 'Lorem ipsum', 'Where can I get some', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam', '1575871420.png', 0, '2019-12-09 06:03:40', '2019-12-18 07:13:25'),
+(2, 'Lorem ipsum', 'Where can I get some', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>', '1575871420.png', 1, '2019-12-09 06:03:40', '2019-12-26 07:04:32'),
 (3, 'fgfgh', 'iest way for you to', 'ome migration operations are destructive, which means they may cause you to lose data. In order to protect', '1575886976.png', 1, '2019-12-09 10:22:56', NULL),
 (4, 'fgfgg', 'Lorem ipsum dolor', 'ome migration operations are destructive, which means they may cause you to lose data. In order to protect', '1575887214.png', 1, '2019-12-09 10:26:54', NULL),
 (5, 'ffgh', 'Lorem ipsum dolor', 'ome migration operations are destructive, which means they may cause you to lose data. In order to protect', '1575887279.png', 1, '2019-12-09 10:27:59', NULL);
@@ -307,7 +308,7 @@ CREATE TABLE `teams` (
 
 INSERT INTO `teams` (`id`, `name`, `designation`, `image`, `fb_link`, `tw_link`, `in_link`, `status`, `created_at`, `updated_at`) VALUES
 (1, 'Ashraf', 'main director', '1575800645.jpg', 'fb.com/65195ghfgdf', 'twitter.com/564912687', 'ln.com/5648983588', 1, '2019-12-08 10:24:05', '2019-12-08 04:24:05'),
-(2, 'Sadique', 'general manager', '1575800671.jpg', 'fb.com/158955858', 'twitter.com/1111111555', 'ln.com/99556845', 1, '2019-12-08 10:24:31', '2019-12-08 04:24:31'),
+(2, 'Sadique', 'general manager', '1575800671.jpg', 'fb.com/158955858', 'twitter.com/1111111555', 'ln.com/99556845', 1, '2019-12-08 10:24:31', '2019-12-26 06:46:07'),
 (3, 'Ashraful Islam', 'Assistent manager', '1575800704.jpg', 'fb.com/65195ghfgdf85448', 'twitter.com/56491268794', 'ln.com/99556845684', 1, '2019-12-08 10:25:04', '2019-12-08 04:25:04');
 
 -- --------------------------------------------------------
@@ -349,7 +350,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin saab', 'admin@exp.com', '2019-12-09 04:28:11', '$2y$12$/EEN.Bmcf6tRM4V0FnJqr.hAqPAGUlTKH7YuctHR5D9ts/CdHIb3O', '4mxpsimGiNpdf6Dzj2FMAzulO4zRzLBgi5e2THKdorcgcS1vlKzg4PtR3UQT', '2019-12-09 04:29:00', '2019-12-09 04:29:01');
+(1, 'admin saab', 'admin@exp.com', '2019-12-09 04:28:11', '$2y$12$HLMHBNkLYiKZDrU4R5lj/uPGL74PBobJkHmqL1v/8kG/TE.hyGAdm', 'tH9nBxbIIfY00D5cszZqbFI7I47MqT6zbJCRmmABDgvOo98FkFVC4FHK9p2F', '2019-12-09 04:29:00', '2019-12-26 05:50:07');
 
 --
 -- Indexes for dumped tables

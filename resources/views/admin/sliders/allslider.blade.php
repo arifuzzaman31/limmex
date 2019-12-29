@@ -31,16 +31,6 @@
                     <th>Action</th>
                 </tr>
             </thead>
-            <tfoot>
-                <tr>
-                    <th>SL</th>
-                    <th>Name</th>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Slider</th>
-                    <th>Action</th>
-                </tr>
-            </tfoot>
             <tbody>
             	@if(count($sliders) > 0)
             	<?php $i = 1; ?>

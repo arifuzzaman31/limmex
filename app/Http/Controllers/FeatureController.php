@@ -98,36 +98,43 @@ class FeatureController extends Controller
 public function update(Request $request, $id)
 {
     $status = $request->status ? 1 : 0;
-   try {
-        DB::beginTransaction();
-        $updated = Feature::where('id',$id)->first();
-                $updated->title      =  $request->title;
-                $updated->slug       =  Str::slug($request->title,'-');
-                $updated->description =  $request->description;
-                $updated->status     =  $status;
-            $updated->update();
+    $validation = Validator::make($request->all(),[
+            'title'       => 'required',
+            'description' => 'required',
+        ]);
+        if (!$validation->fails()) {
+       try {
+            DB::beginTransaction();
+            $updated = Feature::where('id',$id)->first();
+                    $updated->title      =  $request->title;
+                    $updated->slug       =  Str::slug($request->title,'-');
+                    $updated->description =  $request->description;
+                    $updated->status     =  $status;
+                $updated->update();
 
-        if ($request->hasFile('image')) {
+            if ($request->hasFile('image')) {
 
-        if(!empty($updated->feature_icon) && file_exists('images/feature-image/'.$updated->feature_icon)){      
-            unlink('images/feature-image/'.$updated->feature_icon);
+            if(!empty($updated->feature_icon) && file_exists('images/feature-image/'.$updated->feature_icon)){      
+                unlink('images/feature-image/'.$updated->feature_icon);
+            }
+                $image = $request->file('image');
+                $imageName = time().'.'.$image->getClientOriginalExtension();
+                $image->move('images/feature-image',$imageName);
+
+                Feature::where('id', $updated->id)
+                        ->update([
+                            'feature_icon' => $imageName
+                        ]);
+            }
+                DB::commit();
+            return back()->with(['alert-type' => 'success','message' => 'Feature Updated successfull']);
+                        
+        } catch (Exception $e) {
+            DB::rollback();
+            return back()->with(['alert-type' => 'error','message' => $e->errorInfo[2]]);
         }
-            $image = $request->file('image');
-            $imageName = time().'.'.$image->getClientOriginalExtension();
-            $image->move('images/feature-image',$imageName);
-
-            Feature::where('id', $updated->id)
-                    ->update([
-                        'feature_icon' => $imageName
-                    ]);
-        }
-            DB::commit();
-        return back()->with(['alert-type' => 'success','message' => 'Feature Updated successfull']);
-                    
-    } catch (Exception $e) {
-        DB::rollback();
-        return back()->with(['alert-type' => 'error','message' => $e->errorInfo[2]]);
     }
+    return back()->with(['alert-type' => 'error','message' => 'Validation Error Occured!']);
 }
 
 
