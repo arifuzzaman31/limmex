@@ -25,6 +25,11 @@ Route::get('service/{slug}', [
 	'uses' 	=> 'FrontController@getSpecificService'
 ]);
 
+Route::get('get-ambulance-service', [
+	'as'	=> 'get-ambulance-service',
+	'uses' 	=> 'FrontController@ServiceForm'
+]);
+
 Route::get('blog/{slug}', [
 	'as'	=> 'get-specific-blog',
 	'uses' 	=> 'FrontController@getSpecificBlog'
