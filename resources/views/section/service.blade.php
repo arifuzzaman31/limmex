@@ -15,9 +15,9 @@
                     @foreach($RSservices as $service)
                         <div class="single-service text-center item pt-60 pb-60 pl-30 pr-30">
                             <img src="{{asset('images/service-image/'.$service->image)}}" alt="Service Picture">
-                            <h4 class="mb-10 mt-20 pb-10">{!! substr($service->sort_description,0,30) !!}</h4>
-                            <p>{!! substr($service->description,0,80) !!}</p>
-                            <a href="{{route('get-specific-service',$service->slug)}}" class="btn-service"><i class="fa fa-arrow-right"></i> </a>
+                            <h4 class="mb-10 mt-20 pb-10">{!! $service->title !!}</h4>
+                            <p>{!! $service->sort_description !!}</p>
+                            <a href="{{route('get-specific-service',$service->id)}}" class="btn-service"><i class="fa fa-arrow-right"></i> </a>
                         </div>
                     @endforeach 
                 </div>
@@ -41,9 +41,9 @@
                     @foreach($WSservices as $service)
                         <div class="single-service text-center item pt-60 pb-60 pl-30 pr-30">
                             <img src="{{asset('images/service-image/'.$service->image)}}" alt="Service Picture">
-                            <h4 class="mb-10 mt-20 pb-10">{!! substr($service->sort_description,0,30) !!}</h4>
-                            <p>{!! substr($service->description,0,80) !!}</p>
-                            <a href="{{route('get-specific-service',$service->slug)}}" class="btn-service"><i class="fa fa-arrow-right"></i> </a>
+                            <h4 class="mb-10 mt-20 pb-10">{!! $service->title !!}</h4>
+                            <p>{!! $service->sort_description !!}</p>
+                            <a href="{{route('get-specific-service',$service->id)}}" class="btn-service"><i class="fa fa-arrow-right"></i> </a>
                         </div>   
                     @endforeach
                 </div>
@@ -67,9 +67,9 @@
                     @foreach($ODservices as $service)
                         <div class="single-service text-center item pt-60 pb-60 pl-30 pr-30">
                             <img src="{{asset('images/service-image/'.$service->image)}}" alt="Service Picture">
-                            <h4 class="mb-10 mt-20 pb-10">{!! substr($service->sort_description,0,30) !!}</h4>
-                            <p>{!! substr($service->description,0,80) !!}</p>
-                            <a href="{{route('get-specific-service',$service->slug)}}" class="btn-service"><i class="fa fa-arrow-right"></i> </a>
+                            <h4 class="mb-10 mt-20 pb-10">{!! $service->title !!}</h4>
+                            <p>{!! $service->sort_description !!}</p>
+                            <a href="{{route('get-specific-service',$service->id)}}" class="btn-service"><i class="fa fa-arrow-right"></i> </a>
                         </div>
                     @endforeach
                 </div>
@@ -93,9 +93,9 @@
                     @foreach($OSservices as $service)
                         <div class="single-service text-center item pt-60 pb-60 pl-30 pr-30">
                             <img src="{{asset('images/service-image/'.$service->image)}}" alt="Service Picture">
-                            <h4 class="mb-10 mt-20 pb-10">{!! substr($service->sort_description,0,30) !!}</h4>
-                            <p>{!! substr($service->description,0,80) !!}</p>
-                            <a href="{{route('get-specific-service',$service->slug)}}" class="btn-service"><i class="fa fa-arrow-right"></i> </a>
+                            <h4 class="mb-10 mt-20 pb-10">{!! $service->title !!}</h4>
+                            <p>{!! $service->sort_description !!}</p>
+                            <a href="{{route('get-specific-service',$service->id)}}" class="btn-service"><i class="fa fa-arrow-right"></i> </a>
                         </div>
                     @endforeach 
                 </div>

@@ -20,7 +20,7 @@ Route::get('blogs', [
 	'uses' => 'FrontController@getAllBlog'
 ]);
 
-Route::get('service/{slug}', [
+Route::get('service/{id}', [
 	'as'	=> 'get-specific-service',
 	'uses' 	=> 'FrontController@getSpecificService'
 ]);
@@ -30,7 +30,7 @@ Route::get('get-ambulance-service', [
 	'uses' 	=> 'FrontController@ServiceForm'
 ]);
 
-Route::get('blog/{slug}', [
+Route::get('blog/{id}', [
 	'as'	=> 'get-specific-blog',
 	'uses' 	=> 'FrontController@getSpecificBlog'
 ]);

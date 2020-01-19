@@ -4,7 +4,7 @@
 @endsection
 @section('meta')
     <meta property="og:url"          
-        content="{{ route('get-specific-service',['slug' => $services->slug]) }}" />
+        content="{{ route('get-specific-service',['id' => $services->id]) }}" />
     <meta property="og:type" content="website" />
     <meta property="og:image"        
          content="{{asset('assets/service-image/'.$services->image)}}" />
@@ -21,7 +21,7 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="single-blog-content">
-                            <div class="single-blo-feature-image mb-45" data-background="{{asset('assets/service-image/'.$services->image)}}">
+                            <div class="single-blo-feature-image mb-45" data-background="{{asset('images/service-image/'.$services->image)}}">
                                 <div class="blog-meta-date">
                                     <div class="blog-post-date-content">
                                         <span class="posted-on"><a href="#" >{{$services->created_at->toFormattedDateString()}}</a></span>
@@ -36,8 +36,8 @@
                                 </ul>
                             </div>
                             <div class="blog-post-inner-content">
-                                <h2 class="post-title">{{ $services->sort_description }}</h2>
-                                <p class="mt-15">{{$services->description}}</p>
+                                <h2 class="post-title">{!! $services->title !!}</h2>
+                                <p class="mt-15">{!! $services->description !!}</p>
                             </div>
                         </div>
                        

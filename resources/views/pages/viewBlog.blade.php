@@ -4,7 +4,7 @@
 @endsection
 @section('meta')
     <meta property="og:url"          
-        content="{{ route('get-specific-blog',['slug' => $blog->slug]) }}" />
+        content="{{ route('get-specific-blog',['id' => $blog->id]) }}" />
     <meta property="og:type" content="website" />
     <meta property="og:image"        
          content="{{asset('images/blog-image/'.$blog->blog_image)}}" />
@@ -32,8 +32,8 @@
                         </ul>
                     </div>
                     <div class="blog-post-inner-content">
-                        <h2 class="post-title">{{ $blog->title }}</h2>
-                        <p class="mt-15">{{$blog->description}}</p>
+                        <h2 class="post-title">{!! $blog->title !!}</h2>
+                        <p class="mt-15">{!! $blog->description !!}</p>
                     </div>
                 </div>  
             </div>

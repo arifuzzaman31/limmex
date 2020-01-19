@@ -26,20 +26,18 @@ class FrontController extends Controller
     	return view('setup.setup',compact('team_members','portfolios','features','blogs','RSservices','OSservices','WSservices','ODservices','priceplans'));
     }
 
-    public function getSpecificService($slug)
+    public function getSpecificService($id)
     {
-    	$services 	 = Service::where('slug',$slug)->first();
+    	$services 	 = Service::where('id',$id)->first();
     	$allservices = Service::where('status',1)->get();
     	$blogs 		 =  Blog::where('status',1)->get();
     	return view('pages.viewService', compact('services','allservices','blogs'));
     }
 
-    public function getSpecificBlog($slug)
+    public function getSpecificBlog($id)
     {
-    	$blog 		 = Blog::where('slug',$slug)->first();
-    	$allservices = Service::where('status',1)->get();
-    	$allblogs 	 =  Blog::where('status',1)->get();
-    	return view('pages.viewBlog', compact('allblogs','allservices','blog'));
+    	$blog 		 = Blog::where('id',$id)->first();
+    	return view('pages.viewBlog', compact('blog'));
     }
     public function getAllBlog()
     {

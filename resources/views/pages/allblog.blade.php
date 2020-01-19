@@ -21,7 +21,7 @@
                     @if(count($allblogs) > 0)
                         @foreach($allblogs as $blog)
                         <div class="single-blog-content">
-                            <div class="single-blo-feature-image mb-45" data-background="assets/img/Blog/blog-1.jpg">
+                            <div class="single-blo-feature-image mb-45" data-background="{{asset('images/blog-image/'.$blog->blog_image)}}">
                                 <div class="blog-meta-date">
                                     <div class="blog-post-date-content">
                                         <span class="posted-on"><a href="#">{{date('d F Y', strtotime($blog->created_at))}}</a></span>
@@ -34,11 +34,11 @@
                                 </ul>
                             </div>
                             <div class="blog-post-inner-content">
-                                <h2 class="post-title"><a href="single-blog.html">{{$blog->title}}</a></h2>
-                                <p class="mt-15">{{$blog->description}}</p>
+                                <h2 class="post-title"><a href="single-blog.html">{!! $blog->title !!}</a></h2>
+                                <p class="mt-15">{!! $blog->description !!}</p>
                             </div>
                             <div class="blog-readmore-btn">
-                                <a href="{{route('get-specific-blog',$blog->slug)}}">read-more <i class="fa fa-angle-right"></i></a>
+                                <a href="{{route('get-specific-blog',$blog->id)}}">read-more <i class="fa fa-angle-right"></i></a>
                             </div>
                         </div>
                         @endforeach

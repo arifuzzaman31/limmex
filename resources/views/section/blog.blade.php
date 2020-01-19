@@ -15,7 +15,7 @@
                             <li>{!! $blog->description !!}</li>
                         </ul>
                         <div class="heuse-hero-btn  mt-30">
-                            <a href="{{route('get-specific-blog',$blog->slug)}}" class="btn btn-filled btn-grad-color">Read More</a>
+                            <a href="{{route('get-specific-blog',$blog->id)}}" class="btn btn-filled btn-grad-color">Read More</a>
                         </div>
                     </div>
                 </div>
