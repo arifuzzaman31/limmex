@@ -35,6 +35,7 @@
         <div class="form-group">
             <div class="form-line">
                 <input type="file" id="icon" name="image" class="form-control" required="">
+                <span class="text-danger">Size must be 60 x 60</span>
             </div>
         </div>
         <label for="service_link">Service FB link (Optional)</label>

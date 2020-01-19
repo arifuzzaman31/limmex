@@ -26,14 +26,14 @@
 	                <tr>
 	                    <td style="width: 5%">{{$i}}</td>
 	                    <td style="width: 18%">{{$service->title}}</td>
-	                    <td style="width: 40%">{!! substr($service->description,0,80) !!}....</td>
+	                    <td style="width: 36%">{!! substr($service->sort_description,0,80) !!}....</td>
                         <td>
                         @if($service->image)
                             <img src="{{URL::to('images/service-image/'.$service->image)}}" height="40px" width="50px">
                         @endif
                         </td>
                         <td style="width: 12%">{{$service->type}}</td>
-	                    <td style="width: 15%">
+	                    <td style="width: 16%">
 	                    	<a onclick="getModal('edit.service/{{$service->slug}}','Edit Service')" title="Edit" type="button" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
                             
                             <a onclick="getModal('show-service/{{$service->slug}}','Show Service')" title="View" type="button" class="btn btn-primary btn-xs">

@@ -563,8 +563,8 @@ section.hero-area {
 
 .single-service img {
     display: inline-block;
-    width: 40px !important;
-    height: 60px;
+    /*width: 40px !important;
+    height: 60px;*/
     margin: 0 auto;
 }
 
