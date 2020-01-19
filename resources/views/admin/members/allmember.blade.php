@@ -64,5 +64,11 @@
         </table>
     </div>
 </div>
-
+<script>
+    @if($errors->any())
+    $(window).load(function() {
+           getModal('get-member','Add Members');
+        });
+    @endif 
+</script>
 @endsection

@@ -6,13 +6,13 @@
 		        <label for="link">Link</label>
 		        <div class="form-group">
 		            <div class="form-line">
-		                <input type="text" id="link" name="link" class="form-control" value="{{$data->link}}">
+		                <input type="text" id="link" name="link" class="form-control" value="{{$data->link}}" required="">
 		            </div>
 		        </div>
 		        <label for="description">Description</label>
 		        <div class="form-group">
 		            <div class="form-line">
-		                <textarea id="tinymce" name="description">{{$data->description}}</textarea>
+		                <textarea id="tinymce" name="description" required="">{{$data->description}}</textarea>
 		            </div>
 		        </div>
 		       
@@ -26,10 +26,13 @@
 		        </div>
 		        <div class="demo-switch-title">Status</div>
 		            <div class="switch">
-		                <label><input type="checkbox" @if($data->status === 1)checked @endif name="status" value="1"><span class="lever switch-col-green"></span></label>
+		                <label><input type="checkbox" name="status" value="1" @if($data->status == 1) checked @endif><span class="lever switch-col-green"></span></label>
 		            </div>
 		        <br>
-		        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Update</button>
+		        <div class="modal-footer">
+		            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		            <button type="submit" class="btn btn-primary">Update</button>
+		        </div>
 		    </form>
 		</div>
 	   

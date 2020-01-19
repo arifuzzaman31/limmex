@@ -6,19 +6,19 @@
 		       <label for="title">Title</label>
 		        <div class="form-group">
 		            <div class="form-line">
-		                <input type="text" id="title" value="{{$data->title}}" name="title" class="form-control">
+		                <input type="text" id="title" value="{{$data->title}}" name="title" class="form-control" required="">
 		            </div>
 		        </div>
 		        <label for="Sort-Description">Sort Description</label>
 		        <div class="form-group">
 		            <div class="form-line">
-		                <input type="text" id="Sort-Description" name="sort_description" value="{{$data->sort_description}}" class="form-control">
+		                <input type="text" id="Sort-Description" name="sort_description" value="{{$data->sort_description}}" class="form-control" required="">
 		            </div>
 		        </div>
-		        <label for="description">Description</label>
+		        <label for="tinymce">Description</label>
 		        <div class="form-group">
 		            <div class="form-line">
-		                <textarea id="tinymce" name="description">{{$data->description}}</textarea>
+		                <textarea id="tinymce" name="description" required="">{{$data->description}}</textarea>
 		            </div>
 		        </div>
 		        <label for="type">Type :</label>
@@ -43,15 +43,18 @@
 		        <label for="service_link">External link (Optional)</label>
 		        <div class="form-group">
 		            <div class="form-line">
-		                <input class="form-control" id="service_link" name="service_link" value="{{$data->service_link}}">
+		                <input class="form-control" id="service_link" name="service_link" value="{{$data->service_link}}" required="">
 		            </div>
 		        </div>
 		        <div class="demo-switch-title">Status</div>
 		            <div class="switch">
-		                <label><input type="checkbox" @if($data->status === 1)checked @endif name="status" value="1"><span class="lever switch-col-green"></span></label>
+		                <label><input type="checkbox" name="status" value="1" @if($data->status == 1) checked @endif><span class="lever switch-col-green"></span></label>
 		            </div>
 		        <br>
-		        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Update</button>
+		        <div class="modal-footer">
+		            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		            <button type="submit" class="btn btn-primary">Update</button>
+		        </div>
 		    </form>
 		</div>
 	   

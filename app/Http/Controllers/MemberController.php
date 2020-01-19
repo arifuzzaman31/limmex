@@ -36,9 +36,6 @@ class MemberController extends Controller
         $validation = Validator::make($request->all(),[
             'name'       => 'required',
             'description' => 'required',
-            'fb_link' => 'required',
-            'tw_link' => 'required',
-            'in_link' => 'required',
             'image' => 'required|image|mimes:jpeg,bmp,jpg,png,gif,svg'
         ]);
         if (!$validation->fails()) {
@@ -92,10 +89,7 @@ class MemberController extends Controller
 	    $status = $request->status ? 1 : 0;
         $validation = Validator::make($request->all(),[
             'name'       => 'required',
-            'description' => 'required',
-            'fb_link' => 'required',
-            'tw_link' => 'required',
-            'in_link' => 'required',
+            'description' => 'required'
         ]);
         if (!$validation->fails()) {
     	   try {

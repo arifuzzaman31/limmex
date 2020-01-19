@@ -1,5 +1,4 @@
 <div class="card">
-  <img class="card-img-top" src="{{URL::to('images/product-image/'.$data->image)}}" alt="Card image cap" height="60px" width="80px">
 	  <div class="card-body">
 	    <div class="body">
 		    <form action="{{route('priceplan.update',$data->id)}}" method="post" enctype="multipart/form-data">
@@ -7,20 +6,20 @@
 		       <label for="title">Title</label>
 		        <div class="form-group">
 		            <div class="form-line">
-		                <input type="text" id="title" name="title" value="{{$data->title}}" class="form-control">
+		                <input type="text" id="title" name="title" value="{{$data->title}}" class="form-control" required="">
 		            </div>
 		        </div>
 		      
-		        <label for="description">Description</label>
+		        <label for="tinymce">Description</label>
 		        <div class="form-group">
 		            <div class="form-line">
-		                <textarea id="tinymce" name="description">{{$data->description}}</textarea>
+		                <textarea id="tinymce" name="description" required="">{{$data->description}}</textarea>
 		            </div>
 		        </div>
 		        <label for="price">Price</label>
 		        <div class="form-group">
 		            <div class="form-line">
-		                <input type="text" id="price" name="price" value="{{$data->price}}" class="form-control">
+		                <input type="text" id="price" name="price" value="{{$data->price}}" class="form-control" required="">
 		            </div>
 		        </div>
 		        <label for="product_link">Product Link</label>
@@ -39,10 +38,13 @@
 		        </div>
 		        <div class="demo-switch-title">Status</div>
 		            <div class="switch">
-		                <label><input type="checkbox" @if($data->status === 1)checked @endif name="status" value="1"><span class="lever switch-col-green"></span></label>
+		                <label><input type="checkbox" name="status" value="1" @if($data->status == 1) checked @endif><span class="lever switch-col-green"></span></label>
 		            </div>
 		        <br>
-		        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Update</button>
+		        <div class="modal-footer">
+		            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		            <button type="submit" class="btn btn-primary">Update</button>
+		        </div>
 		    </form>
 		</div>
 	   

@@ -24,7 +24,7 @@
     <link href="{{asset('admin/animate-css/animate.css')}}" rel="stylesheet" />
 
     <!-- Morris Chart Css-->
-    <link href="{{asset('admin/morrisjs/morris.css')}}" rel="stylesheet" />
+    <!-- <link href="{{asset('admin/morrisjs/morris.css')}}" rel="stylesheet" /> -->
 
     <!-- Custom Css -->
     <link href="{{asset('admin/css/style.css')}}" rel="stylesheet">
@@ -37,7 +37,12 @@
 
    <link rel="stylesheet" type="text/css" href="{{asset('admin/css/toastr/toastr.min.css')}}">
    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.css">
-   
+
+   <!-- Jquery Core Js -->
+   <script src="{{asset('admin/plugins/jquery/jquery.min.js')}}"></script>
+
+<!-- Bootstrap Core Js -->
+    <script src="{{asset('admin/plugins/bootstrap/js/bootstrap.js')}}"></script>
 
 </head>
 

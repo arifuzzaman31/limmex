@@ -6,13 +6,13 @@
 		        <label for="title">Name</label>
 		        <div class="form-group">
 		            <div class="form-line">
-		                <input type="text" id="name" name="name" class="form-control" value="{{$data->name}}">
+		                <input type="text" id="name" name="name" class="form-control" value="{{$data->name}}" required="">
 		            </div>
 		        </div>
-		        <label for="description">Designation</label>
+		        <label for="tinymce">Designation</label>
 		        <div class="form-group">
 		            <div class="form-line">
-		                <input type="text" id="designation" name="designation" class="form-control" value="{{$data->designation}}">
+		            	<textarea id="tinymce" name="description" required="">{{$data->designation}}</textarea>
 		            </div>
 		        </div>
 		        <label for="title">Facebook Link</label>
@@ -43,12 +43,21 @@
 		        </div>
 		       <div class="demo-switch-title">Status</div>
 		            <div class="switch">
-		                <label><input type="checkbox" @if($data->status === 1)checked @endif name="status" value="1"><span class="lever switch-col-green"></span></label>
+		                <label><input type="checkbox" name="status" value="1" @if($data->status == 1) checked @endif><span class="lever switch-col-green"></span></label>
 		            </div>
 		        <br>
-		        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Update</button>
+		        <div class="modal-footer">
+		            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		            <button type="submit" class="btn btn-primary">Update</button>
+		        </div>
 		    </form>
 		</div>
 	   
 	</div>
 </div>
+<script type="text/javascript">
+        tinymce.init({
+            selector: "#tinymce"
+
+        });
+</script>

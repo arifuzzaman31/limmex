@@ -4,13 +4,13 @@
         <label for="title">Name</label>
         <div class="form-group">
             <div class="form-line">
-                <input type="text" id="name" name="name" class="form-control">
+                <input type="text" id="name" name="name" class="form-control" required="">
             </div>
         </div>
         <label for="description">Designation</label>
         <div class="form-group">
             <div class="form-line">
-                <input type="text" id="designation" name="designation" class="form-control">
+                <textarea id="tinymce" id="designation" name="description" required=""></textarea>
             </div>
         </div>
         <label for="title">Facebook Link</label>
@@ -36,9 +36,20 @@
                 <input type="file" id="icon" name="image" class="form-control">
             </div>
         </div>
-        <input type="checkbox" id="remember_me" name="status" value="1" class="filled-in">
-        <label for="remember_me">Status</label>
+        <div class="demo-switch-title">Status</div>
+            <div class="switch">
+                <label><input type="checkbox" name="status" value="1" checked><span class="lever switch-col-green"></span></label>
+            </div>
         <br>
-        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Add</button>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Add</button>
+        </div>
     </form>
 </div>
+<script type="text/javascript">
+        tinymce.init({
+            selector: "#tinymce"
+
+        });
+</script>

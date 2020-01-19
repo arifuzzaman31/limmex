@@ -4,25 +4,29 @@
         <label for="link">Link</label>
         <div class="form-group">
             <div class="form-line">
-                <input type="text" id="link" name="link" class="form-control">
+                <input type="text" id="link" name="link" class="form-control" required="">
             </div>
         </div>
-        <label for="description">Description</label>
+        <label for="tinymce">Description</label>
         <div class="form-group">
             <div class="form-line">
-                <textarea id="tinymce" name="description"></textarea>
+                <textarea id="tinymce" name="description" required=""></textarea>
             </div>
         </div>
          <div class="form-group">
             <div class="form-line">
-                <input type="file" id="icon" name="image" class="form-control">
+                <input type="file" id="icon" name="image" class="form-control" required="">
             </div>
         </div>
-
-        <input type="checkbox" id="remember_me" name="status" value="1" class="filled-in">
-        <label for="remember_me">Status</label>
+        <div class="demo-switch-title">Status</div>
+            <div class="switch">
+                <label><input type="checkbox" name="status" value="1" checked><span class="lever switch-col-green"></span></label>
+            </div>
         <br>
-        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Add</button>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Add</button>
+        </div>
     </form>
 </div>
 <script type="text/javascript">

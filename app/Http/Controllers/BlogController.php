@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use App\Blog;
 use DB;
@@ -32,11 +31,11 @@ class BlogController extends Controller
     public function store(Request $request)
     {
         $status = $request->status ? 1 : 0;
-        $validation = Validator::make($request->all(),[
-            'title'       => 'required',
-            'description' => 'required'
-        ]);
-        if (!$validation->fails()) {
+        $request->validate([
+                'title'       => 'required',
+                'description' => 'required'
+            ]);
+    
             try {
                 DB::beginTransaction();
                 $insertid = Blog::insertGetId([
@@ -64,8 +63,7 @@ class BlogController extends Controller
                 DB::rollback();
                return back()->with(['alert-type' => 'error','message' => 'Database error occured!']);
             }
-        }
-        return back()->with(['alert-type' => 'error','message' => 'Have validation Error']);
+        
     }
 
     public function show($id)
@@ -83,11 +81,10 @@ class BlogController extends Controller
     public function update(Request $request, $id)
     {
         $status = $request->status ? 1 : 0;
-         $validation = Validator::make($request->all(),[
+         $request->validate([
             'title'       => 'required',
             'description' => 'required'
         ]);
-        if (!$validation->fails()) {
            try {
                 DB::beginTransaction();
                 $updated = Blog::where('id',$id)->first();
@@ -120,8 +117,6 @@ class BlogController extends Controller
                 DB::rollback();
                 return back()->with(['alert-type' => 'error','message' => $e->errorInfo[2]]);
             }
-        }
-        return back()->with(['alert-type' => 'error','message' => 'Have validation Error']);
     }
 
     /**

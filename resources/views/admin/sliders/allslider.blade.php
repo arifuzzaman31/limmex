@@ -62,5 +62,11 @@
         </table>
     </div>
 </div>
-
+<script>
+    @if($errors->any())
+    $(window).load(function() {
+           getModal('add-slider','Add Slider');
+        });
+    @endif 
+</script>
 @endsection

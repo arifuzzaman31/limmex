@@ -7,17 +7,21 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </div>
+               @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
             <div class="modal-body">
-               
+                  
             </div>
         </div>
     </div>
 </div>
-<!-- Jquery Core Js -->
-<script src="{{asset('admin/plugins/jquery/jquery.min.js')}}"></script>
-
-<!-- Bootstrap Core Js -->
-<script src="{{asset('admin/plugins/bootstrap/js/bootstrap.js')}}"></script>
 
 <!-- Select Plugin Js -->
 <script src="{{asset('admin/plugins/bootstrap-select/js/bootstrap-select.js')}}"></script>
@@ -33,19 +37,19 @@
 
 <!-- Morris Plugin Js -->
 <script src="{{asset('admin/plugins/raphael/raphael.min.js')}}"></script>
-<script src="{{asset('admin/plugins/morrisjs/morris.js')}}"></script>
+<!-- <script src="{{asset('admin/plugins/morrisjs/morris.js')}}"></script> -->
 
     
 
 <!-- ChartJs -->
-<script src="{{asset('admin/plugins/chartjs/Chart.bundle.js')}}"></script>
+<!-- <script src="{{asset('admin/plugins/chartjs/Chart.bundle.js')}}"></script> -->
 
 <!-- Flot Charts Plugin Js -->
-<script src="{{asset('admin/plugins/flot-charts/jquery.flot.js')}}"></script>
-<script src="{{asset('admin/plugins/flot-charts/jquery.flot.resize.js')}}"></script>
-<script src="{{asset('admin/plugins/flot-charts/jquery.flot.pie.js')}}"></script>
-<script src="{{asset('admin/plugins/flot-charts/jquery.flot.categories.js')}}"></script>
-<script src="{{asset('admin/plugins/flot-charts/jquery.flot.time.js')}}"></script>
+<!-- <script src="{{asset('admin/plugins/flot-charts/jquery.flot.js')}}"></script> -->
+<!-- <script src="{{asset('admin/plugins/flot-charts/jquery.flot.resize.js')}}"></script> -->
+<!-- <script src="{{asset('admin/plugins/flot-charts/jquery.flot.pie.js')}}"></script> -->
+<!-- <script src="{{asset('admin/plugins/flot-charts/jquery.flot.categories.js')}}"></script> -->
+<!-- <script src="{{asset('admin/plugins/flot-charts/jquery.flot.time.js')}}"></script> -->
 
 <!-- Sparkline Chart Plugin Js -->
 <script src="{{asset('admin/plugins/jquery-sparkline/jquery.sparkline.js')}}"></script>
@@ -59,7 +63,7 @@
 
 <!-- Demo Js -->
 <script src="{{asset('admin/js/demo.js')}}"></script>
-<script src="{{asset('admin/js/custom.js')}}"></script>
+<!-- <script src="{{asset('admin/js/custom.js')}}"></script> -->
 
 <script src="{{asset('admin/plugins/jquery-datatable/jquery.dataTables.js')}}"></script>
 <script src="{{asset('admin/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js')}}"></script>
@@ -88,6 +92,27 @@
         }
       @endif
 </script>
+<script>
+    function getModal(url,text)
+    {
+        $('#defaultModal').modal();
+        $('.modal-title').text(text).css('font-weight', 'bold');
+        $('.modal-body').load(url);
+    }
+
+
+     // @if($errors->any())
+     //    $(window).load(function() {
+     //        $('#defaultModal').modal('show');
+     //        $('.modal-body').load(url);
+     //    });
+     // @endif   
+      // alert("window load occurred!");
+
+
+</script>
+
+
 <script type="text/javascript">
    /* $(document).on('click', '.delete', function () {
         var actionTo = $(this).attr('href');
@@ -144,6 +169,7 @@
         return false;
     }); */
 </script>
+
 </body>
 
 </html>
