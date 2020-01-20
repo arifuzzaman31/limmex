@@ -9,8 +9,8 @@
     <meta property="og:image"        
          content="{{asset('assets/service-image/'.$services->image)}}" />
 
-    <meta property="og:title" content="{{ $services->sort_description }}" />
-    <meta property="og:description" content="{{ $services->description }}" />
+    <meta property="og:title" content="{{ $services->title }}" />
+    <meta property="og:description" content="{{ $services->sort_description }}" />
 @endsection
 @section('content')
 <!-- Blog post area Start -->
