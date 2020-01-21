@@ -1,5 +1,5 @@
     <!-- Pealoader area start -->
-    <div class="prealoader-area-wrapepr">
+    <!-- <div class="prealoader-area-wrapepr">
         <div class="sk-chase">
             <div class="sk-chase-dot"></div>
             <div class="sk-chase-dot"></div>
@@ -8,7 +8,7 @@
             <div class="sk-chase-dot"></div>
             <div class="sk-chase-dot"></div>
         </div>
-    </div>
+    </div> -->
     <!-- Pealoader area end -->
     <header class="header-area" id="header-sticky">
         <div class="menu-area">

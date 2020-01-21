@@ -133,10 +133,10 @@ $(document).ready(function() {
         prependTo: '.responsive-menu'
     });
 
-    jQuery(window).load(function() {
-        // Prealoader
-        jQuery(".prealoader-area-wrapepr").fadeOut(500);
-    });
+    // jQuery(window).load(function() {
+    //     // Prealoader
+    //     jQuery(".prealoader-area-wrapepr").fadeOut(500);
+    // });
 
 
 });
