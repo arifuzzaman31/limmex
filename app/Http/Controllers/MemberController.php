@@ -35,7 +35,7 @@ class MemberController extends Controller
         $status = $request->status ? 1 : 0;
         $validation = Validator::make($request->all(),[
             'name'       => 'required',
-            'description' => 'required',
+            'designation' => 'required',
             'image' => 'required|image|mimes:jpeg,bmp,jpg,png,gif,svg'
         ]);
         if (!$validation->fails()) {
@@ -53,7 +53,7 @@ class MemberController extends Controller
             if ($request->hasFile('image')) {
                 $image = $request->file('image');
                 $imageName = time().'.'.$image->getClientOriginalExtension();
-                $image->move(public_path('images/team-member-image'),$imageName);
+                $image->move('images/team-member-image',$imageName);
 
                 Team::where('id', $insertid)
                         ->update([
@@ -89,7 +89,7 @@ class MemberController extends Controller
 	    $status = $request->status ? 1 : 0;
         $validation = Validator::make($request->all(),[
             'name'       => 'required',
-            'description' => 'required'
+            'designation' => 'required'
         ]);
         if (!$validation->fails()) {
     	   try {
@@ -110,7 +110,7 @@ class MemberController extends Controller
     	        }
     	            $image = $request->file('image');
     	            $imageName = time().'.'.$image->getClientOriginalExtension();
-    	            $image->move(public_path('images/team-member-image'),$imageName);
+    	            $image->move('images/team-member-image',$imageName);
 
     	            Team::where('id', $updated->id)
     	                    ->update([

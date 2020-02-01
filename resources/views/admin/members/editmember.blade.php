@@ -12,7 +12,7 @@
 		        <label for="tinymce">Designation</label>
 		        <div class="form-group">
 		            <div class="form-line">
-		            	<textarea id="tinymce" name="description" required="">{{$data->designation}}</textarea>
+		            	<input type="text" id="designation" name="designation" class="form-control" required="" value="{{$data->designation}}">
 		            </div>
 		        </div>
 		        <label for="title">Facebook Link</label>

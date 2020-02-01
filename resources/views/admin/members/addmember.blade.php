@@ -7,10 +7,10 @@
                 <input type="text" id="name" name="name" class="form-control" required="">
             </div>
         </div>
-        <label for="description">Designation</label>
+        <label for="designation">Designation</label>
         <div class="form-group">
             <div class="form-line">
-                <textarea id="tinymce" id="designation" name="description" required=""></textarea>
+                <input type="text" id="designation" name="designation" class="form-control" required="">
             </div>
         </div>
         <label for="title">Facebook Link</label>
@@ -33,7 +33,7 @@
         </div>
          <div class="form-group">
             <div class="form-line">
-                <input type="file" id="icon" name="image" class="form-control">
+                <input type="file" name="image" class="form-control">
             </div>
         </div>
         <div class="demo-switch-title">Status</div>
@@ -47,9 +47,3 @@
         </div>
     </form>
 </div>
-<script type="text/javascript">
-        tinymce.init({
-            selector: "#tinymce"
-
-        });
-</script>
