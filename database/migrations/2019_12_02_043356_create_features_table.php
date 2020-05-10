@@ -15,9 +15,9 @@ class CreateFeaturesTable extends Migration
     {
         Schema::create('features', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('title')->unique();
-            $table->string('slug');
-            $table->string('description',255);
+            $table->text('title')->unique();
+            $table->text('slug');
+            $table->longText('description');
             $table->string('feature_icon')->nullable();
             $table->tinyInteger('status')->default(1);
             $table->timestamps();
