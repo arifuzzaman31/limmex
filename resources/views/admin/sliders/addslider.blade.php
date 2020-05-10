@@ -16,7 +16,7 @@
         <label for="tinymce">Description</label>
         <div class="form-group">
             <div class="form-line">
-                <textarea id="tinymce" name="description" required=""></textarea>
+                <textarea id="description" name="description" rows="6" class="form-control ckeditor" placeholder="Write your message.."></textarea>
             </div>
         </div>
          <div class="form-group">
@@ -36,8 +36,9 @@
     </form>
 </div>
 <script type="text/javascript">
-        tinymce.init({
-            selector: "#tinymce"
-
-        });
+    CKEDITOR.replace( 'description',
+         {
+          customConfig : 'config.js',
+          toolbar : 'simple'
+          })
 </script>

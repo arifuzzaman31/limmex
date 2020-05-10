@@ -25,8 +25,8 @@
 	                <tr>
 	                    <td style="width: 5%">{{$i}}</td>
 	                    <td style="width: 20%">{{$blog->title}}</td>
-	                    <td style="width: 50%">{!! substr($blog->description,0,80) !!}...</td>
-	                    <td style="width: 10%">{{$blog->created_at->toFormattedDateString()}}</td>
+	                    <td style="width: 40%">{!! substr($blog->description,0,80) !!}...</td>
+	                    <td style="width: 15%">{{$blog->created_at->toFormattedDateString()}}</td>
                         <td style="width: 15%">
 	                    	<a onclick="getModal('edit.blog/{{$blog->id}}','Edit Blog')" title="Edit" type="button" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
                             

@@ -34,13 +34,13 @@ class FeatureController extends Controller
 
     public function store(Request $request)
     {
+        // return $request->all();
         $status = $request->status ? 1 : 0;
-        $validation = Validator::make($request->all(),[
+        $request->validate([
             'title'       => 'required',
             'description' => 'required',
-            'feature_icon' => 'required|image|mimes:jpeg,jpg,png,gif,svg'
+            'image' => 'required|image|mimes:jpeg,jpg,png,gif,svg'
         ]);
-        if (!$validation->fails()) {
         try {
             DB::beginTransaction();
             $insertid = Feature::insertGetId([
@@ -67,8 +67,6 @@ class FeatureController extends Controller
             DB::rollback();
             return back()->with(['alert-type' => 'error','message' => $e->errorInfo[2]]);
         }
-    }
-    return back()->with(['alert-type' => 'error','message' => 'Validation Error Occured!']);
     }
 
     /**

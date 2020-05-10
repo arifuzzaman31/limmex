@@ -26,7 +26,7 @@
 	                <tr>
 	                    <td style="width: 5%">{{$i}}</td>
 	                    <td style="width: 20%">{{$feature->title}}</td>
-	                    <td style="width: 50%">{{$feature->description}}</td>
+	                    <td style="width: 50%">{{ strip_tags($feature->description)}}</td>
 	                    <td style="width: 10%">{{$feature->created_at->toFormattedDateString()}}</td>
                         <td style="width: 15%">
 	                    	<a onclick="getModal('edit.feature/{{$feature->id}}','Edit Feature')" title="Edit" type="button" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>

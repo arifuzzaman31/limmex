@@ -37,26 +37,13 @@
 
 <!-- Morris Plugin Js -->
 <script src="{{asset('admin/plugins/raphael/raphael.min.js')}}"></script>
-<!-- <script src="{{asset('admin/plugins/morrisjs/morris.js')}}"></script> -->
-
-    
-
-<!-- ChartJs -->
-<!-- <script src="{{asset('admin/plugins/chartjs/Chart.bundle.js')}}"></script> -->
-
-<!-- Flot Charts Plugin Js -->
-<!-- <script src="{{asset('admin/plugins/flot-charts/jquery.flot.js')}}"></script> -->
-<!-- <script src="{{asset('admin/plugins/flot-charts/jquery.flot.resize.js')}}"></script> -->
-<!-- <script src="{{asset('admin/plugins/flot-charts/jquery.flot.pie.js')}}"></script> -->
-<!-- <script src="{{asset('admin/plugins/flot-charts/jquery.flot.categories.js')}}"></script> -->
-<!-- <script src="{{asset('admin/plugins/flot-charts/jquery.flot.time.js')}}"></script> -->
 
 <!-- Sparkline Chart Plugin Js -->
 <script src="{{asset('admin/plugins/jquery-sparkline/jquery.sparkline.js')}}"></script>
 <!-- Ckeditor -->
-<!-- <script src="{{asset('admin/plugins/ckeditor/ckeditor.js')}}"></script> -->
+<script src="{{asset('admin/plugins/ckeditor/ckeditor.js')}}"></script>
   <!-- TinyMCE -->
-    <script src="{{asset('admin/plugins/tinymce/tinymce.js')}}"></script>
+    <!-- <script src="{{asset('admin/plugins/tinymce/tinymce.js')}}"></script> -->
 <!-- Custom Js -->
 <script src="{{asset('admin/js/admin.js')}}"></script>
 <script src="{{asset('admin/js/pages/index.js')}}"></script>
@@ -100,74 +87,6 @@
         $('.modal-body').load(url);
     }
 
-
-     // @if($errors->any())
-     //    $(window).load(function() {
-     //        $('#defaultModal').modal('show');
-     //        $('.modal-body').load(url);
-     //    });
-     // @endif   
-      // alert("window load occurred!");
-
-
-</script>
-
-
-<script type="text/javascript">
-   /* $(document).on('click', '.delete', function () {
-        var actionTo = $(this).attr('href');
-        var token = $(this).attr('data-token');
-        var id = $(this).attr('data-id');
-        alert(actionTo);
-        swal({
-                title: "Are you sure?",
-                text: "You will not be able to recover this imaginary file!",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "Yes, delete it!",
-                closeOnConfirm: false
-            },
-            function (isConfirm) {
-                if (isConfirm) {
-                    $.ajax({
-                        url: actionTo +'/'+ id,
-                        type: 'post',
-                        // data: {method: 'delete', token: token},
-                        success: function (data) {
-                            if (data == 'hasForeignKey') {
-                                swal({
-                                    title: "Oops!",
-                                    text: "This data is used anywhere",
-                                    type: "error"
-                                });
-                            } else if (data == 'success') {
-                                swal({
-                                        title: "Deleted!",
-                                        text: "Your information delete successfully.",
-                                        type: "success"
-                                    },
-                                    function (isConfirm) {
-                                        if (isConfirm) {
-                                            $('.' + id).fadeOut();
-                                        }
-                                    });
-                            } else {
-                                swal({
-                                    title: "Error!",
-                                    text: "Something Error Found !, Please try again.",
-                                    type: "error"
-                                });
-                            }
-                        }
-
-                    });
-                } else {
-                    swal("Cancelled", "Your data is safe .", "error");
-                }
-            });
-        return false;
-    }); */
 </script>
 
 </body>

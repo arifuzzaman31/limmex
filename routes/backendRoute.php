@@ -31,7 +31,8 @@ Route::get('feature', [
 	'as' 	=> 'feature',
 	'uses'  => 'FeatureController@index'
 ]);
-Route::post('feature.store', [
+
+Route::post('feature', [
 	'as' 	=> 'feature.store',
 	'uses'  => 'FeatureController@store'
 ]);

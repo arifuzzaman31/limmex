@@ -12,7 +12,7 @@
 		        <label for="description">Description</label>
 		        <div class="form-group">
 		            <div class="form-line">
-		                <textarea id="tinymce" name="description" required="">{{$data->description}}</textarea>
+		            	<textarea id="description" name="description" rows="6" class="form-control ckeditor" placeholder="Write your message..">{!! $data->description !!}</textarea>
 		            </div>
 		        </div>
 		       
@@ -39,8 +39,9 @@
 	</div>
 </div>
 <script type="text/javascript">
-        tinymce.init({
-            selector: "#tinymce"
-
-        });
+    CKEDITOR.replace( 'description',
+         {
+          customConfig : 'config.js',
+          toolbar : 'simple'
+          })
 </script>
