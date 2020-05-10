@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 19, 2020 at 06:34 AM
+-- Generation Time: May 10, 2020 at 12:50 PM
 -- Server version: 10.4.8-MariaDB
--- PHP Version: 7.3.11
+-- PHP Version: 7.2.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -48,7 +48,8 @@ INSERT INTO `blogs` (`id`, `title`, `slug`, `sort_description`, `description`, `
 (1, 'Where does it come from', 'where-does-it-come-from', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since', '1575797201.jpg', 1, '2019-12-08 09:27:50', '2019-12-08 03:26:41'),
 (2, 'Why do we use it', 'why-do-we-use-it', '<p>It is a long established fact that a reader will be distracted by the readabl', '<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem</p>', '1575797409.jpg', 1, '2019-12-08 09:30:09', '2019-12-26 06:21:00'),
 (3, 'Lorem ipsum dolorm dolorm dolor', 'lorem-ipsum-dolorm-dolorm-dolor', '<p>Lorem ipsum dolorm dolorm dolorLorem ipsum dolorm dolorm dolorLorem ipsum dol', '<p>Lorem ipsum dolorm dolorm dolorLorem ipsum dolorm dolorm dolorLorem ipsum dolorm dolorm dolorLorem ipsum dolorm dolorm dolor</p>', '1576669714.jpg', 1, '2019-12-18 11:48:34', '2019-12-26 06:21:24'),
-(4, 'Why do we use itt', 'why-do-we-use-itt', '<p>Lorem ipsum dolorm dolorm dolorLorem ipsum dolorm dolorm dolorLorem ipsum dol<p>Lorem ipsum dolorm dolorm dolorLorem ipsum dolorm dolorm dolorLorem ipsum dol', '<p>Lorem ipsum dolorm dolorm dolorLorem ipsum dolorm dolorm dolorLorem ipsum dolorm dolorm dolorLorem ipsum dolorm dolorm dolor</p>', '1579082169.jpg', 1, '2020-01-15 09:56:09', '2020-01-15 03:56:09');
+(4, 'Why do we use itt', 'why-do-we-use-itt', '<p>Lorem ipsum dolorm dolorm dolorLorem ipsum dolorm dolorm dolorLorem ipsum dol<p>Lorem ipsum dolorm dolorm dolorLorem ipsum dolorm dolorm dolorLorem ipsum dol', '<p>Lorem ipsum dolorm dolorm dolorLorem ipsum dolorm dolorm dolorLorem ipsum dolorm dolorm dolorLorem ipsum dolorm dolorm dolor</p>', '1579082169.jpg', 1, '2020-01-15 09:56:09', '2020-05-10 04:46:43'),
+(5, 'Lorem Ipsum has been the industry', 'lorem-ipsum-has-been-the-industry', '<p>is simply dummy text of the printing and typesetting industry. Lorem Ipsum ha', '<p>is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the</p>', '1589105341.jpg', 0, '2020-05-10 10:09:01', '2020-05-10 04:09:37');
 
 -- --------------------------------------------------------
 
@@ -90,9 +91,9 @@ CREATE TABLE `failed_jobs` (
 
 CREATE TABLE `features` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `slug` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` text COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `slug` text COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `description` longtext COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `feature_icon` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` tinyint(4) NOT NULL DEFAULT 1,
   `created_at` timestamp NULL DEFAULT current_timestamp(),
@@ -104,9 +105,9 @@ CREATE TABLE `features` (
 --
 
 INSERT INTO `features` (`id`, `title`, `slug`, `description`, `feature_icon`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Web Design', 'web-design', 'Ipsum is that it has a more-or-less normal distribution of letters, as opposed to usingIpsum is that it has a more-or-less normal distribution of letters, as opposed to using', '1575798169.png', 1, '2019-12-08 09:42:49', '2019-12-22 23:03:26'),
+(1, 'Web Design', 'web-design', '<p>more-or-less normal distribution of letters, as opposed to usingIpsum is that it has a more-or-less normal distribution of letters, as opposed to using.</p>', '1575798169.png', 1, '2019-12-08 09:42:49', '2020-05-10 03:22:31'),
 (2, 'Local Transport', 'local-transport', '<p>making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text</p>', '1575798237.png', 1, '2019-12-08 09:43:56', '2019-12-26 06:35:39'),
-(3, 'Construct Development', 'construct-development', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it', '1575798298.png', 1, '2019-12-08 09:44:58', '2019-12-08 03:44:58');
+(4, 'Construct Development', 'construct-development', '<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it</p>', '1589102524.png', 1, '2020-05-10 09:22:04', '2020-05-10 03:22:04');
 
 -- --------------------------------------------------------
 
@@ -254,8 +255,7 @@ INSERT INTO `services` (`id`, `title`, `sort_description`, `slug`, `description`
 (11, 'Where does it come from', 'looked up one of the', 'looked-up-one-of-the', '<p>Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source</p>', 'Own Service', '1576738151.png', 1, 'https://www.cricbuzz.com/', '2019-12-19 06:49:11', '2019-12-28 23:14:47'),
 (12, 'printer took a galley of type and scrambled it', 'The standard chunk of Lorem', 'the-standard-chunk-of-lorem', '<p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from</p>', 'Ready WS', '1576738632.png', 1, 'https://www.cricbuzz.com/', '2019-12-19 06:57:12', '2019-12-28 23:17:31'),
 (13, 'Lorem ipsum dolor', 'combined with a handful of model', 'combined-with-a-handful-of-model', '<p>combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable.</p>\r\n<p>combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable.</p>', 'On demand service', '1576738750.png', 1, 'https://www.cricbuzz.com/', '2019-12-19 06:59:10', '2019-12-26 06:17:48'),
-(14, 'iest way for you to', 'All the Lorem Ipsum generatorsAll the Lorem Ipsum generators', 'all-the-lorem-ipsum-generatorsall-the-lorem-ipsum-generators', '<p>If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing hidden in the middle of text</p>\r\n<p>If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing hidden in the middle of text</p>\r\n<p>If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing hidden in the middle of text</p>', 'On demand service', '1577354623.jpg', 1, 'https://www.cricbuzz.com/', '2019-12-19 06:59:46', '2019-12-26 04:03:43'),
-(15, 'Where does it come from', 'Lorem Ipsum is therefore', 'lorem-ipsum-is-therefore', '<p>to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>', 'On demand service', '1576738823.png', 1, 'https://www.cricbuzz.com/', '2019-12-19 07:00:23', '2019-12-26 03:53:20');
+(15, 'Where does it come from', 'Lorem Ipsum is therefore', 'lorem-ipsum-is-therefore', '<p>to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>', 'On demand service', '1576738823.png', 1, 'https://www.cricinfo.com', '2019-12-19 07:00:23', '2020-05-10 02:32:22');
 
 -- --------------------------------------------------------
 
@@ -310,7 +310,8 @@ CREATE TABLE `teams` (
 INSERT INTO `teams` (`id`, `name`, `designation`, `image`, `fb_link`, `tw_link`, `in_link`, `status`, `created_at`, `updated_at`) VALUES
 (1, 'Ashraf', 'main director', '1575800645.jpg', 'fb.com/65195ghfgdf', 'twitter.com/564912687', 'ln.com/5648983588', 1, '2019-12-08 10:24:05', '2019-12-08 04:24:05'),
 (2, 'Sadique', 'general manager', '1575800671.jpg', 'fb.com/158955858', 'twitter.com/1111111555', 'ln.com/99556845', 1, '2019-12-08 10:24:31', '2019-12-26 06:46:07'),
-(3, 'Ashraful Islam', 'Assistent manager', '1575800704.jpg', 'fb.com/65195ghfgdf85448', 'twitter.com/56491268794', 'ln.com/99556845684', 1, '2019-12-08 10:25:04', '2019-12-08 04:25:04');
+(3, 'Ashraful Islam', 'Assistent manager', '1575800704.jpg', 'fb.com/65195ghfgdf85448', 'twitter.com/56491268794', 'ln.com/99556845684', 1, '2019-12-08 10:25:04', '2019-12-08 04:25:04'),
+(4, 'shakhawat', 'Executive', '1580538515.jpg', 'https://www.facebook.com/', 'https://www.twitter.com/', 'https://www.linkin.com/', 1, '2020-02-01 06:23:25', '2020-02-01 00:28:35');
 
 -- --------------------------------------------------------
 
@@ -381,7 +382,7 @@ ALTER TABLE `failed_jobs`
 --
 ALTER TABLE `features`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `features_title_unique` (`title`);
+  ADD UNIQUE KEY `features_title_unique` (`title`) USING HASH;
 
 --
 -- Indexes for table `migrations`
@@ -453,7 +454,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `blogs`
 --
 ALTER TABLE `blogs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `contacts`
@@ -471,7 +472,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `features`
 --
 ALTER TABLE `features`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -501,7 +502,7 @@ ALTER TABLE `priceplans`
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `sliders`
@@ -513,7 +514,7 @@ ALTER TABLE `sliders`
 -- AUTO_INCREMENT for table `teams`
 --
 ALTER TABLE `teams`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `testimonials`
