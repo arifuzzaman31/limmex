@@ -15,12 +15,12 @@ class CreateServicesTable extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->mediumText('title');
-            $table->mediumText('sort_description');
-            $table->string('slug');
+            $table->text('title');
+            $table->longText('sort_description');
+            $table->text('slug');
             $table->longText('description');
             $table->mediumText('type');
-            $table->string('image')->nullable();
+            $table->string('image',255)->nullable();
             $table->tinyInteger('status')->default(1);
             $table->string('service_link',255)->nullable();
             $table->timestamps();
